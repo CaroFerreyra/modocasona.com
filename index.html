@@ -7,76 +7,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="design.css">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg-primary:    #fdfcfa;
-      --bg-secondary:  #f7f3ed;
-      --carbon:        #1c1a18;
-      --carbon-2:      #2e2319;
-      --violeta:       #3d2b56;
-      --violeta-dark:  #241934;
-      --orange:        #e8784a;
-      --brand:         #8f3d18;
-      --cream:         #eae2d3;
-      --text-muted:    #c4b39a;
-    }
-
-    body {
-      font-family: 'Outfit', sans-serif;
-      background: var(--bg-primary);
-      color: var(--carbon);
-      overflow-x: hidden;
-    }
-
-    /* ── NAV ─────────────────────────────────────────── */
-    .nav {
-      background: var(--bg-secondary);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 29px 80px;
-      position: sticky;
-      top: 0;
-      z-index: 200;
-    }
-
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      text-decoration: none;
-    }
-
-    .nav-logo-text {
-      font-size: 32px;
-      font-weight: 600;
-      color: var(--carbon);
-      letter-spacing: -0.64px;
-      line-height: 1.2;
-      white-space: nowrap;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 40px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-size: 16px;
-      font-weight: 400;
-      color: var(--carbon);
-      text-decoration: none;
-      padding: 8px;
-      line-height: 1.4;
-      transition: opacity .2s;
-      white-space: nowrap;
-    }
-
-    .nav-links a:hover { opacity: .65; }
 
     /* ── CAROUSEL ────────────────────────────────────── */
     .carousel-section {
@@ -204,29 +136,6 @@
       display: block;
     }
 
-    /* ── SECTION MARK (label + orange underline) ─────── */
-    .section-mark {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      width: fit-content;
-    }
-
-    .section-mark span {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--carbon-2);
-      letter-spacing: .5px;
-      white-space: nowrap;
-    }
-
-    .section-mark-line {
-      height: 3.6px;
-      background: var(--orange);
-      width: 100%;
-      border-radius: 2px;
-    }
-
     /* ── HISTORIA ────────────────────────────────────── */
     .section-historia {
       padding: 80px 80px 60px;
@@ -254,28 +163,6 @@
       flex-direction: column;
       gap: 16px;
     }
-
-    /* ── BUTTON ──────────────────────────────────────── */
-    .btn-brand {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--brand);
-      color: #fdf4ef;
-      font-family: 'Outfit', sans-serif;
-      font-size: 18px;
-      font-weight: 400;
-      padding: 14px 18px;
-      border-radius: 9px;
-      border: 1.1px solid var(--brand);
-      text-decoration: none;
-      cursor: pointer;
-      width: fit-content;
-      transition: opacity .2s;
-      line-height: 1;
-    }
-
-    .btn-brand:hover { opacity: .85; }
 
     /* ── AGENDA ──────────────────────────────────────── */
     .section-agenda {
@@ -428,18 +315,6 @@
       line-height: 1.4;
     }
 
-    .btn-link {
-      font-size: 15px;
-      font-weight: 400;
-      color: var(--violeta-dark);
-      text-decoration: none;
-      padding: 8px 0;
-      margin-top: 8px;
-      transition: opacity .2s;
-    }
-
-    .btn-link:hover { opacity: .65; }
-
     /* ── BOTTOM IMAGE ────────────────────────────────── */
     .section-bottom {
       position: relative;
@@ -494,91 +369,6 @@
       text-align: center;
     }
 
-    /* ── FOOTER ──────────────────────────────────────── */
-    footer {
-      background: var(--carbon);
-      color: #fff;
-      padding: 40px 80px;
-      min-height: 360px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .footer-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 768px;
-      max-width: 100%;
-      gap: 48px;
-    }
-
-    .footer-brand {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 25px;
-      flex-shrink: 0;
-    }
-
-    .footer-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .footer-logo-text {
-      font-size: 24px;
-      font-weight: 700;
-      color: #fff;
-      letter-spacing: -.48px;
-      line-height: 1.2;
-      white-space: nowrap;
-    }
-
-    .footer-instagram {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .footer-instagram a {
-      font-size: 16px;
-      color: #fff;
-      text-decoration: none;
-      line-height: 1.4;
-      transition: opacity .2s;
-    }
-
-    .footer-instagram a:hover { opacity: .7; }
-
-    .footer-address {
-      font-size: 16px;
-      color: #fff;
-      line-height: 1.4;
-      text-align: center;
-      max-width: 220px;
-    }
-
-    .footer-nav {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      height: 100%;
-      justify-content: center;
-    }
-
-    .footer-nav a {
-      font-size: 16px;
-      color: #fff;
-      text-decoration: none;
-      line-height: 1.4;
-      white-space: nowrap;
-      transition: opacity .2s;
-    }
-
-    .footer-nav a:hover { opacity: .7; }
   </style>
 </head>
 <body>
@@ -886,5 +676,6 @@
   })();
 </script>
 
+  <script src="main.js"></script>
 </body>
 </html>
