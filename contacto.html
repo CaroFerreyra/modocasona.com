@@ -97,12 +97,18 @@
       cursor: not-allowed;
     }
     .btn-brand.is-sent {
-      background: #4a7c5f;
-      border-color: #4a7c5f;
+      background: var(--brand);
+      border-color: var(--brand);
+      gap: 10px;
+    }
+    .btn-brand.is-sent img {
+      width: 18px;
+      height: 18px;
+      filter: brightness(0) invert(1);
     }
 
     .form-feedback {
-      display: flex;
+      display: none;
       align-items: center;
       gap: 10px;
       font-size: 15px;
@@ -110,27 +116,21 @@
       padding: 14px 16px;
       border-radius: 8px;
       margin-top: 4px;
-      color: #2d6a4a;
-      background: rgba(74,124,95,.08);
-      border: 1px solid rgba(74,124,95,.25);
+      color: var(--carbon-2);
+      background: rgba(142,106,74,.08);
+      border: 1px solid rgba(142,106,74,.25);
     }
+    .form-feedback.visible { display: flex; }
     .form-feedback--error {
       color: #900b09;
       background: rgba(144,11,9,.06);
       border-color: rgba(144,11,9,.2);
     }
     .form-feedback-icon {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
       width: 20px;
       height: 20px;
       min-width: 20px;
-      background: #4a7c5f;
-      color: #fff;
-      border-radius: 50%;
-      font-size: 12px;
-      font-weight: 700;
+      flex-shrink: 0;
     }
     .contact-map {
       border-radius: 8px;
@@ -273,11 +273,15 @@
           <button type="submit" class="btn-brand" id="btn-submit">Enviar consulta</button>
         </div>
 
-        <p class="form-feedback" id="form-success" hidden>
-          <span class="form-feedback-icon">✓</span>
+        <p class="form-feedback" id="form-success">
+          <svg class="form-feedback-icon" viewBox="0 0 34.8 34.8004" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M34.7998 34.8004H0L17.4004 17.4H34.7998V34.8004Z" fill="#E8784A"/>
+            <path d="M34.8 17.4L17.4 2.38312e-05L17.4 17.4L34.8 17.4Z" fill="#523E6E"/>
+            <path d="M0 34.7998V17.4004L17.4004 0V17.4004L0 34.7998Z" fill="#EAE2D3"/>
+          </svg>
           ¡Tu consulta fue enviada! Te respondemos pronto.
         </p>
-        <p class="form-feedback form-feedback--error" id="form-error" hidden>
+        <p class="form-feedback form-feedback--error" id="form-error">
           <span class="form-helper-icon">!</span>
           Hubo un error al enviar. Intentá de nuevo o escribinos por Instagram.
         </p>
@@ -389,8 +393,8 @@
       }
 
       /* Hide previous feedback */
-      success.hidden = true;
-      errMsg.hidden  = true;
+      success.classList.remove('visible');
+      errMsg.classList.remove('visible');
 
       /* Disable button while sending */
       btn.disabled    = true;
@@ -406,8 +410,8 @@
       .then(function (res) { return res.json(); })
       .then(function (json) {
         if (json.success) {
-          success.hidden = false;
-          btn.textContent = '¡Enviado! ✓';
+          success.classList.add('visible');
+          btn.innerHTML = '<img src="image/logo.svg" alt=""> Enviado';
           btn.classList.add('is-sent');
           form.reset();
           ['nombre', 'email', 'mensaje'].forEach(function (id) {
@@ -418,14 +422,14 @@
             btn.textContent = 'Enviar consulta';
             btn.classList.remove('is-sent');
             btn.disabled = false;
-            success.hidden = true;
+            success.classList.remove('visible');
           }, 5000);
         } else {
           throw new Error('Error en el envío');
         }
       })
       .catch(function () {
-        errMsg.hidden   = false;
+        errMsg.classList.add('visible');
         btn.textContent = 'Enviar consulta';
         btn.disabled    = false;
       });
