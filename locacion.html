@@ -325,7 +325,6 @@
        target="_blank"
        rel="noopener"
        class="btn-ig"
-       id="ig-dm-btn"
        aria-label="Escribir a Modo Casona por Instagram">
       <!-- Instagram icon -->
       <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -362,27 +361,5 @@
   </footer>
 
   <script src="main.js"></script>
-  <script>
-    /* Instagram DM: try native app first, fallback to web */
-    document.getElementById('ig-dm-btn').addEventListener('click', function (e) {
-      e.preventDefault();
-      var isMobile = /iphone|ipad|ipod|android/i.test(navigator.userAgent);
-      if (isMobile) {
-        /* App deep link — opens DM thread with modo.casona */
-        var appUrl = 'instagram://user?username=modo.casona';
-        var webUrl = 'https://ig.me/m/modo.casona';
-        var start  = Date.now();
-        window.location = appUrl;
-        /* If app didn't open within 800ms, fallback to web */
-        setTimeout(function () {
-          if (Date.now() - start < 1500) {
-            window.open(webUrl, '_blank');
-          }
-        }, 800);
-      } else {
-        window.open('https://ig.me/m/modo.casona', '_blank');
-      }
-    });
-  </script>
 </body>
 </html>
