@@ -450,14 +450,33 @@
       <span></span><span></span><span></span>
     </button>
   </nav>
-  <div class="nav-mobile-overlay" id="nav-mobile-overlay" role="dialog" aria-label="Menú" style="display:none">
-    <a href="index.html" class="active">Inicio</a>
-    <a href="agenda.html">Agenda</a>
-    <a href="residentes.html">Habitantes</a>
-    <a href="locacion.html">Locación</a>
-    <a href="historia.html">Historia</a>
-    <a href="contacto.html">Contacto</a>
+  <div class="nav-mobile-overlay" id="nav-mobile-overlay" role="dialog" aria-label="Menú" style="display:none;position:fixed;inset:0;background:#f7f3ed;z-index:300;flex-direction:column;align-items:center;justify-content:center;gap:8px;">
+    <a href="index.html" style="font-size:28px;font-weight:600;color:#1c1a18;text-decoration:none;padding:12px 24px;color:#8f3d18;">Inicio</a>
+    <a href="agenda.html" style="font-size:28px;font-weight:600;color:#1c1a18;text-decoration:none;padding:12px 24px;">Agenda</a>
+    <a href="residentes.html" style="font-size:28px;font-weight:600;color:#1c1a18;text-decoration:none;padding:12px 24px;">Habitantes</a>
+    <a href="locacion.html" style="font-size:28px;font-weight:600;color:#1c1a18;text-decoration:none;padding:12px 24px;">Locación</a>
+    <a href="historia.html" style="font-size:28px;font-weight:600;color:#1c1a18;text-decoration:none;padding:12px 24px;">Historia</a>
+    <a href="contacto.html" style="font-size:28px;font-weight:600;color:#1c1a18;text-decoration:none;padding:12px 24px;">Contacto</a>
   </div>
+  <script>
+    (function(){
+      var btn=document.getElementById('nav-hamburger');
+      var ov=document.getElementById('nav-mobile-overlay');
+      if(!btn||!ov)return;
+      btn.onclick=function(){
+        var open=btn.classList.toggle('is-open');
+        ov.style.display=open?'flex':'none';
+        document.body.style.overflow=open?'hidden':'';
+      };
+      ov.querySelectorAll('a').forEach(function(a){
+        a.onclick=function(){
+          btn.classList.remove('is-open');
+          ov.style.display='none';
+          document.body.style.overflow='';
+        };
+      });
+    })();
+  </script>
 
   <!-- ── HERO CAROUSEL ─────────────────────────────────── -->
   <section class="carousel-section" id="carousel">
