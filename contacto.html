@@ -201,6 +201,16 @@
       line-height: 1.2;
       text-align: center;
     }
+
+    @media (max-width: 768px) {
+      .page-content { padding: 32px 20px 60px; gap: 28px; }
+      .contact-page-title { font-size: 32px; }
+      /* Stack form above map */
+      .contact-body { grid-template-columns: 1fr; gap: 28px; }
+      .contact-map { height: 280px; }
+      .contact-banner { height: 320px; padding: 24px; }
+      .contact-banner-glass { padding: 24px 20px; }
+    }
   </style>
 </head>
 <body>
@@ -217,7 +227,17 @@
       <li><a href="historia.html">Historia</a></li>
       <li><a href="contacto.html" class="active">Contacto</a></li>
     </ul>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
+  <div class="nav-mobile-overlay" id="nav-mobile-overlay" role="dialog" aria-label="Menú">
+    <a href="agenda.html">Agenda</a>
+    <a href="residentes.html">Habitantes</a>
+    <a href="locacion.html">Locación</a>
+    <a href="historia.html">Historia</a>
+    <a href="contacto.html" class="active">Contacto</a>
+  </div>
 
   <main class="page-content">
 

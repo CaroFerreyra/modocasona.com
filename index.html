@@ -370,6 +370,53 @@
       text-align: center;
     }
 
+    /* ── MOBILE ──────────────────────────────────────── */
+    @media (max-width: 768px) {
+      /* Carousel */
+      .carousel-section { height: 75svh; }
+      .carousel-text { left: 24px; top: 80px; width: calc(100% - 48px); gap: 12px; }
+      .carousel-title { font-size: clamp(32px, 9vw, 52px); letter-spacing: 2px; }
+      .carousel-desc  { font-size: 16px; }
+      .carousel-location { font-size: 13px; }
+      .carousel-pagination { width: 60vw; top: 24px; gap: 12px; }
+
+      /* Video float — remove absolute, show inline below historia */
+      .video-float {
+        position: static !important;
+        width: calc(100% - 48px);
+        height: 60svh;
+        margin: 0 24px 40px;
+        max-width: none;
+      }
+      .page-wrapper { display: flex; flex-direction: column; }
+
+      /* Historia */
+      .section-historia {
+        padding: 40px 24px 40px;
+        padding-right: 24px;
+        min-height: auto;
+        order: -1; /* show before video on mobile */
+      }
+
+      /* Agenda */
+      .section-agenda { padding: 40px 24px 48px; min-height: auto; }
+      .cards-row { flex-direction: column; }
+      .section-subtitle { font-size: 22px; }
+
+      /* Habitantes */
+      .section-habitantes { padding: 40px 24px 60px; }
+      .habitants-grid { gap: 48px 16px; }
+      .card-habitante { width: calc(50% - 12px); min-width: 140px; }
+      .habitante-avatar { width: 120px; height: 120px; }
+      .habitante-name { font-size: 16px; }
+      .habitante-desc { font-size: 13px; }
+
+      /* Bottom image */
+      .section-bottom { height: 400px; padding: 24px; }
+      .section-bottom-glass { padding: 24px; }
+
+      /* Footer already handled in design.css */
+    }
   </style>
 </head>
 <body>
@@ -389,7 +436,17 @@
       <li><a href="historia.html">Historia</a></li>
       <li><a href="contacto.html">Contacto</a></li>
     </ul>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
+  <div class="nav-mobile-overlay" id="nav-mobile-overlay" role="dialog" aria-label="Menú">
+    <a href="agenda.html">Agenda</a>
+    <a href="residentes.html">Habitantes</a>
+    <a href="locacion.html">Locación</a>
+    <a href="historia.html">Historia</a>
+    <a href="contacto.html">Contacto</a>
+  </div>
 
   <!-- ── HERO CAROUSEL ─────────────────────────────────── -->
   <section class="carousel-section" id="carousel">

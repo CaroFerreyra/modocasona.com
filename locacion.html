@@ -143,6 +143,33 @@
     .photo-cell:hover img {
       transform: scale(1.03);
     }
+
+    @media (max-width: 768px) {
+      .page-content { padding: 32px 16px 60px; gap: 32px; }
+      .loc-page-title { font-size: 32px; }
+
+      /* Videos stack vertically */
+      .loc-videos { grid-template-columns: 1fr; gap: 20px; }
+      .loc-video-item { height: 65svh; }
+
+      /* Photo grid: 2 cols on mobile */
+      .photo-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: none;
+        gap: 8px;
+      }
+      /* Flatten grid: all cells auto-flow */
+      .photo-cell {
+        grid-column: auto !important;
+        grid-row: auto !important;
+        aspect-ratio: 1;
+      }
+
+      /* Sticky CTA */
+      .loc-sticky-cta { padding: 16px 20px; gap: 16px; flex-wrap: wrap; }
+      .loc-sticky-cta-text { font-size: 14px; }
+      .btn-ig { font-size: 14px; padding: 12px 16px; }
+    }
   </style>
 </head>
 <body>
@@ -160,7 +187,17 @@
       <li><a href="historia.html">Historia</a></li>
       <li><a href="contacto.html">Contacto</a></li>
     </ul>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
+  <div class="nav-mobile-overlay" id="nav-mobile-overlay" role="dialog" aria-label="Menú">
+    <a href="agenda.html">Agenda</a>
+    <a href="residentes.html">Habitantes</a>
+    <a href="locacion.html" class="active">Locación</a>
+    <a href="historia.html">Historia</a>
+    <a href="contacto.html">Contacto</a>
+  </div>
 
   <!-- ── MAIN CONTENT ──────────────────────────────────── -->
   <main class="page-content">

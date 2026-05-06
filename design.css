@@ -227,3 +227,89 @@ footer {
 }
 
 .footer-nav a:hover { opacity: .7; }
+
+/* ═══════════════════════════════════════════════════════
+   RESPONSIVE — MOBILE (≤768px)
+   ═══════════════════════════════════════════════════════ */
+
+/* ── Mobile NAV ──────────────────────────────────────── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 310;
+  width: 32px;
+  height: 32px;
+}
+
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--carbon);
+  border-radius: 2px;
+  transition: transform .3s, opacity .3s;
+  transform-origin: center;
+}
+
+/* Hamburger → X when open */
+.nav-hamburger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.is-open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Full-screen mobile menu overlay */
+.nav-mobile-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--bg-secondary);
+  z-index: 300;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.nav-mobile-overlay.is-open { display: flex; }
+
+.nav-mobile-overlay a {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--carbon);
+  text-decoration: none;
+  padding: 12px 24px;
+  letter-spacing: -.5px;
+  transition: opacity .2s;
+}
+
+.nav-mobile-overlay a:hover { opacity: .6; }
+.nav-mobile-overlay a.active { color: var(--brand); }
+
+@media (max-width: 768px) {
+  /* Nav desktop → mobile */
+  .nav {
+    padding: 16px 24px;
+  }
+  .nav-logo-text { display: none; }
+  .nav-links      { display: none; }   /* hidden — overlay replaces it */
+  .nav-hamburger  { display: flex; }
+
+  /* Footer desktop → mobile */
+  footer {
+    padding: 40px 24px;
+    min-height: auto;
+  }
+  .footer-inner {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 32px;
+    text-align: center;
+  }
+  .footer-nav { align-items: center; }
+}
