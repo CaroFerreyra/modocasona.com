@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modo Casona — Centro Cultural</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-primary:    #fdfcfa;
+      --bg-secondary:  #f7f3ed;
+      --carbon:        #1c1a18;
+      --carbon-2:      #2e2319;
+      --violeta:       #3d2b56;
+      --violeta-dark:  #241934;
+      --orange:        #e8784a;
+      --brand:         #8f3d18;
+      --cream:         #eae2d3;
+      --text-muted:    #c4b39a;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg-primary);
+      color: var(--carbon);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ─────────────────────────────────────────── */
+    .nav {
+      background: var(--bg-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 29px 80px;
+      position: sticky;
+      top: 0;
+      z-index: 200;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    .nav-logo-text {
+      font-size: 32px;
+      font-weight: 600;
+      color: var(--carbon);
+      letter-spacing: -0.64px;
+      line-height: 1.2;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--carbon);
+      text-decoration: none;
+      padding: 8px;
+      line-height: 1.4;
+      transition: opacity .2s;
+      white-space: nowrap;
+    }
+
+    .nav-links a:hover { opacity: .65; }
+
+    /* ── CAROUSEL ────────────────────────────────────── */
+    .carousel-section {
+      position: relative;
+      height: 620px;
+      overflow: hidden;
+      background: #241934;   /* fallback so nothing flashes white */
+    }
+
+    .carousel-track {
+      display: flex;
+      height: 100%;
+      transition: transform 1s cubic-bezier(.77,0,.175,1);
+      will-change: transform;
+    }
+
+    .carousel-slide {
+      flex: 0 0 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      background: #241934;   /* per-slide dark fallback */
+      transform: translateZ(0);  /* force GPU layer per slide */
+      will-change: transform;
+    }
+
+    .carousel-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transform: translateZ(0);
+    }
+
+    .carousel-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to right,
+        rgba(61,43,86,.80) 21%,
+        rgba(72,53,98,.39) 61%,
+        rgba(82,62,110,0)  100%
+      );
+    }
+
+    .carousel-text {
+      position: absolute;
+      left: 96px;
+      top: 130px;
+      width: min(840px, 55%);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .carousel-location {
+      font-size: 20px;
+      font-weight: 400;
+      color: #f7f3ed;
+      line-height: 1.2;
+    }
+
+    .carousel-title {
+      font-size: clamp(52px, 5.1vw, 88px);
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 7px;
+      line-height: 1.2;
+    }
+
+    .carousel-desc {
+      font-size: clamp(18px, 1.74vw, 30px);
+      font-weight: 400;
+      color: var(--cream);
+      line-height: 1.3;
+    }
+
+    /* Pagination bars */
+    .carousel-pagination {
+      position: absolute;
+      top: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 24px;
+      width: min(506px, 30vw);
+      height: 8px;
+      z-index: 10;
+    }
+
+    .carousel-bar {
+      flex: 1;
+      height: 100%;
+      border-radius: 24px;
+      background: rgba(250,225,250,.55);
+      cursor: pointer;
+      transition: background .3s;
+      border: none;
+      padding: 0;
+    }
+
+    .carousel-bar.active { background: #fff; }
+
+    /* ── PAGE WRAPPER (holds absolute video) ─────────── */
+    .page-wrapper { position: relative; }
+
+    /* ── VIDEO FLOAT ─────────────────────────────────── */
+    .video-float {
+      position: absolute;
+      top: 50%;            /* overridden by JS after load */
+      left: calc(50% + 12px);
+      width: min(772px, 44.8%);
+      height: 1000px;
+      border: 2px solid #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 16px 32px -8px rgba(12,12,13,.40);
+      z-index: 50;
+    }
+
+    .video-float video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ── SECTION MARK (label + orange underline) ─────── */
+    .section-mark {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: fit-content;
+    }
+
+    .section-mark span {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--carbon-2);
+      letter-spacing: .5px;
+      white-space: nowrap;
+    }
+
+    .section-mark-line {
+      height: 3.6px;
+      background: var(--orange);
+      width: 100%;
+      border-radius: 2px;
+    }
+
+    /* ── HISTORIA ────────────────────────────────────── */
+    .section-historia {
+      padding: 80px 80px 60px;
+      padding-right: calc(50% + 60px);
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      min-height: 600px;
+    }
+
+    .historia-title {
+      font-size: clamp(36px, 3vw, 52px);
+      font-weight: 700;
+      color: var(--violeta);
+      letter-spacing: -1.04px;
+      line-height: 1.2;
+    }
+
+    .historia-body {
+      font-size: clamp(16px, 1.4vw, 24px);
+      font-weight: 400;
+      color: var(--carbon);
+      line-height: 1.4;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* ── BUTTON ──────────────────────────────────────── */
+    .btn-brand {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--brand);
+      color: #fdf4ef;
+      font-family: 'Outfit', sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      padding: 14px 18px;
+      border-radius: 9px;
+      border: 1.1px solid var(--brand);
+      text-decoration: none;
+      cursor: pointer;
+      width: fit-content;
+      transition: opacity .2s;
+      line-height: 1;
+    }
+
+    .btn-brand:hover { opacity: .85; }
+
+    /* ── AGENDA ──────────────────────────────────────── */
+    .section-agenda {
+      background: var(--bg-secondary);
+      padding: 40px 80px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      min-height: 720px;
+    }
+
+    .section-subtitle {
+      font-size: 30px;
+      font-weight: 400;
+      color: var(--violeta-dark);
+      line-height: 1.2;
+    }
+
+    .cards-row {
+      display: flex;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .card-evento {
+      background: #fff;
+      border: 1.15px solid var(--cream);
+      border-radius: 9px;
+      padding: 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      position: relative;
+      min-width: 0;
+    }
+
+    .card-tag {
+      position: absolute;
+      top: -1px;
+      left: -1px;
+      background: var(--violeta);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 9px 12px;
+      border-radius: 9px 0 9px 0;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .card-img-placeholder {
+      width: 100%;
+      height: 230px;
+      background: var(--cream);
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+
+    .card-title {
+      font-size: 27px;
+      font-weight: 600;
+      color: var(--carbon-2);
+      letter-spacing: -.55px;
+      line-height: 1.2;
+    }
+
+    .card-body {
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--text-muted);
+      line-height: 1.4;
+      flex: 1;
+    }
+
+    .agenda-ver-mas {
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--carbon-2);
+      text-decoration: none;
+      line-height: 1.2;
+      align-self: flex-start;
+      margin-top: 8px;
+      transition: opacity .2s;
+    }
+
+    .agenda-ver-mas:hover { opacity: .65; }
+
+    /* ── HABITANTES ──────────────────────────────────── */
+    .section-habitantes {
+      padding: 48px 80px 80px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .habitants-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 80px 24px;
+      justify-content: center;
+      margin-top: 8px;
+    }
+
+    .card-habitante {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 22px;
+      width: calc(33.33% - 20px);
+      min-width: 280px;
+    }
+
+    .habitante-avatar {
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: var(--cream);
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .habitante-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .habitante-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 7px;
+      text-align: center;
+      width: 100%;
+    }
+
+    .habitante-name {
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--carbon-2);
+      letter-spacing: -.44px;
+      line-height: 1.2;
+    }
+
+    .habitante-desc {
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .btn-link {
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--violeta-dark);
+      text-decoration: none;
+      padding: 8px 0;
+      margin-top: 8px;
+      transition: opacity .2s;
+    }
+
+    .btn-link:hover { opacity: .65; }
+
+    /* ── BOTTOM IMAGE ────────────────────────────────── */
+    .section-bottom {
+      position: relative;
+      height: 748px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 80px;
+    }
+
+    .section-bottom-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 185%;
+      object-fit: cover;
+      object-position: center;
+      top: -40%;
+    }
+
+    .section-bottom-gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(36,25,52,.65) 0%,
+        rgba(36,25,52,.65) 50%,
+        rgba(0,0,0,0)      100%
+      );
+    }
+
+    .section-bottom-glass {
+      position: relative;
+      z-index: 2;
+      background: rgba(255,255,255,.07);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 12px;
+      padding: 48px 56px;
+      max-width: 1400px;
+      width: 100%;
+    }
+
+    .section-bottom-quote {
+      font-size: clamp(36px, 5.1vw, 88px);
+      font-weight: 700;
+      color: var(--cream);
+      letter-spacing: -2.64px;
+      line-height: 1.2;
+      text-align: center;
+    }
+
+    /* ── FOOTER ──────────────────────────────────────── */
+    footer {
+      background: var(--carbon);
+      color: #fff;
+      padding: 40px 80px;
+      min-height: 360px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 768px;
+      max-width: 100%;
+      gap: 48px;
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 25px;
+      flex-shrink: 0;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-logo-text {
+      font-size: 24px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -.48px;
+      line-height: 1.2;
+      white-space: nowrap;
+    }
+
+    .footer-instagram {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer-instagram a {
+      font-size: 16px;
+      color: #fff;
+      text-decoration: none;
+      line-height: 1.4;
+      transition: opacity .2s;
+    }
+
+    .footer-instagram a:hover { opacity: .7; }
+
+    .footer-address {
+      font-size: 16px;
+      color: #fff;
+      line-height: 1.4;
+      text-align: center;
+      max-width: 220px;
+    }
+
+    .footer-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      height: 100%;
+      justify-content: center;
+    }
+
+    .footer-nav a {
+      font-size: 16px;
+      color: #fff;
+      text-decoration: none;
+      line-height: 1.4;
+      white-space: nowrap;
+      transition: opacity .2s;
+    }
+
+    .footer-nav a:hover { opacity: .7; }
+  </style>
+</head>
+<body>
+
+<div class="page-wrapper">
+
+  <!-- ── NAV ───────────────────────────────────────────── -->
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">
+      <img src="image/logo.svg" alt="Modo Casona" width="29" height="29">
+      <span class="nav-logo-text">MODO CASONA</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="agenda.html">Agenda</a></li>
+      <li><a href="residentes.html">Habitantes</a></li>
+      <li><a href="locacion.html">Locación</a></li>
+      <li><a href="historia.html">Historia</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── HERO CAROUSEL ─────────────────────────────────── -->
+  <section class="carousel-section" id="carousel">
+
+    <!-- Pagination bars (top-center) -->
+    <div class="carousel-pagination" id="carousel-pagination">
+      <button class="carousel-bar active" aria-label="Slide 1"></button>
+      <button class="carousel-bar" aria-label="Slide 2"></button>
+      <button class="carousel-bar" aria-label="Slide 3"></button>
+      <button class="carousel-bar" aria-label="Slide 4"></button>
+    </div>
+
+    <!-- Slides -->
+    <div class="carousel-track" id="carousel-track">
+
+      <div class="carousel-slide">
+        <div class="carousel-bg" style="background-image:url('image/Index/Hero carrusel/1.png')"></div>
+        <div class="carousel-overlay"></div>
+        <div class="carousel-text">
+          <p class="carousel-location">SARANDÍ 544 · CIUDAD VIEJA · MONTEVIDEO</p>
+          <h1 class="carousel-title">MODO CASONA</h1>
+          <p class="carousel-desc">Disfruta de talleres, maridajes, arte y encuentros en un espacio histórico que vibra con una energía contemporánea única, creando experiencias inolvidables para todos los sentidos.</p>
+        </div>
+      </div>
+
+      <div class="carousel-slide">
+        <div class="carousel-bg" style="background-image:url('image/Index/Hero carrusel/2.png'); background-position:center top"></div>
+        <div class="carousel-overlay"></div>
+        <div class="carousel-text">
+          <p class="carousel-location">PEATONAL TOURS</p>
+          <h2 class="carousel-title">MARIDAJES</h2>
+          <p class="carousel-desc">Actividad para probar vinos de Norte, Oeste, Centro-Sur y Este, conociendo sus características y maridándolos con productos locales típicos.</p>
+        </div>
+      </div>
+
+      <div class="carousel-slide">
+        <div class="carousel-bg" style="background-image:url('image/Index/Hero carrusel/3.png'); background-position:center 40%"></div>
+        <div class="carousel-overlay"></div>
+        <div class="carousel-text">
+          <p class="carousel-location">SARANDÍ 544 · CIUDAD VIEJA · MONTEVIDEO</p>
+          <h2 class="carousel-title">TALLERES</h2>
+          <p class="carousel-desc">Ofrecemos talleres de dibujo, saxofón, entre otros. Siempre estamos abiertos a nuevas propuestas. Nuestros talleres son divertidos, atractivos y educativos.</p>
+        </div>
+      </div>
+
+      <div class="carousel-slide">
+        <div class="carousel-bg" style="background-image:url('image/Index/Hero carrusel/4.png')"></div>
+        <div class="carousel-overlay"></div>
+        <div class="carousel-text">
+          <p class="carousel-location">SARANDÍ 544 · CIUDAD VIEJA · MONTEVIDEO</p>
+          <h2 class="carousel-title">OPEN HOUSE</h2>
+          <p class="carousel-desc">Organizamos eventos en días especiales para mostrar los estudios de los habitantes y exposiciones en el espacio. Ven a explorar, conocer artistas y descubrir la creatividad.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── VIDEO FLOTANTE ─────────────────────────────────── -->
+  <div class="video-float">
+    <video autoplay muted loop playsinline>
+      <source src="image/Index/video.mov" type="video/mp4">
+      <source src="image/Index/video.mov" type="video/quicktime">
+    </video>
+  </div>
+
+  <!-- ── NUESTRA HISTORIA ───────────────────────────────── -->
+  <section class="section-historia" id="historia">
+    <div class="section-mark">
+      <span>NUESTRA HISTORIA</span>
+      <div class="section-mark-line"></div>
+    </div>
+    <h2 class="historia-title">Un espacio de encuentro</h2>
+    <div class="historia-body">
+      <p>Modo Casona es un vibrante centro cultural experimental ubicado en el corazón de Ciudad Vieja, Montevideo. Esta casa patrimonial, construida en 1896 y cuidadosamente restaurada, se ha transformado en un espacio dedicado a fomentar las artes, el diseño y la cultura en todas sus expresiones.</p>
+      <p>En Modo Casona se llevan a cabo una amplia variedad de actividades, incluyendo talleres creativos, instalaciones artísticas, exposiciones innovadoras, maridajes culturales y charlas inspiradoras. Artistas residentes, tanto tatuadores como creadores visuales, trabajan aquí y abren sus puertas para compartir su arte con la comunidad.</p>
+      <p>Es un punto de encuentro único para quienes desean crear, innovar y explorar nuevas formas de expresión alejadas de lo convencional, promoviendo un ambiente de colaboración y experimentación cultural.</p>
+    </div>
+    <a href="historia.html" class="btn-brand">Conocenos</a>
+  </section>
+
+  <!-- ── AGENDA ─────────────────────────────────────────── -->
+  <section class="section-agenda" id="agenda">
+    <div class="section-mark">
+      <span>AGENDA</span>
+      <div class="section-mark-line"></div>
+    </div>
+    <p class="section-subtitle">Próximos eventos</p>
+    <div class="cards-row">
+
+      <div class="card-evento">
+        <div class="card-tag">Exposición</div>
+        <div class="card-img-placeholder"></div>
+        <p class="card-title">Título del evento</p>
+        <p class="card-body">Descripción del evento próximamente disponible.</p>
+        <a href="agenda.html" class="btn-brand">Ver más</a>
+      </div>
+
+      <div class="card-evento">
+        <div class="card-tag">Taller</div>
+        <div class="card-img-placeholder"></div>
+        <p class="card-title">Título del evento</p>
+        <p class="card-body">Descripción del evento próximamente disponible.</p>
+        <a href="agenda.html" class="btn-brand">Ver más</a>
+      </div>
+
+      <div class="card-evento">
+        <div class="card-tag">Maridaje</div>
+        <div class="card-img-placeholder"></div>
+        <p class="card-title">Título del evento</p>
+        <p class="card-body">Descripción del evento próximamente disponible.</p>
+        <a href="agenda.html" class="btn-brand">Ver más</a>
+      </div>
+
+    </div>
+    <a href="agenda.html" class="agenda-ver-mas">Ver toda la agenda →</a>
+  </section>
+
+  <!-- ── HABITANTES ─────────────────────────────────────── -->
+  <section class="section-habitantes" id="habitantes">
+    <div class="section-mark">
+      <span>HABITANTES</span>
+      <div class="section-mark-line"></div>
+    </div>
+    <p class="section-subtitle">Habitantes del espacio</p>
+    <div class="habitants-grid">
+
+      <div class="card-habitante">
+        <div class="habitante-avatar"></div>
+        <div class="habitante-info">
+          <p class="habitante-name">Nombre</p>
+          <p class="habitante-desc">Descripción del habitante y su práctica artística.</p>
+        </div>
+        <a href="residentes.html" class="btn-link">Saber más</a>
+      </div>
+
+      <div class="card-habitante">
+        <div class="habitante-avatar"></div>
+        <div class="habitante-info">
+          <p class="habitante-name">Nombre</p>
+          <p class="habitante-desc">Descripción del habitante y su práctica artística.</p>
+        </div>
+        <a href="residentes.html" class="btn-link">Saber más</a>
+      </div>
+
+      <div class="card-habitante">
+        <div class="habitante-avatar"></div>
+        <div class="habitante-info">
+          <p class="habitante-name">Nombre</p>
+          <p class="habitante-desc">Descripción del habitante y su práctica artística.</p>
+        </div>
+        <a href="residentes.html" class="btn-link">Saber más</a>
+      </div>
+
+      <div class="card-habitante">
+        <div class="habitante-avatar"></div>
+        <div class="habitante-info">
+          <p class="habitante-name">Nombre</p>
+          <p class="habitante-desc">Descripción del habitante y su práctica artística.</p>
+        </div>
+        <a href="residentes.html" class="btn-link">Saber más</a>
+      </div>
+
+      <div class="card-habitante">
+        <div class="habitante-avatar"></div>
+        <div class="habitante-info">
+          <p class="habitante-name">Nombre</p>
+          <p class="habitante-desc">Descripción del habitante y su práctica artística.</p>
+        </div>
+        <a href="residentes.html" class="btn-link">Saber más</a>
+      </div>
+
+      <div class="card-habitante">
+        <div class="habitante-avatar"></div>
+        <div class="habitante-info">
+          <p class="habitante-name">Nombre</p>
+          <p class="habitante-desc">Descripción del habitante y su práctica artística.</p>
+        </div>
+        <a href="residentes.html" class="btn-link">Saber más</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── IMAGEN BOTTOM ──────────────────────────────────── -->
+  <section class="section-bottom">
+    <img class="section-bottom-img" src="image/Index/img-bottom.png" alt="">
+    <div class="section-bottom-gradient"></div>
+    <div class="section-bottom-glass">
+      <p class="section-bottom-quote">Un espacio donde el arte, la cultura y la comunidad se encuentran en el corazón de Montevideo.</p>
+    </div>
+  </section>
+
+</div><!-- /page-wrapper -->
+
+<!-- ── FOOTER ─────────────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <img src="image/logo.svg" alt="Modo Casona" width="25" height="25" style="filter:brightness(0) invert(1)">
+        <span class="footer-logo-text">MODO CASONA</span>
+      </div>
+      <div class="footer-instagram">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+        </svg>
+        <a href="https://www.instagram.com/modo.casona" target="_blank" rel="noopener">@modo.casona</a>
+      </div>
+      <p class="footer-address">Sarandi 544 esq. Ituzaingo, Ciudad Vieja, Montevideo</p>
+    </div>
+    <nav class="footer-nav">
+      <a href="agenda.html">Agenda</a>
+      <a href="residentes.html">Habitantes</a>
+      <a href="locacion.html">Locación</a>
+      <a href="historia.html">Historia</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var track    = document.getElementById('carousel-track');
+    var bars     = document.querySelectorAll('.carousel-bar');
+    var total    = bars.length;
+    var current  = 0;
+    var direction = 1;   /* 1 = forward, -1 = reverse */
+    var timer;
+
+    /* Clamp + update direction at boundaries so index never goes out of range */
+    function goTo(index) {
+      current = Math.max(0, Math.min(total - 1, index));
+      if (current === 0)         direction = 1;
+      if (current === total - 1) direction = -1;
+      track.style.transform = 'translateX(-' + (current * 100) + '%)';
+      bars.forEach(function (b, i) {
+        b.classList.toggle('active', i === current);
+      });
+    }
+
+    function next() { goTo(current + direction); }
+
+    function resetTimer() {
+      clearInterval(timer);
+      timer = setInterval(next, 5000);
+    }
+
+    bars.forEach(function (bar, i) {
+      bar.addEventListener('click', function () {
+        goTo(i);
+        resetTimer();
+      });
+    });
+
+    resetTimer();
+
+    /* ── VIDEO: center vertically with the historia section ── */
+    function alignVideo() {
+      var section = document.getElementById('historia');
+      var video   = document.querySelector('.video-float');
+      if (!section || !video) return;
+
+      var scrollY = window.pageYOffset || 0;
+      var r       = section.getBoundingClientRect();
+      var secTop  = r.top  + scrollY;
+      var secH    = r.height;
+      var vidH    = video.offsetHeight;
+
+      var styles  = window.getComputedStyle(section);
+      var pt      = parseFloat(styles.paddingTop)    || 0;
+      var pb      = parseFloat(styles.paddingBottom) || 0;
+      var contentCenter = secTop + pt + (secH - pt - pb) / 2;
+
+      video.style.top = Math.round(contentCenter - vidH / 2) + 'px';
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', alignVideo);
+    } else {
+      alignVideo();
+    }
+    window.addEventListener('resize', alignVideo);
+
+  })();
+</script>
+
+</body>
+</html>
