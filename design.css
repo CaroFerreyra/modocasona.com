@@ -308,7 +308,10 @@ footer {
     position: fixed;
     top: 0; left: 0; right: 0;
     padding: 14px 20px;
+    z-index: 200;
+    transform: none; /* reset any inherited transform */
   }
+  .nav--hidden { transform: translateY(-100%); }
   .nav-logo-text { display: none; }
   .nav-links     { display: none; }
   .nav-hamburger { display: flex; }
