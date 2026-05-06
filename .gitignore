@@ -1,6 +1,5 @@
 .DS_Store
 *.DS_Store
 
-# Videos are too large for GitHub (>100MB) — host separately
+# Original .mov files are too large for GitHub (>100MB)
 *.mov
-*.mp4
