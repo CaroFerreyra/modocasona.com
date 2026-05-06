@@ -144,31 +144,53 @@
       transform: scale(1.03);
     }
 
+    /* ── FLUID ───────────────────────────────────────── */
+    .loc-page-title  { font-size: clamp(26px, 3.5vw, 52px); }
+    .loc-cta-text    { font-size: clamp(16px, 1.6vw, 30px); }
+
+    /* ── TABLET ≤1100px ──────────────────────────────── */
+    @media (max-width: 1100px) {
+      .page-content    { padding: 40px 40px 60px; gap: 40px; }
+      .loc-video-item  { height: calc(100svh - 200px); }
+      .photo-grid {
+        grid-template-columns: 358fr 778fr 403fr;
+        grid-template-rows: none;
+        gap: 10px;
+      }
+      .photo-cell { aspect-ratio: unset; min-height: 200px; }
+      .loc-sticky-cta { padding: 20px 40px; }
+    }
+
+    /* ── MOBILE ≤768px ───────────────────────────────── */
     @media (max-width: 768px) {
-      .page-content { padding: 32px 16px 60px; gap: 32px; }
-      .loc-page-title { font-size: 32px; }
+      .page-content   { padding: 28px 16px 60px; gap: 28px; }
 
-      /* Videos stack vertically */
-      .loc-videos { grid-template-columns: 1fr; gap: 20px; }
-      .loc-video-item { height: 65svh; }
+      /* Videos: 1 column */
+      .loc-videos     { grid-template-columns: 1fr; gap: 16px; }
+      .loc-video-item { height: 60svh; border-width: 1px; }
 
-      /* Photo grid: 2 cols on mobile */
+      /* Photo grid: 2 equal columns, square cells */
       .photo-grid {
         grid-template-columns: 1fr 1fr;
         grid-template-rows: none;
-        gap: 8px;
+        gap: 6px;
       }
-      /* Flatten grid: all cells auto-flow */
       .photo-cell {
         grid-column: auto !important;
         grid-row: auto !important;
         aspect-ratio: 1;
+        min-height: unset;
       }
 
       /* Sticky CTA */
-      .loc-sticky-cta { padding: 16px 20px; gap: 16px; flex-wrap: wrap; }
+      .loc-sticky-cta {
+        padding: 14px 16px;
+        gap: 12px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
       .loc-sticky-cta-text { font-size: 14px; }
-      .btn-ig { font-size: 14px; padding: 12px 16px; }
+      .btn-ig { font-size: 14px; padding: 12px 16px; width: 100%; justify-content: center; }
     }
   </style>
 </head>

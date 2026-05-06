@@ -370,42 +370,62 @@
       text-align: center;
     }
 
-    /* ── MOBILE ──────────────────────────────────────── */
-    @media (max-width: 768px) {
-      /* Carousel */
-      .carousel-section { height: 75svh; }
-      .carousel-text { left: 24px; top: 80px; width: calc(100% - 48px); gap: 12px; }
-      .carousel-title { font-size: clamp(32px, 9vw, 52px); letter-spacing: 2px; }
-      .carousel-desc  { font-size: 16px; }
-      .carousel-location { font-size: 13px; }
-      .carousel-pagination { width: 60vw; top: 24px; gap: 12px; }
+    /* ── FLUID TYPOGRAPHY (all screens) ─────────────── */
+    .historia-title   { font-size: clamp(28px, 3.5vw, 52px); }
+    .historia-body    { font-size: clamp(15px, 1.3vw, 24px); }
+    .section-subtitle { font-size: clamp(20px, 2.2vw, 30px); }
+    .card-title       { font-size: clamp(18px, 1.8vw, 27px); }
+    .section-bottom-quote { font-size: clamp(28px, 5vw, 88px); }
 
-      /* Video float — hide on mobile (too heavy for small screens) */
+    /* ── TABLET ≤1100px ──────────────────────────────── */
+    @media (max-width: 1100px) {
+      /* Hide floating video on tablet too — needs >1100px to look good */
       .video-float { display: none; }
 
-      /* Historia — full width, no right offset */
       .section-historia {
-        padding: 40px 24px;
-        padding-right: 24px;
+        padding: 60px 40px;
+        padding-right: 40px;  /* no offset when video hidden */
         min-height: auto;
       }
+      .section-agenda    { padding: 40px 40px; min-height: auto; }
+      .section-habitantes { padding: 40px 40px 60px; }
+      .section-bottom    { height: 560px; padding: 40px; }
+
+      .card-img-placeholder { height: 180px; }
+    }
+
+    /* ── MOBILE ≤768px ───────────────────────────────── */
+    @media (max-width: 768px) {
+      /* Carousel */
+      .carousel-section  { height: 80svh; }
+      .carousel-text     { left: 20px; top: 72px; width: calc(100% - 40px); gap: 10px; }
+      .carousel-title    { font-size: clamp(30px, 8vw, 48px); letter-spacing: 2px; }
+      .carousel-desc     { font-size: clamp(14px, 4vw, 18px); }
+      .carousel-location { font-size: 12px; }
+      .carousel-pagination { width: 55vw; top: 20px; gap: 10px; height: 6px; }
+
+      /* Historia */
+      .section-historia  { padding: 36px 20px; }
 
       /* Agenda */
-      .section-agenda { padding: 40px 24px 48px; min-height: auto; }
-      .cards-row { flex-direction: column; }
-      .section-subtitle { font-size: 22px; }
+      .section-agenda    { padding: 36px 20px; }
+      .cards-row         { flex-direction: column; }
+      .card-img-placeholder { height: 160px; }
+      .card-body         { font-size: 15px; }
 
       /* Habitantes */
-      .section-habitantes { padding: 40px 24px 60px; }
-      .habitants-grid { gap: 48px 16px; }
-      .card-habitante { width: calc(50% - 12px); min-width: 140px; }
-      .habitante-avatar { width: 120px; height: 120px; }
-      .habitante-name { font-size: 16px; }
-      .habitante-desc { font-size: 13px; }
+      .section-habitantes { padding: 36px 20px 48px; }
+      .habitants-grid    { gap: 36px 12px; }
+      .card-habitante    { width: calc(50% - 8px); min-width: 130px; }
+      .habitante-avatar  { width: 100px; height: 100px; }
+      .habitante-name    { font-size: 14px; }
+      .habitante-desc    { font-size: 12px; }
+      .btn-link          { font-size: 13px; }
 
       /* Bottom image */
-      .section-bottom { height: 400px; padding: 24px; }
-      .section-bottom-glass { padding: 24px; }
+      .section-bottom      { height: 380px; padding: 20px; }
+      .section-bottom-glass { padding: 20px; }
+      .section-bottom-quote { letter-spacing: -1px; }
     }
   </style>
 </head>

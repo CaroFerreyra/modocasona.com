@@ -202,14 +202,38 @@
       text-align: center;
     }
 
+    /* ── FLUID ───────────────────────────────────────── */
+    .contact-page-title  { font-size: clamp(26px, 3.5vw, 52px); }
+    .contact-banner-quote { font-size: clamp(26px, 4.5vw, 88px); letter-spacing: clamp(-1px, -0.15vw, -2.64px); }
+    .form-label  { font-size: clamp(14px, 1.1vw, 16px); }
+    .form-input,
+    .form-textarea { font-size: clamp(14px, 1.1vw, 16px); }
+
+    /* ── TABLET ≤1100px ──────────────────────────────── */
+    @media (max-width: 1100px) {
+      .page-content   { padding: 40px 40px 60px; gap: 32px; }
+      .contact-body   { grid-template-columns: 1fr 1fr; gap: 28px; }
+      .contact-map    { height: 440px; }
+      .contact-banner { height: 420px; padding: 40px; }
+    }
+
+    /* ── MOBILE ≤768px ───────────────────────────────── */
     @media (max-width: 768px) {
-      .page-content { padding: 32px 20px 60px; gap: 28px; }
-      .contact-page-title { font-size: 32px; }
-      /* Stack form above map */
-      .contact-body { grid-template-columns: 1fr; gap: 28px; }
-      .contact-map { height: 280px; }
-      .contact-banner { height: 320px; padding: 24px; }
-      .contact-banner-glass { padding: 24px 20px; }
+      .page-content   { padding: 28px 16px 60px; gap: 24px; }
+
+      /* Form + map stack vertically */
+      .contact-body   { grid-template-columns: 1fr; gap: 24px; }
+      .contact-map    { height: 260px; border-radius: 6px; }
+      .contact-map-link { font-size: 13px; padding: 8px 12px; }
+
+      /* Form inputs */
+      .form-textarea  { height: 140px; }
+      .form-submit-row { justify-content: stretch; }
+      .form-submit-row .btn-brand { width: 100%; justify-content: center; }
+
+      /* Banner */
+      .contact-banner { height: 300px; padding: 16px; }
+      .contact-banner-glass { padding: 20px 16px; }
     }
   </style>
 </head>
