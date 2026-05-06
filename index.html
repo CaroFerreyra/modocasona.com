@@ -380,22 +380,14 @@
       .carousel-location { font-size: 13px; }
       .carousel-pagination { width: 60vw; top: 24px; gap: 12px; }
 
-      /* Video float — remove absolute, show inline below historia */
-      .video-float {
-        position: static !important;
-        width: calc(100% - 48px);
-        height: 60svh;
-        margin: 0 24px 40px;
-        max-width: none;
-      }
-      .page-wrapper { display: flex; flex-direction: column; }
+      /* Video float — hide on mobile (too heavy for small screens) */
+      .video-float { display: none; }
 
-      /* Historia */
+      /* Historia — full width, no right offset */
       .section-historia {
-        padding: 40px 24px 40px;
+        padding: 40px 24px;
         padding-right: 24px;
         min-height: auto;
-        order: -1; /* show before video on mobile */
       }
 
       /* Agenda */
@@ -414,8 +406,6 @@
       /* Bottom image */
       .section-bottom { height: 400px; padding: 24px; }
       .section-bottom-glass { padding: 24px; }
-
-      /* Footer already handled in design.css */
     }
   </style>
 </head>

@@ -232,7 +232,7 @@ footer {
    RESPONSIVE — MOBILE (≤768px)
    ═══════════════════════════════════════════════════════ */
 
-/* ── Mobile NAV ──────────────────────────────────────── */
+/* ── Hamburger button (always in DOM, hidden on desktop) ─ */
 .nav-hamburger {
   display: none;
   flex-direction: column;
@@ -245,6 +245,7 @@ footer {
   z-index: 310;
   width: 32px;
   height: 32px;
+  flex-shrink: 0;
 }
 
 .nav-hamburger span {
@@ -257,12 +258,11 @@ footer {
   transform-origin: center;
 }
 
-/* Hamburger → X when open */
 .nav-hamburger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .nav-hamburger.is-open span:nth-child(2) { opacity: 0; }
 .nav-hamburger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* Full-screen mobile menu overlay */
+/* Full-screen overlay — always hidden unless .is-open */
 .nav-mobile-overlay {
   display: none;
   position: fixed;
@@ -287,23 +287,28 @@ footer {
   transition: opacity .2s;
 }
 
-.nav-mobile-overlay a:hover { opacity: .6; }
+.nav-mobile-overlay a:hover  { opacity: .6; }
 .nav-mobile-overlay a.active { color: var(--brand); }
 
+/* ── MOBILE ≤768px ───────────────────────────────────── */
 @media (max-width: 768px) {
-  /* Nav desktop → mobile */
+  /* Nav: fixed at top, same hide-on-scroll behavior via transform */
   .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     padding: 16px 24px;
   }
   .nav-logo-text { display: none; }
-  .nav-links      { display: none; }   /* hidden — overlay replaces it */
-  .nav-hamburger  { display: flex; }
+  .nav-links     { display: none; }
+  .nav-hamburger { display: flex; }
 
-  /* Footer desktop → mobile */
-  footer {
-    padding: 40px 24px;
-    min-height: auto;
-  }
+  /* Compensate for fixed nav height (~64px) */
+  body { padding-top: 64px; }
+
+  /* Footer: single centred column */
+  footer { padding: 40px 24px; min-height: auto; }
   .footer-inner {
     flex-direction: column;
     align-items: center;
