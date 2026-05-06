@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto — Modo Casona</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="design.css">
+  <style>
+    .page-content {
+      padding: 48px 80px 80px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+    .contact-title-block { display: flex; flex-direction: column; gap: 24px; }
+    .contact-page-title {
+      font-size: clamp(36px, 3vw, 52px);
+      font-weight: 700;
+      color: var(--violeta-dark);
+      letter-spacing: -1.04px;
+      line-height: 1.2;
+    }
+    .contact-body {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 40px;
+      align-items: start;
+    }
+    .contact-form { display: flex; flex-direction: column; gap: 16px; }
+    .form-field { display: flex; flex-direction: column; gap: 8px; }
+    .form-label { font-size: 16px; font-weight: 400; color: var(--carbon-2); line-height: 1.4; }
+    .form-input, .form-textarea {
+      width: 100%;
+      background: #fff;
+      border: 1px solid var(--cream);
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--carbon);
+      line-height: 1.4;
+      outline: none;
+      transition: border-color .2s;
+      -webkit-appearance: none;
+    }
+    .form-input::placeholder, .form-textarea::placeholder { color: #d8cbaf; }
+    .form-input:focus, .form-textarea:focus { border-color: var(--brand); }
+    .form-textarea { height: 180px; resize: vertical; min-height: 120px; }
+
+    /* ── Validation states ── */
+    .form-input.is-error,
+    .form-textarea.is-error {
+      border-color: #900b09;
+      background: rgba(144,11,9,.04);
+    }
+    .form-input.is-valid,
+    .form-textarea.is-valid {
+      border-color: #6aab85;
+    }
+    .form-helper {
+      font-size: 13px;
+      font-weight: 400;
+      color: #900b09;
+      line-height: 1.3;
+      display: none;
+      align-items: flex-start;
+      gap: 6px;
+      margin-top: -2px;
+    }
+    .form-helper.visible { display: flex; }
+    .form-helper-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 16px;
+      height: 16px;
+      min-width: 16px;
+      background: #900b09;
+      color: #fff;
+      border-radius: 50%;
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 1;
+      margin-top: 1px;
+    }
+
+    /* ── Submit row + feedback ── */
+    .form-submit-row { display: flex; justify-content: flex-end; margin-top: 4px; }
+
+    .btn-brand:disabled {
+      opacity: .65;
+      cursor: not-allowed;
+    }
+    .btn-brand.is-sent {
+      background: #4a7c5f;
+      border-color: #4a7c5f;
+    }
+
+    .form-feedback {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 15px;
+      font-weight: 500;
+      padding: 14px 16px;
+      border-radius: 8px;
+      margin-top: 4px;
+      color: #2d6a4a;
+      background: rgba(74,124,95,.08);
+      border: 1px solid rgba(74,124,95,.25);
+    }
+    .form-feedback--error {
+      color: #900b09;
+      background: rgba(144,11,9,.06);
+      border-color: rgba(144,11,9,.2);
+    }
+    .form-feedback-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      min-width: 20px;
+      background: #4a7c5f;
+      color: #fff;
+      border-radius: 50%;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .contact-map {
+      border-radius: 8px;
+      overflow: hidden;
+      height: 514px;
+      position: relative;
+      box-shadow: 0 4px 24px rgba(0,0,0,.08);
+    }
+    .contact-map iframe { width: 100%; height: 100%; border: 0; display: block; }
+    .contact-map-link {
+      position: absolute;
+      bottom: 16px;
+      left: 16px;
+      background: #fff;
+      color: var(--violeta-dark);
+      font-size: 14px;
+      font-weight: 600;
+      padding: 10px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      box-shadow: 0 2px 8px rgba(0,0,0,.15);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: opacity .2s;
+      z-index: 1;
+    }
+    .contact-map-link:hover { opacity: .85; }
+    .contact-banner {
+      position: relative;
+      height: 520px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 80px;
+    }
+    .contact-banner-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+    }
+    .contact-banner-gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(36,25,52,.6) 0%, rgba(36,25,52,.6) 50%, rgba(0,0,0,0) 100%);
+    }
+    .contact-banner-glass {
+      position: relative;
+      z-index: 2;
+      background: rgba(255,255,255,.07);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 12px;
+      padding: 48px 56px;
+      max-width: 1400px;
+      width: 100%;
+    }
+    .contact-banner-quote {
+      font-size: clamp(36px, 5.1vw, 88px);
+      font-weight: 700;
+      color: var(--cream);
+      letter-spacing: -2.64px;
+      line-height: 1.2;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">
+      <img src="image/logo.svg" alt="Modo Casona" width="29" height="29">
+      <span class="nav-logo-text">MODO CASONA</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="agenda.html">Agenda</a></li>
+      <li><a href="residentes.html">Habitantes</a></li>
+      <li><a href="locacion.html">Locación</a></li>
+      <li><a href="historia.html">Historia</a></li>
+      <li><a href="contacto.html" class="active">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <main class="page-content">
+
+    <div class="contact-title-block">
+      <div class="section-mark">
+        <span>CONTACTO</span>
+        <div class="section-mark-line"></div>
+      </div>
+      <h1 class="contact-page-title">Contáctanos</h1>
+    </div>
+
+    <div class="contact-body">
+
+      <form class="contact-form" id="contact-form" novalidate>
+        <!-- Web3Forms: reemplazá YOUR_ACCESS_KEY con la clave que recibís en modo.casona@gmail.com -->
+        <input type="hidden" name="access_key" value="f702ddb9-7b95-4914-afd5-2329d3bf4fb4">
+        <input type="hidden" name="subject" value="Nueva consulta desde modocasona.com">
+        <input type="hidden" name="from_name" value="Modo Casona Web">
+
+        <div class="form-field">
+          <label class="form-label" for="nombre">Nombre</label>
+          <input class="form-input" type="text" id="nombre" name="nombre" placeholder="Tu nombre" autocomplete="name">
+          <p class="form-helper" id="helper-nombre" role="alert">
+            <span class="form-helper-icon">!</span>
+            Por favor ingresá tu nombre.
+          </p>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="email">Email</label>
+          <input class="form-input" type="email" id="email" name="email" placeholder="tu@email.com" autocomplete="email">
+          <p class="form-helper" id="helper-email" role="alert">
+            <span class="form-helper-icon">!</span>
+            Ingresá un email válido, por ejemplo tu@email.com
+          </p>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="asunto">Asunto</label>
+          <input class="form-input" type="text" id="asunto" name="asunto" placeholder="Taller / Reserva / Consulta general">
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="mensaje">Mensaje</label>
+          <textarea class="form-textarea" id="mensaje" name="mensaje" placeholder="Escribe tu consulta"></textarea>
+          <p class="form-helper" id="helper-mensaje" role="alert">
+            <span class="form-helper-icon">!</span>
+            Contanos en qué podemos ayudarte antes de enviar.
+          </p>
+        </div>
+
+        <div class="form-submit-row">
+          <button type="submit" class="btn-brand" id="btn-submit">Enviar consulta</button>
+        </div>
+
+        <p class="form-feedback" id="form-success" hidden>
+          <span class="form-feedback-icon">✓</span>
+          ¡Tu consulta fue enviada! Te respondemos pronto.
+        </p>
+        <p class="form-feedback form-feedback--error" id="form-error" hidden>
+          <span class="form-helper-icon">!</span>
+          Hubo un error al enviar. Intentá de nuevo o escribinos por Instagram.
+        </p>
+
+      </form>
+
+      <!-- Mapa Google Maps -->
+      <div class="contact-map">
+        <iframe
+          src="https://maps.google.com/maps?q=Sarand%C3%AD+544%2C+Ciudad+Vieja%2C+Montevideo%2C+Uruguay&output=embed&hl=es&z=16"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Modo Casona — Sarandí 544, Ciudad Vieja, Montevideo">
+        </iframe>
+        <a href="https://maps.app.goo.gl/yAhEFosFzVrCGxBn8" target="_blank" rel="noopener" class="contact-map-link" aria-label="Abrir en Google Maps">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+          </svg>
+          Ver en Google Maps
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Banner inferior -->
+  <div class="contact-banner">
+    <img class="contact-banner-img" src="image/contacto-banner.jpg" alt="">
+    <div class="contact-banner-gradient"></div>
+    <div class="contact-banner-glass">
+      <p class="contact-banner-quote">Un espacio para celebrar la creatividad.</p>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="image/logo.svg" alt="Modo Casona" width="25" height="25" style="filter:brightness(0) invert(1)">
+          <span class="footer-logo-text">MODO CASONA</span>
+        </div>
+        <div class="footer-instagram">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+          <a href="https://www.instagram.com/modo.casona" target="_blank" rel="noopener">@modo.casona</a>
+        </div>
+        <p class="footer-address">Sarandi 544 esq. Ituzaingo, Ciudad Vieja, Montevideo</p>
+      </div>
+      <nav class="footer-nav">
+        <a href="agenda.html">Agenda</a>
+        <a href="residentes.html">Habitantes</a>
+        <a href="locacion.html">Locación</a>
+        <a href="historia.html">Historia</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+  <script>
+  (function () {
+    var form    = document.getElementById('contact-form');
+    var btn     = document.getElementById('btn-submit');
+    var success = document.getElementById('form-success');
+    var errMsg  = document.getElementById('form-error');
+    if (!form) return;
+
+    /* ── Field validation ────────────────────────────── */
+    function isValidEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()); }
+
+    function setError(id, show) {
+      var input  = document.getElementById(id);
+      var helper = document.getElementById('helper-' + id);
+      if (!input) return;
+      input.classList.toggle('is-error', show);
+      input.classList.toggle('is-valid', !show && input.value.trim() !== '');
+      if (helper) helper.classList.toggle('visible', show);
+    }
+
+    function validateField(id) {
+      var input = document.getElementById(id);
+      if (!input) return true;
+      var val = input.value.trim();
+      if (id === 'email') { var bad = !val || !isValidEmail(val); setError(id, bad); return !bad; }
+      setError(id, !val);
+      return !!val;
+    }
+
+    /* Live validation (after first blur) */
+    ['nombre', 'email', 'mensaje'].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      var touched = false;
+      el.addEventListener('blur',  function () { touched = true; validateField(id); });
+      el.addEventListener('input', function () { if (touched) validateField(id); });
+    });
+
+    /* ── Submit via Web3Forms ────────────────────────── */
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      var ok = validateField('nombre') & validateField('email') & validateField('mensaje');
+      if (!ok) {
+        var first = form.querySelector('.is-error');
+        if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+
+      /* Hide previous feedback */
+      success.hidden = true;
+      errMsg.hidden  = true;
+
+      /* Disable button while sending */
+      btn.disabled    = true;
+      btn.textContent = 'Enviando…';
+
+      var data = new FormData(form);
+
+      fetch('https://api.web3forms.com/submit', {
+        method:  'POST',
+        headers: { 'Accept': 'application/json' },
+        body:    data
+      })
+      .then(function (res) { return res.json(); })
+      .then(function (json) {
+        if (json.success) {
+          success.hidden = false;
+          btn.textContent = '¡Enviado! ✓';
+          btn.classList.add('is-sent');
+          form.reset();
+          ['nombre', 'email', 'mensaje'].forEach(function (id) {
+            var el = document.getElementById(id);
+            if (el) { el.classList.remove('is-valid', 'is-error'); }
+          });
+          setTimeout(function () {
+            btn.textContent = 'Enviar consulta';
+            btn.classList.remove('is-sent');
+            btn.disabled = false;
+            success.hidden = true;
+          }, 5000);
+        } else {
+          throw new Error('Error en el envío');
+        }
+      })
+      .catch(function () {
+        errMsg.hidden   = false;
+        btn.textContent = 'Enviar consulta';
+        btn.disabled    = false;
+      });
+    });
+  })();
+  </script>
+</body>
+</html>
