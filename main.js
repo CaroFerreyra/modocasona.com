@@ -31,14 +31,14 @@
 
   function openMenu() {
     btn.classList.add('is-open');
-    overlay.classList.add('is-open');
+    overlay.style.display = 'flex';
     btn.setAttribute('aria-expanded', 'true');
     document.body.style.overflow = 'hidden';
   }
 
   function closeMenu() {
     btn.classList.remove('is-open');
-    overlay.classList.remove('is-open');
+    overlay.style.display = 'none';
     btn.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
   }
