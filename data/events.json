@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-07T18:51:44.290Z",
+  "updated": "2026-05-07T18:55:56.131Z",
   "events": [
     {
       "id": "3592d2ee-21be-812a-a8e7-dac1082d2693",
@@ -8,7 +8,7 @@
       "fecha": "2026-05-08",
       "descripcion": "Aprendé técnicas de dibujo desde cero en un ambiente creativo y relajado. Materiales incluidos.",
       "imagen": "image/taller.png",
-      "link": "",
+      "link": "https://www.instagram.com/habitacion.7/",
       "horario": "17 a 19h",
       "destacado": true
     },
@@ -19,7 +19,7 @@
       "fecha": "2026-05-15",
       "descripcion": "Un taller para mirar la ciudad y su arquitectura con otros ojos. 8 encuentros los viernes.",
       "imagen": "image/workshop.png",
-      "link": "",
+      "link": "https://www.instagram.com/yiselespinosa.ph/",
       "horario": "18:30 a 20:30h",
       "destacado": true
     },
@@ -30,7 +30,7 @@
       "fecha": "2026-05-15",
       "descripcion": "Aprendé técnicas de dibujo desde cero en un ambiente creativo y relajado. Materiales incluidos.",
       "imagen": "image/taller.png",
-      "link": "",
+      "link": "https://www.instagram.com/habitacion.7/",
       "horario": "17 a 19h",
       "destacado": false
     },
@@ -41,7 +41,7 @@
       "fecha": "2026-05-22",
       "descripcion": "Aprendé técnicas de dibujo desde cero en un ambiente creativo y relajado. Materiales incluidos.",
       "imagen": "image/taller.png",
-      "link": "",
+      "link": "https://www.instagram.com/habitacion.7/",
       "horario": "17 a 19h",
       "destacado": false
     },
@@ -52,7 +52,7 @@
       "fecha": "2026-05-28",
       "descripcion": "Actividad para probar vinos de Norte, Oeste, Centro-Sur y Este, maridándolos con productos locales típicos",
       "imagen": "image/maridaje.png",
-      "link": "",
+      "link": "https://www.peatonaltours.uy",
       "horario": "20h",
       "destacado": true
     },
@@ -63,7 +63,7 @@
       "fecha": "2026-05-29",
       "descripcion": "Aprendé técnicas de dibujo desde cero en un ambiente creativo y relajado. Materiales incluidos.",
       "imagen": "image/taller.png",
-      "link": "",
+      "link": "https://www.instagram.com/habitacion.7/",
       "horario": "17 a 19h",
       "destacado": false
     },
@@ -74,7 +74,7 @@
       "fecha": "2026-06-05",
       "descripcion": "Aprendé técnicas de dibujo desde cero en un ambiente creativo y relajado. Materiales incluidos.",
       "imagen": "image/taller.png",
-      "link": "",
+      "link": "https://www.instagram.com/habitacion.7/",
       "horario": "17 a 19h",
       "destacado": false
     },
