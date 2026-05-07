@@ -1,4 +1,14 @@
 {
-  "updated": "2026-05-07T00:00:00.000Z",
-  "habitantes": []
+  "updated": "2026-05-07T20:56:19.441Z",
+  "habitantes": [
+    {
+      "id": "3592d2ee-21be-8045-9b2a-c3c92af780f8",
+      "nombre": "Sabina Gerstein",
+      "rol": "Artista plástica",
+      "bio": "Sabina Gerstein, artista plástica y poeta argentina nacida en 1990. Su obra explora la autoficción, la identidad y las formas de construirse y narrarse.\n\nUna búsqueda por habitar todas sus versiones posibles.",
+      "instagram": "https://www.instagram.com/sabinajoaquina/",
+      "foto": "",
+      "orden": 3
+    }
+  ]
 }
