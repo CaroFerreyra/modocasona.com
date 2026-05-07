@@ -609,7 +609,7 @@
       }).join('');
     }
 
-    fetch('data/events.json')
+    fetch('data/events.json?v=' + Date.now())
       .then(function (r) { return r.json(); })
       .then(function (data) { renderCards(data.events || []); })
       .catch(function () {});

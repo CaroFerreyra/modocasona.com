@@ -836,7 +836,7 @@
     initPickers();
     renderCalendar();
 
-    fetch('data/events.json')
+    fetch('data/events.json?v=' + Date.now())
       .then(function (r) { return r.json(); })
       .then(function (data) {
         allEvents = (data.events || []).sort(function (a, b) {
