@@ -9,28 +9,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="design.css">
   <style>
-    /* ── VIEWPORT LOCK — solo scroll en events ──────── */
-    body.agenda-page {
-      height: 100vh;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-
-    body.agenda-page footer { flex-shrink: 0; }
-
     /* ── AGENDA MAIN ─────────────────────────────────── */
     .agenda-main {
-      flex: 1;
-      min-height: 0;
-      overflow: hidden;
       display: flex;
       flex-direction: column;
-      padding: 36px 80px 20px;
+      padding: 36px 80px 60px;
       background: var(--bg-secondary);
     }
 
-    .agenda-header { flex-shrink: 0; }
 
     .agenda-title {
       font-size: clamp(32px, 4vw, 60px);
@@ -42,13 +28,10 @@
     }
 
     .agenda-layout {
-      flex: 1;
-      min-height: 0;
       display: flex;
       gap: 48px;
       align-items: flex-start;
       margin-top: 32px;
-      overflow: hidden;
     }
 
     /* ── SIDEBAR (left) ──────────────────────────────── */
@@ -257,14 +240,9 @@
     .agenda-events {
       flex: 1;
       min-width: 0;
-      min-height: 0;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
     }
 
     .agenda-date-heading {
-      flex-shrink: 0;
       font-size: clamp(18px, 2vw, 28px);
       font-weight: 600;
       color: var(--carbon-2);
@@ -273,10 +251,9 @@
       line-height: 1.2;
     }
 
-    /* Only this element scrolls */
+    /* Solo esta lista scrollea */
     .events-list {
-      flex: 1;
-      min-height: 0;
+      max-height: 65vh;
       overflow-y: auto;
       padding-right: 6px;
       scrollbar-width: thin;
@@ -369,27 +346,17 @@
 
     /* ── TABLET ≤1100px ──────────────────────────────── */
     @media (max-width: 1100px) {
-      .agenda-main    { padding: 32px 40px 16px; }
+      .agenda-main    { padding: 32px 40px 60px; }
       .agenda-sidebar { width: 260px; }
       .agenda-layout  { gap: 32px; }
     }
 
     /* ── MOBILE ≤768px ───────────────────────────────── */
     @media (max-width: 768px) {
-      /* unlock viewport on mobile — stack normally */
-      body.agenda-page {
-        height: auto;
-        overflow: auto;
-      }
-
-      .agenda-main {
-        overflow: visible;
-        padding: 28px 20px 48px;
-      }
+      .agenda-main   { padding: 28px 20px 48px; }
 
       .agenda-layout {
         flex-direction: column;
-        overflow: visible;
         gap: 24px;
         margin-top: 24px;
       }
@@ -397,14 +364,7 @@
       .agenda-sidebar  { width: 100%; }
       .calendar-widget { max-width: 340px; }
 
-      .agenda-events {
-        overflow: visible;
-        height: auto;
-      }
-
       .events-list {
-        overflow: visible;
-        height: auto;
         max-height: none;
         padding-right: 0;
       }
