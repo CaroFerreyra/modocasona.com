@@ -1,6 +1,33 @@
 {
-  "updated": "2026-05-07T20:56:19.441Z",
+  "updated": "2026-05-07T21:08:46.699Z",
   "habitantes": [
+    {
+      "id": "3592d2ee-21be-8099-a65b-d21fb660ec12",
+      "nombre": "Federico Vaucheret",
+      "rol": "Co Gestor en Modo Casona / Artista plástico ",
+      "bio": "",
+      "instagram": "https://www.instagram.com/federico.vaucheret_art/",
+      "foto": "",
+      "orden": 1
+    },
+    {
+      "id": "3592d2ee-21be-80f1-9bdd-d6a42bab62ee",
+      "nombre": "Mantis",
+      "rol": "Ilustradora y grabadora",
+      "bio": "Mantis es ilustradora y grabadora, formada entre la exploración autodidacta y espacios que ampliaron su mirada artística. Su práctica nace de la curiosidad, la búsqueda constante y el deseo de construir un lenguaje propio.\n\nSe formó en la EMAD y en distintos talleres de grabado, donde incorporó herramientas técnicas y nuevas formas de pensar la imagen, consolidando un proceso creativo en permanente evolución.\n\nFormó parte de Colectiva Réplicas, con la que obtuvo fondos orientados a promover y fortalecer una mirada feminista en la producción artística algo en lo que continúa explorando y que distingue su desarrollo artístico.",
+      "instagram": "https://www.instagram.com/mantis_pics",
+      "foto": "",
+      "orden": 2
+    },
+    {
+      "id": "3592d2ee-21be-80e0-9638-cb71de6a2429",
+      "nombre": "Sebastian Jota",
+      "rol": "Tatuador",
+      "bio": "Con más de 23 años de experiencia en el tatuaje, mi vínculo con el dibujo comienza desde muy temprana edad, desarrollando un camino inicialmente autodidacta.\n\nAl acercarme a los 30 años, atravesé un momento de búsqueda y crecimiento que me llevó a formarme en el taller de Sisto Pascale, donde encontré una guía fundamental.\n\nEse proceso me permitió ordenar mis ideas, potenciar mis recursos y definir con mayor claridad mi rumbo como artista.\n\nSoy un pintor multifacético: trabajo con diversos materiales como óleo, acuarela y acrílico, explorando distintos enfoques y estilos en constante evolución, con una búsqueda permanente de nuevas formas de expresión.",
+      "instagram": "https://www.instagram.com/jotaseventattoo?igsh=eWpld3doOXBxdnlv",
+      "foto": "",
+      "orden": 3
+    },
     {
       "id": "3592d2ee-21be-8045-9b2a-c3c92af780f8",
       "nombre": "Sabina Gerstein",
@@ -8,7 +35,16 @@
       "bio": "Sabina Gerstein, artista plástica y poeta argentina nacida en 1990. Su obra explora la autoficción, la identidad y las formas de construirse y narrarse.\n\nUna búsqueda por habitar todas sus versiones posibles.",
       "instagram": "https://www.instagram.com/sabinajoaquina/",
       "foto": "",
-      "orden": 3
+      "orden": 4
+    },
+    {
+      "id": "3592d2ee-21be-808e-bdbc-f8b850d97083",
+      "nombre": "Carolina Ferreyra",
+      "rol": "Fundadora ",
+      "bio": "",
+      "instagram": "",
+      "foto": "",
+      "orden": 6
     }
   ]
 }
