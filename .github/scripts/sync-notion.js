@@ -51,6 +51,10 @@ const req = https.request(options, (res) => {
     const events = response.results.map(page => {
       const p = page.properties;
 
+      // Debug: log all property keys and the link value
+      const linkKey = Object.keys(p).find(k => k.toLowerCase().includes('inscribirse'));
+      console.log('Link key found:', linkKey, '→', p[linkKey]);
+
       const imgProp = p['Imagen URL'];
       let imagen = '';
       if (imgProp?.url) {
