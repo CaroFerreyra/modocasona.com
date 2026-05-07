@@ -316,11 +316,71 @@
       line-height: 1.2;
     }
 
-    .habitante-desc {
-      font-size: 16px;
+    .habitante-rol {
+      font-size: 15px;
       font-weight: 400;
       color: var(--text-muted);
       line-height: 1.4;
+    }
+
+    /* ── MODAL HABITANTES (igual que residentes.html) ── */
+    .hab-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(30,26,22,.55); z-index: 400;
+      align-items: center; justify-content: center; padding: 24px;
+    }
+    .hab-overlay.is-open { display: flex; }
+    .hab-modal {
+      background: #fff; border-radius: 16px; padding: 48px;
+      max-width: 900px; width: 100%; max-height: 90vh;
+      overflow-y: auto; position: relative;
+      animation: habModalIn .22s ease;
+      scrollbar-width: thin; scrollbar-color: var(--cream) transparent;
+    }
+    @keyframes habModalIn {
+      from { opacity: 0; transform: scale(.97) translateY(8px); }
+      to   { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .hab-modal::-webkit-scrollbar { width: 4px; }
+    .hab-modal::-webkit-scrollbar-thumb { background: var(--cream); border-radius: 4px; }
+    .hab-modal-close {
+      position: absolute; top: 20px; right: 24px;
+      background: none; border: none; font-size: 22px;
+      color: var(--text-muted); cursor: pointer;
+      width: 36px; height: 36px; display: flex;
+      align-items: center; justify-content: center;
+      border-radius: 50%; transition: background .15s, color .15s; line-height: 1;
+    }
+    .hab-modal-close:hover { background: var(--cream); color: var(--carbon); }
+    .hab-drag-handle {
+      display: none; width: 40px; height: 4px;
+      background: var(--cream); border-radius: 4px; margin: 0 auto 20px;
+    }
+    .hab-modal-header { display: flex; gap: 36px; align-items: flex-start; margin-bottom: 32px; }
+    .hab-modal-photo {
+      width: 180px; height: 180px; border-radius: 50%;
+      background: var(--cream); overflow: hidden; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .hab-modal-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .hab-modal-info { flex: 1; padding-top: 8px; display: flex; flex-direction: column; gap: 8px; }
+    .hab-modal-name { font-size: clamp(28px,3.5vw,48px); font-weight: 700; color: var(--carbon-2); letter-spacing: -1.5px; line-height: 1.1; }
+    .hab-modal-rol  { font-size: 18px; color: var(--orange); line-height: 1.3; }
+    .hab-modal-ig   { display: inline-flex; align-items: center; gap: 6px; font-size: 15px; color: var(--carbon-2); text-decoration: none; transition: opacity .2s; }
+    .hab-modal-ig:hover { opacity: .65; }
+    .hab-modal-bio  { font-size: 15px; color: var(--carbon-2); line-height: 1.7; column-count: 2; column-gap: 40px; }
+    @media (max-width: 768px) {
+      .hab-overlay { padding: 0; align-items: flex-end; }
+      .hab-modal { border-radius: 20px 20px 0 0; padding: 0 24px 40px; max-height: 92vh; max-width: 100%; transform: translateY(100%); transition: transform .35s cubic-bezier(.4,0,.2,1); animation: none; }
+      .hab-overlay.is-open .hab-modal { transform: translateY(0); }
+      .hab-drag-handle { display: block; padding-top: 16px; }
+      .hab-modal-close { display: none; }
+      .hab-modal-header { flex-direction: column; align-items: center; text-align: center; gap: 20px; }
+      .hab-modal-photo { width: 120px; height: 120px; }
+      .hab-modal-name { font-size: clamp(26px,7vw,36px); text-align: center; }
+      .hab-modal-rol  { text-align: center; }
+      .hab-modal-ig   { justify-content: center; }
+      .hab-modal-bio  { column-count: 1; }
     }
 
     /* ── BOTTOM IMAGE ────────────────────────────────── */
@@ -426,7 +486,7 @@
       .card-habitante    { width: calc(50% - 6px); min-width: 140px; }
       .habitante-avatar  { width: 90px; height: 90px; }
       .habitante-name    { font-size: 14px; }
-      .habitante-desc    { font-size: 12px; }
+      .habitante-rol     { font-size: 12px; }
       .btn-link          { font-size: 13px; }
 
       /* Bottom image */
@@ -623,64 +683,28 @@
       <div class="section-mark-line"></div>
     </div>
     <p class="section-subtitle">Habitantes del espacio</p>
-    <div class="habitants-grid">
-
-      <div class="card-habitante">
-        <div class="habitante-avatar"></div>
-        <div class="habitante-info">
-          <p class="habitante-name">Nombre</p>
-          <p class="habitante-desc">Descripción del habitante y su práctica artística.</p>
-        </div>
-        <a href="residentes.html" class="btn-link">Saber más</a>
-      </div>
-
-      <div class="card-habitante">
-        <div class="habitante-avatar"></div>
-        <div class="habitante-info">
-          <p class="habitante-name">Nombre</p>
-          <p class="habitante-desc">Descripción del habitante y su práctica artística.</p>
-        </div>
-        <a href="residentes.html" class="btn-link">Saber más</a>
-      </div>
-
-      <div class="card-habitante">
-        <div class="habitante-avatar"></div>
-        <div class="habitante-info">
-          <p class="habitante-name">Nombre</p>
-          <p class="habitante-desc">Descripción del habitante y su práctica artística.</p>
-        </div>
-        <a href="residentes.html" class="btn-link">Saber más</a>
-      </div>
-
-      <div class="card-habitante">
-        <div class="habitante-avatar"></div>
-        <div class="habitante-info">
-          <p class="habitante-name">Nombre</p>
-          <p class="habitante-desc">Descripción del habitante y su práctica artística.</p>
-        </div>
-        <a href="residentes.html" class="btn-link">Saber más</a>
-      </div>
-
-      <div class="card-habitante">
-        <div class="habitante-avatar"></div>
-        <div class="habitante-info">
-          <p class="habitante-name">Nombre</p>
-          <p class="habitante-desc">Descripción del habitante y su práctica artística.</p>
-        </div>
-        <a href="residentes.html" class="btn-link">Saber más</a>
-      </div>
-
-      <div class="card-habitante">
-        <div class="habitante-avatar"></div>
-        <div class="habitante-info">
-          <p class="habitante-name">Nombre</p>
-          <p class="habitante-desc">Descripción del habitante y su práctica artística.</p>
-        </div>
-        <a href="residentes.html" class="btn-link">Saber más</a>
-      </div>
-
-    </div>
+    <div class="habitants-grid" id="habitants-grid"></div>
   </section>
+
+  <!-- Modal habitantes (compartido con residentes.html) -->
+  <div class="hab-overlay" id="hab-overlay" role="dialog" aria-modal="true">
+    <div class="hab-modal" id="hab-modal">
+      <div class="hab-drag-handle" id="hab-drag-handle"></div>
+      <button class="hab-modal-close" id="hab-modal-close" aria-label="Cerrar">&#x2715;</button>
+      <div class="hab-modal-header">
+        <div class="hab-modal-photo" id="modal-photo"></div>
+        <div class="hab-modal-info">
+          <h2 class="hab-modal-name" id="modal-nombre"></h2>
+          <p  class="hab-modal-rol"  id="modal-rol"></p>
+          <a  class="hab-modal-ig"   id="modal-ig" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+            <span id="modal-ig-handle"></span>
+          </a>
+        </div>
+      </div>
+      <p class="hab-modal-bio" id="modal-bio"></p>
+    </div>
+  </div>
 
   <!-- ── IMAGEN BOTTOM ──────────────────────────────────── -->
   <section class="section-bottom">
@@ -786,5 +810,84 @@
 </script>
 
   <script src="main.js"></script>
+  <script>
+  (function () {
+    var HABITANTES = [];
+    var PLACEHOLDER = '<svg width="80" height="80" viewBox="0 0 80 80" fill="none"><path d="M40 38a12 12 0 1 0 0-24 12 12 0 0 0 0 24zm0 6c-13 0-22 6-22 13v3h44v-3c0-7-9-13-22-13z" fill="#c4b39a"/></svg>';
+    var grid    = document.getElementById('habitants-grid');
+    var overlay = document.getElementById('hab-overlay');
+    var modal   = document.getElementById('hab-modal');
+    var btnClose = document.getElementById('hab-modal-close');
+
+    function renderGrid() {
+      if (!HABITANTES.length || !grid) return;
+      grid.innerHTML = HABITANTES.map(function (h, i) {
+        var foto = h.foto ? '<img src="' + h.foto + '" alt="' + h.nombre + '">' : PLACEHOLDER;
+        return '<div class="card-habitante" data-index="' + i + '" tabindex="0" role="button" aria-label="Ver perfil de ' + h.nombre + '" style="cursor:pointer">'
+          + '<div class="habitante-avatar">' + foto + '</div>'
+          + '<div class="habitante-info">'
+          +   '<p class="habitante-name">' + h.nombre + '</p>'
+          +   (h.rol ? '<p class="habitante-rol">' + h.rol + '</p>' : '')
+          + '</div>'
+          + '<button class="btn-link">Saber más</button>'
+          + '</div>';
+      }).join('');
+    }
+
+    function openModal(i) {
+      var h = HABITANTES[i];
+      var photoEl = document.getElementById('modal-photo');
+      photoEl.innerHTML = h.foto
+        ? '<img src="' + h.foto + '" alt="' + h.nombre + '" style="width:100%;height:100%;object-fit:cover">'
+        : '<svg width="60" height="60" viewBox="0 0 80 80" fill="none"><path d="M40 38a12 12 0 1 0 0-24 12 12 0 0 0 0 24zm0 6c-13 0-22 6-22 13v3h44v-3c0-7-9-13-22-13z" fill="#c4b39a"/></svg>';
+      document.getElementById('modal-nombre').textContent    = h.nombre;
+      document.getElementById('modal-rol').textContent       = h.rol;
+      document.getElementById('modal-ig-handle').textContent = h.instagram ? '@' + h.instagram : '';
+      document.getElementById('modal-ig').href = h.instagram
+        ? 'https://www.instagram.com/' + h.instagram.replace(/^@/, '') : '#';
+      document.getElementById('modal-bio').textContent = h.bio;
+      modal.scrollTop = 0;
+      overlay.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      overlay.classList.remove('is-open');
+      modal.style.transform = '';
+      document.body.style.overflow = '';
+    }
+
+    if (grid) {
+      grid.addEventListener('click', function (e) {
+        var card = e.target.closest('.card-habitante');
+        if (card) openModal(parseInt(card.dataset.index, 10));
+      });
+      grid.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          var card = e.target.closest('.card-habitante');
+          if (card) { e.preventDefault(); openModal(parseInt(card.dataset.index, 10)); }
+        }
+      });
+    }
+    if (btnClose) btnClose.addEventListener('click', closeModal);
+    if (overlay)  overlay.addEventListener('click', function (e) { if (e.target === overlay) closeModal(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
+
+    /* Drag to close on mobile */
+    (function () {
+      var handle = document.getElementById('hab-drag-handle');
+      if (!handle) return;
+      var startY = 0, curY = 0, dragging = false;
+      handle.addEventListener('touchstart', function (e) { startY = curY = e.touches[0].clientY; dragging = true; modal.style.transition = 'none'; }, { passive: true });
+      handle.addEventListener('touchmove',  function (e) { if (!dragging) return; curY = e.touches[0].clientY; modal.style.transform = 'translateY(' + Math.max(0, curY - startY) + 'px)'; }, { passive: true });
+      handle.addEventListener('touchend',   function () { modal.style.transition = ''; if (curY - startY > 100) closeModal(); else modal.style.transform = ''; dragging = false; });
+    })();
+
+    fetch('data/habitantes.json?v=' + Date.now())
+      .then(function (r) { return r.json(); })
+      .then(function (data) { HABITANTES = data.habitantes || []; renderGrid(); })
+      .catch(function () {});
+  })();
+  </script>
 </body>
 </html>
