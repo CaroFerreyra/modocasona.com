@@ -21,11 +21,17 @@ jobs:
           NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
         run: node .github/scripts/sync-notion.js
 
-      - name: Commit updated events.json (if changed)
+      - name: Fetch habitantes from Notion
+        env:
+          NOTION_TOKEN:              ${{ secrets.NOTION_TOKEN }}
+          NOTION_HABITANTES_DB_ID:   ${{ secrets.NOTION_HABITANTES_DB_ID }}
+        run: node .github/scripts/sync-habitantes.js
+
+      - name: Commit updated data files (if changed)
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/events.json
+          git add data/events.json data/habitantes.json
           git diff --staged --quiet \
             && echo "No changes." \
-            || (git commit -m "chore: sync events from Notion [skip ci]" && git push)
+            || (git commit -m "chore: sync data from Notion [skip ci]" && git push)

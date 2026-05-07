@@ -251,62 +251,6 @@
       margin-bottom: 16px;
     }
 
-    .hab-modal-talleres-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-bottom: 28px;
-    }
-
-    .hab-taller-card {
-      background: var(--bg-secondary);
-      border: 1.1px solid var(--cream);
-      border-radius: 10px;
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .hab-taller-tag {
-      display: inline-flex;
-      background: var(--violeta);
-      color: #fff;
-      font-size: 12px;
-      font-weight: 600;
-      padding: 3px 9px;
-      border-radius: 4px;
-      width: fit-content;
-      line-height: 1.4;
-    }
-
-    .hab-taller-name {
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--carbon-2);
-      letter-spacing: -.2px;
-      line-height: 1.2;
-    }
-
-    .hab-taller-meta {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 12px;
-      color: var(--text-muted);
-      flex-wrap: wrap;
-    }
-
-    .hab-taller-desc {
-      font-size: 13px;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-
-    .hab-modal-cta {
-      display: flex;
-      justify-content: center;
-    }
 
     /* ── TABLET ≤1100px ──────────────────────────────── */
     @media (max-width: 1100px) {
@@ -442,13 +386,6 @@
 
       <p class="hab-modal-bio" id="modal-bio"></p>
 
-      <div id="modal-talleres-section" style="display:none">
-        <h3 class="hab-modal-talleres-title">Mis talleres</h3>
-        <div class="hab-modal-talleres-grid" id="modal-talleres-grid"></div>
-        <div class="hab-modal-cta">
-          <a href="agenda.html" class="btn-brand">Anotarme en un taller</a>
-        </div>
-      </div>
     </div>
   </div>
 
@@ -479,123 +416,46 @@
 
   <script src="main.js"></script>
   <script>
-  /* ──────────────────────────────────────────────────
-     DATOS — editá esta lista cuando tengas la info
-  ────────────────────────────────────────────────── */
-  var HABITANTES = [
-    {
-      nombre:    'Nombre Apellido',
-      rol:       'Disciplina',
-      instagram: '@handle',
-      igUrl:     'https://www.instagram.com/',
-      bio:       'Descripción del habitante y su práctica artística. Contá quién es, de dónde viene, qué hace en Modo Casona y qué proyectos tiene en curso.',
-      foto:      '',
-      talleres:  []
-    },
-    {
-      nombre:    'Nombre Apellido',
-      rol:       'Disciplina',
-      instagram: '@handle',
-      igUrl:     'https://www.instagram.com/',
-      bio:       'Descripción del habitante y su práctica artística. Contá quién es, de dónde viene, qué hace en Modo Casona y qué proyectos tiene en curso.',
-      foto:      '',
-      talleres:  []
-    },
-    {
-      nombre:    'Nombre Apellido',
-      rol:       'Disciplina',
-      instagram: '@handle',
-      igUrl:     'https://www.instagram.com/',
-      bio:       'Descripción del habitante y su práctica artística. Contá quién es, de dónde viene, qué hace en Modo Casona y qué proyectos tiene en curso.',
-      foto:      '',
-      talleres:  []
-    },
-    {
-      nombre:    'Nombre Apellido',
-      rol:       'Disciplina',
-      instagram: '@handle',
-      igUrl:     'https://www.instagram.com/',
-      bio:       'Descripción del habitante y su práctica artística. Contá quién es, de dónde viene, qué hace en Modo Casona y qué proyectos tiene en curso.',
-      foto:      '',
-      talleres:  []
-    },
-    {
-      nombre:    'Nombre Apellido',
-      rol:       'Disciplina',
-      instagram: '@handle',
-      igUrl:     'https://www.instagram.com/',
-      bio:       'Descripción del habitante y su práctica artística. Contá quién es, de dónde viene, qué hace en Modo Casona y qué proyectos tiene en curso.',
-      foto:      '',
-      talleres:  []
-    },
-    {
-      nombre:    'Nombre Apellido',
-      rol:       'Disciplina',
-      instagram: '@handle',
-      igUrl:     'https://www.instagram.com/',
-      bio:       'Descripción del habitante y su práctica artística. Contá quién es, de dónde viene, qué hace en Modo Casona y qué proyectos tiene en curso.',
-      foto:      '',
-      talleres:  []
-    }
-  ];
+  (function () {
+    var HABITANTES = [];
+    var PLACEHOLDER = '<svg width="80" height="80" viewBox="0 0 80 80" fill="none"><path d="M40 38a12 12 0 1 0 0-24 12 12 0 0 0 0 24zm0 6c-13 0-22 6-22 13v3h44v-3c0-7-9-13-22-13z" fill="#c4b39a"/></svg>';
+    var grid    = document.getElementById('hab-grid');
+    var overlay = document.getElementById('hab-overlay');
+    var modal   = document.getElementById('hab-modal');
+    var btnClose = document.getElementById('hab-modal-close');
 
-  /* ── SVG placeholder ──────────────────────────── */
-  var PLACEHOLDER_SVG = '<svg width="80" height="80" viewBox="0 0 80 80" fill="none"><path d="M40 38a12 12 0 1 0 0-24 12 12 0 0 0 0 24zm0 6c-13 0-22 6-22 13v3h44v-3c0-7-9-13-22-13z" fill="#c4b39a"/></svg>';
-
-  /* ── Render grid ──────────────────────────────── */
-  var grid = document.getElementById('hab-grid');
-  grid.innerHTML = HABITANTES.map(function(h, i) {
-    var fotoHtml = h.foto
-      ? '<img src="' + h.foto + '" alt="' + h.nombre + '">'
-      : PLACEHOLDER_SVG;
-    return '<div class="hab-card" data-index="' + i + '" tabindex="0" role="button" aria-label="Ver perfil de ' + h.nombre + '">'
-      + '<div class="hab-photo">' + fotoHtml + '</div>'
-      + '<p class="hab-name">' + h.nombre + '</p>'
-      + '<p class="hab-bio-short">' + h.rol + '</p>'
-      + '<button class="hab-saber-mas">Saber más</button>'
-      + '</div>';
-  }).join('');
-
-  /* ── Modal logic ──────────────────────────────── */
-  var overlay   = document.getElementById('hab-overlay');
-  var modal     = document.getElementById('hab-modal');
-  var btnClose  = document.getElementById('hab-modal-close');
-
-  function openModal(i) {
-    var h = HABITANTES[i];
-
-    /* photo */
-    var photoEl = document.getElementById('modal-photo');
-    photoEl.innerHTML = h.foto
-      ? '<img src="' + h.foto + '" alt="' + h.nombre + '">'
-      : '<svg width="60" height="60" viewBox="0 0 80 80" fill="none"><path d="M40 38a12 12 0 1 0 0-24 12 12 0 0 0 0 24zm0 6c-13 0-22 6-22 13v3h44v-3c0-7-9-13-22-13z" fill="#c4b39a"/></svg>';
-
-    document.getElementById('modal-nombre').textContent   = h.nombre;
-    document.getElementById('modal-rol').textContent      = h.rol;
-    document.getElementById('modal-ig-handle').textContent = h.instagram;
-    document.getElementById('modal-ig').href              = h.igUrl;
-    document.getElementById('modal-bio').textContent      = h.bio;
-
-    /* talleres */
-    var talleresSection = document.getElementById('modal-talleres-section');
-    if (h.talleres && h.talleres.length) {
-      talleresSection.style.display = '';
-      document.getElementById('modal-talleres-grid').innerHTML = h.talleres.map(function(t) {
-        return '<div class="hab-taller-card">'
-          + '<span class="hab-taller-tag">' + (t.tipo || '') + '</span>'
-          + '<p class="hab-taller-name">' + t.titulo + '</p>'
-          + (t.horario ? '<div class="hab-taller-meta"><span>' + t.horario + '</span></div>' : '')
-          + '<p class="hab-taller-desc">' + (t.descripcion || '') + '</p>'
+    function renderGrid() {
+      if (!HABITANTES.length) { grid.innerHTML = ''; return; }
+      grid.innerHTML = HABITANTES.map(function (h, i) {
+        var foto = h.foto ? '<img src="' + h.foto + '" alt="' + h.nombre + '">' : PLACEHOLDER;
+        return '<div class="hab-card" data-index="' + i + '" tabindex="0" role="button" aria-label="Ver perfil de ' + h.nombre + '">'
+          + '<div class="hab-photo">' + foto + '</div>'
+          + '<p class="hab-name">' + h.nombre + '</p>'
+          + '<p class="hab-bio-short">' + h.rol + '</p>'
+          + '<button class="hab-saber-mas">Saber más</button>'
           + '</div>';
       }).join('');
-    } else {
-      talleresSection.style.display = 'none';
     }
 
-    modal.scrollTop = 0;
-    overlay.classList.add('is-open');
-    document.body.style.overflow = 'hidden';
-  }
+    function openModal(i) {
+      var h = HABITANTES[i];
+      var photoEl = document.getElementById('modal-photo');
+      photoEl.innerHTML = h.foto
+        ? '<img src="' + h.foto + '" alt="' + h.nombre + '">'
+        : '<svg width="60" height="60" viewBox="0 0 80 80" fill="none"><path d="M40 38a12 12 0 1 0 0-24 12 12 0 0 0 0 24zm0 6c-13 0-22 6-22 13v3h44v-3c0-7-9-13-22-13z" fill="#c4b39a"/></svg>';
+
+      document.getElementById('modal-nombre').textContent    = h.nombre;
+      document.getElementById('modal-rol').textContent       = h.rol;
+      document.getElementById('modal-ig-handle').textContent = h.instagram ? '@' + h.instagram : '';
+      document.getElementById('modal-ig').href = h.instagram
+        ? 'https://www.instagram.com/' + h.instagram.replace(/^@/, '')
+        : '#';
+      document.getElementById('modal-bio').textContent = h.bio;
+
+      modal.scrollTop = 0;
+      overlay.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    }
 
   function closeModal() {
     overlay.classList.remove('is-open');
@@ -647,6 +507,17 @@
     handle.addEventListener('touchstart', function(e) { onStart(e.touches[0].clientY); }, { passive: true });
     handle.addEventListener('touchmove',  function(e) { onMove(e.touches[0].clientY);  }, { passive: true });
     handle.addEventListener('touchend',   onEnd);
+  })();
+
+  /* ── Fetch desde Notion JSON ──────────────────── */
+  fetch('data/habitantes.json?v=' + Date.now())
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      HABITANTES = data.habitantes || [];
+      renderGrid();
+    })
+    .catch(function() {});
+
   })();
   </script>
 
