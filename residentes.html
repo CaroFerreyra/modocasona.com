@@ -84,25 +84,6 @@
       max-width: 280px;
     }
 
-    .hab-saber-mas {
-      font-size: 15px;
-      font-weight: 400;
-      color: var(--violeta-dark);
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 0;
-      text-decoration: underline;
-      text-decoration-color: transparent;
-      text-underline-offset: 3px;
-      transition: text-decoration-color .2s, opacity .2s;
-      font-family: 'Outfit', sans-serif;
-    }
-
-    .hab-saber-mas:hover {
-      text-decoration-color: var(--violeta-dark);
-    }
-
     /* ── OVERLAY ─────────────────────────────────────── */
     .hab-overlay {
       display: none;
@@ -434,7 +415,7 @@
           + '<div class="hab-photo">' + foto + '</div>'
           + '<p class="hab-name">' + h.nombre + '</p>'
           + '<p class="hab-bio-short">' + h.rol + '</p>'
-          + '<button class="hab-saber-mas">Saber más</button>'
+          + '<button class="btn-link">Saber más</button>'
           + '</div>';
       }).join('');
     }
