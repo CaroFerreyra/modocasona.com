@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-07T00:00:00.000Z",
+  "updated": "2026-05-07T15:38:43.050Z",
   "events": [
     {
       "id": "3592d2ee-21be-81d6-8a1d-c3906237885a",
@@ -9,6 +9,7 @@
       "descripcion": "Actividad para probar vinos de Norte, Oeste, Centro-Sur y Este, maridándolos con productos locales típicos.",
       "imagen": "",
       "link": "",
+      "duracion": null,
       "destacado": true
     },
     {
@@ -19,6 +20,7 @@
       "descripcion": "Aprendé técnicas de dibujo desde cero en un ambiente creativo y relajado. Materiales incluidos.",
       "imagen": "",
       "link": "",
+      "duracion": null,
       "destacado": true
     },
     {
@@ -29,6 +31,7 @@
       "descripcion": "Recorrido por los estudios de los artistas residentes. Exposición, música en vivo y sorpresas.",
       "imagen": "",
       "link": "",
+      "duracion": null,
       "destacado": true
     }
   ]
