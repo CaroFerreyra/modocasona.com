@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-07T18:18:22.933Z",
+  "updated": "2026-05-07T18:21:07.410Z",
   "events": [
     {
       "id": "3592d2ee-21be-812a-a8e7-dac1082d2693",
@@ -21,7 +21,7 @@
       "imagen": "image/workshop.png",
       "link": "",
       "horario": "18:30 a 20:30h",
-      "destacado": false
+      "destacado": true
     },
     {
       "id": "3592d2ee-21be-80e4-b2d5-ebe248b151df",
@@ -87,7 +87,7 @@
       "imagen": "",
       "link": "",
       "horario": "",
-      "destacado": true
+      "destacado": false
     }
   ]
 }
