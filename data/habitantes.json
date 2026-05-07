@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-07T21:14:25.163Z",
+  "updated": "2026-05-07T21:29:44.688Z",
   "habitantes": [
     {
       "id": "3592d2ee-21be-8099-a65b-d21fb660ec12",
@@ -36,6 +36,15 @@
       "instagram": "sabinajoaquina",
       "foto": "",
       "orden": 4
+    },
+    {
+      "id": "3592d2ee-21be-8064-9343-d288db4de779",
+      "nombre": "Maite",
+      "rol": "",
+      "bio": "",
+      "instagram": "",
+      "foto": "",
+      "orden": 5
     },
     {
       "id": "3592d2ee-21be-808e-bdbc-f8b850d97083",
