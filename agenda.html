@@ -779,12 +779,18 @@
         var external = /^https?:\/\//.test(href);
         var target   = external ? ' target="_blank" rel="noopener"' : '';
 
-        var fechasHtml = '<div class="event-fechas">'
-          + g.fechas.map(function (f) {
-              return '<span class="event-fecha-pill">' + formatFechaCorta(f) + '</span>';
-            }).join('')
-          + (g.duracion ? '<span class="event-fecha-pill event-duracion-pill">&#9203;&nbsp;' + g.duracion + ' hs</span>' : '')
-          + '</div>';
+        var fechasHtml;
+        if (selectedDate) {
+          fechasHtml = g.duracion
+            ? '<div class="event-fechas"><span class="event-fecha-pill event-duracion-pill">&#9203;&nbsp;' + g.duracion + ' hs</span></div>'
+            : '';
+        } else {
+          fechasHtml = '<div class="event-fechas">'
+            + g.fechas.map(function (f) {
+                return '<span class="event-fecha-pill">' + formatFechaCorta(f) + '</span>';
+              }).join('')
+            + '</div>';
+        }
 
         var meta = '';
 
