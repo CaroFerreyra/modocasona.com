@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-07T16:52:01.789Z",
+  "updated": "2026-05-07T17:00:05.544Z",
   "events": [
     {
       "id": "3592d2ee-21be-812a-a8e7-dac1082d2693",
@@ -7,7 +7,7 @@
       "tipo": "Taller",
       "fecha": "2026-05-08",
       "descripcion": "Aprendé técnicas de dibujo desde cero en un ambiente creativo y relajado. Materiales incluidos.",
-      "imagen": "",
+      "imagen": "image/taller.png",
       "link": "",
       "duracion": null,
       "destacado": true
@@ -18,7 +18,7 @@
       "tipo": "Taller",
       "fecha": "2026-05-15",
       "descripcion": "Un taller para mirar la ciudad y su arquitectura con otros ojos. 8 encuentros los viernes.",
-      "imagen": "",
+      "imagen": "image/workshop.png",
       "link": "",
       "duracion": null,
       "destacado": false
@@ -29,7 +29,7 @@
       "tipo": "Taller",
       "fecha": "2026-05-15",
       "descripcion": "Aprendé técnicas de dibujo desde cero en un ambiente creativo y relajado. Materiales incluidos.",
-      "imagen": "",
+      "imagen": "image/taller.png",
       "link": "",
       "duracion": null,
       "destacado": false
@@ -40,7 +40,7 @@
       "tipo": "Taller",
       "fecha": "2026-05-22",
       "descripcion": "Aprendé técnicas de dibujo desde cero en un ambiente creativo y relajado. Materiales incluidos.",
-      "imagen": "",
+      "imagen": "image/taller.png",
       "link": "",
       "duracion": null,
       "destacado": false
@@ -51,7 +51,7 @@
       "tipo": "Maridaje",
       "fecha": "2026-05-28",
       "descripcion": "Actividad para probar vinos de Norte, Oeste, Centro-Sur y Este, maridándolos con productos locales típicos",
-      "imagen": "",
+      "imagen": "image/maridaje.png",
       "link": "",
       "duracion": null,
       "destacado": true
@@ -62,7 +62,7 @@
       "tipo": "Taller",
       "fecha": "2026-05-29",
       "descripcion": "Aprendé técnicas de dibujo desde cero en un ambiente creativo y relajado. Materiales incluidos.",
-      "imagen": "",
+      "imagen": "image/taller.png",
       "link": "",
       "duracion": null,
       "destacado": false
@@ -73,7 +73,7 @@
       "tipo": "Taller",
       "fecha": "2026-06-05",
       "descripcion": "Aprendé técnicas de dibujo desde cero en un ambiente creativo y relajado. Materiales incluidos.",
-      "imagen": "",
+      "imagen": "image/taller.png",
       "link": "",
       "duracion": null,
       "destacado": false
