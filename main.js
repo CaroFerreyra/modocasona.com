@@ -23,48 +23,4 @@
   });
 })();
 
-/* ── Mobile hamburger menu ───────────────────────── */
-(function () {
-  function initHamburger() {
-    var btn     = document.getElementById('nav-hamburger');
-    var overlay = document.getElementById('nav-mobile-overlay');
-    if (!btn || !overlay) return;
-
-    /* Apply all overlay styles via JS — avoids CSS loading issues */
-    var OPEN_STYLE  = 'display:flex;position:fixed;inset:0;background:#f7f3ed;z-index:300;flex-direction:column;align-items:center;justify-content:center;gap:8px;';
-    var CLOSE_STYLE = 'display:none;';
-
-    function openMenu() {
-      btn.classList.add('is-open');
-      overlay.style.cssText = OPEN_STYLE;
-      btn.setAttribute('aria-expanded', 'true');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeMenu() {
-      btn.classList.remove('is-open');
-      overlay.style.cssText = CLOSE_STYLE;
-      btn.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-    }
-
-    btn.addEventListener('click', function () {
-      btn.classList.contains('is-open') ? closeMenu() : openMenu();
-    });
-
-    overlay.querySelectorAll('a').forEach(function (a) {
-      a.addEventListener('click', closeMenu);
-    });
-
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') closeMenu();
-    });
-  }
-
-  /* Works whether DOM is already loaded or not */
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initHamburger);
-  } else {
-    initHamburger();
-  }
-})();
+/* Hamburger is handled inline per-page — nothing here */
