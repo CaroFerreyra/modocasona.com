@@ -50,7 +50,7 @@ const req = https.request(options, (res) => {
         nombre:    text(p['Nombre']?.title),
         rol:       text(p['Rol']?.rich_text),
         bio:       text(p['Bio']?.rich_text),
-        instagram: text(p['Instagram']?.rich_text),
+        instagram: cleanIg(text(p['Instagram']?.rich_text)),
         foto:      p['Foto URL']?.url || '',
         orden:     p['Orden']?.number ?? 999
       };
@@ -70,4 +70,11 @@ req.end();
 
 function text(arr) {
   return (arr || []).map(t => t.plain_text).join('') || '';
+}
+
+function cleanIg(val) {
+  if (!val) return '';
+  const match = val.match(/instagram\.com\/([^/?#\s]+)/i);
+  if (match) return match[1].replace(/\/$/, '');
+  return val.replace(/^@/, '').trim();
 }
