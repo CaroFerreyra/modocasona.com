@@ -51,10 +51,6 @@ const req = https.request(options, (res) => {
     const events = response.results.map(page => {
       const p = page.properties;
 
-      // Debug: log all property keys and the link value
-      const linkKey = Object.keys(p).find(k => k.toLowerCase().includes('inscribirse'));
-      console.log('Link key found:', linkKey, '→', p[linkKey]);
-
       const imgProp = p['Imagen URL'];
       let imagen = '';
       if (imgProp?.url) {
@@ -71,7 +67,7 @@ const req = https.request(options, (res) => {
         fecha:       p['Fecha']?.date?.start                || '',
         descripcion: text(p['Descripción']?.rich_text),
         imagen,
-        link:        p['Link “Inscribirse”']?.url || '',
+        link:        normalizeUrl(findProp(p, 'inscribirse')?.url),
         horario:     text(p['Horario']?.rich_text)            || '',
         destacado:   p['Destacado en home']?.checkbox       || false
       };
@@ -95,4 +91,15 @@ req.end();
 
 function text(arr) {
   return (arr || []).map(t => t.plain_text).join('') || '';
+}
+
+function findProp(p, keyword) {
+  const key = Object.keys(p).find(k => k.toLowerCase().includes(keyword));
+  return key ? p[key] : null;
+}
+
+function normalizeUrl(url) {
+  if (!url) return '';
+  if (/^https?:\/\//i.test(url)) return url;
+  return 'https://' + url;
 }
