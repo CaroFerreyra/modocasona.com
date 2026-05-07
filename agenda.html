@@ -721,7 +721,7 @@
         var key = e.titulo.trim();
         if (!map[key]) {
           map[key] = { titulo: e.titulo, tipo: e.tipo, descripcion: e.descripcion,
-                       imagen: e.imagen, link: e.link, duracion: e.duracion, fechas: [] };
+                       imagen: e.imagen, link: e.link, horario: e.horario, fechas: [] };
           order.push(key);
         }
         map[key].fechas.push(e.fecha);
@@ -768,7 +768,7 @@
       /* Agrupar solo cuando no hay fecha seleccionada */
       var groups = selectedDate ? filtered.map(function (e) {
         return { titulo: e.titulo, tipo: e.tipo, descripcion: e.descripcion,
-                 imagen: e.imagen, link: e.link, duracion: e.duracion, fechas: [e.fecha] };
+                 imagen: e.imagen, link: e.link, horario: e.horario, fechas: [e.fecha] };
       }) : groupByTitulo(filtered);
 
       list.innerHTML = groups.map(function (g) {
@@ -781,8 +781,8 @@
 
         var fechasHtml;
         if (selectedDate) {
-          fechasHtml = g.duracion
-            ? '<div class="event-fechas"><span class="event-fecha-pill event-duracion-pill">&#9203;&nbsp;' + g.duracion + ' hs</span></div>'
+          fechasHtml = g.horario
+            ? '<div class="event-fechas"><span class="event-fecha-pill event-duracion-pill">&#9203;&nbsp;' + g.horario + '</span></div>'
             : '';
         } else {
           fechasHtml = '<div class="event-fechas">'

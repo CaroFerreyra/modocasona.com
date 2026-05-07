@@ -68,7 +68,7 @@ const req = https.request(options, (res) => {
         descripcion: text(p['Descripción']?.rich_text),
         imagen,
         link:        p['Link “Inscribirse”']?.url || '',
-        duracion:    p['Duración']?.number                  || null,
+        horario:     text(p['Horario']?.rich_text)            || '',
         destacado:   p['Destacado en home']?.checkbox       || false
       };
     });
