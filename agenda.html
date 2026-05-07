@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Agenda — Modo Casona</title>
+  <link rel="icon" type="image/png" href="image/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -578,9 +579,11 @@
         btn.onclick = function (e) {
           e.stopPropagation();
           calMonth = parseInt(btn.dataset.m, 10);
+          selectedDate = null;
           closeAllPickers();
           updatePickerLabels();
           renderCalendar();
+          renderEvents();
         };
       });
     }
@@ -598,9 +601,11 @@
         btn.onclick = function (e) {
           e.stopPropagation();
           calYear = parseInt(btn.dataset.y, 10);
+          selectedDate = null;
           closeAllPickers();
           updatePickerLabels();
           renderCalendar();
+          renderEvents();
         };
       });
     }
@@ -637,15 +642,19 @@
       if (prevBtn) {
         prevBtn.onclick = function () {
           if (--calMonth < 0) { calMonth = 11; calYear--; }
+          selectedDate = null;
           updatePickerLabels();
           renderCalendar();
+          renderEvents();
         };
       }
       if (nextBtn) {
         nextBtn.onclick = function () {
           if (++calMonth > 11) { calMonth = 0; calYear++; }
+          selectedDate = null;
           updatePickerLabels();
           renderCalendar();
+          renderEvents();
         };
       }
     }
@@ -745,9 +754,16 @@
       if (!list) return;
 
       var t0 = todayISO();
+      var calMonthStr = calYear + '-' + pad(calMonth + 1);
+
       var filtered = allEvents.filter(function (e) {
-        if (!e.fecha || e.fecha < t0) return false;
-        if (selectedDate && e.fecha !== selectedDate) return false;
+        if (!e.fecha) return false;
+        if (selectedDate) return e.fecha === selectedDate;
+        /* filtrar por el mes visible en el calendario */
+        if (!e.fecha.startsWith(calMonthStr)) return false;
+        /* dentro del mes actual, ocultar fechas pasadas */
+        if (e.fecha < t0) return false;
+        /* filtro por tipo si hay uno seleccionado */
         if (selectedTipo && e.tipo !== selectedTipo) return false;
         return true;
       });
@@ -757,7 +773,10 @@
           var p = selectedDate.split('-');
           heading.textContent = parseInt(p[2], 10) + ' de ' + MESES[parseInt(p[1], 10) - 1] + ' ' + p[0];
         } else {
-          heading.textContent = selectedTipo ? selectedTipo : 'Todos los próximos eventos';
+          var mesNombre = MESES[calMonth];
+          heading.textContent = selectedTipo
+            ? selectedTipo + ' en ' + mesNombre
+            : 'Eventos de ' + mesNombre;
         }
       }
 
