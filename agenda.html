@@ -268,19 +268,20 @@
     }
 
     .event-fecha-pill {
-      font-size: 12px;
-      font-weight: 500;
-      background: var(--cream);
-      color: var(--carbon-2);
-      padding: 3px 8px;
-      border-radius: 4px;
-      line-height: 1.4;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 13px;
+      font-weight: 400;
+      background: var(--bg-secondary);
+      color: var(--text-muted);
+      padding: 4px 10px;
+      border-radius: 20px;
+      border: 1px solid var(--cream);
+      line-height: 1.3;
+      white-space: nowrap;
     }
 
-    .event-duracion-pill {
-      background: var(--bg-primary);
-      color: var(--text-muted);
-    }
 
     .events-list::-webkit-scrollbar       { width: 4px; }
     .events-list::-webkit-scrollbar-track { background: transparent; }
@@ -782,7 +783,7 @@
         var fechasHtml;
         if (selectedDate) {
           fechasHtml = g.horario
-            ? '<div class="event-fechas"><span class="event-fecha-pill event-duracion-pill">&#9203;&nbsp;' + g.horario + '</span></div>'
+            ? '<div class="event-fechas"><span class="event-fecha-pill"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" style="flex-shrink:0"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.2"/><path d="M6 3.5V6l1.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>' + g.horario + '</span></div>'
             : '';
         } else {
           fechasHtml = '<div class="event-fechas">'
