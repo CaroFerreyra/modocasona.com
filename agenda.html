@@ -253,11 +253,28 @@
 
     /* Solo esta lista scrollea */
     .events-list {
-      max-height: 65vh;
+      max-height: 460px;
       overflow-y: auto;
       padding-right: 6px;
       scrollbar-width: thin;
       scrollbar-color: var(--cream) transparent;
+    }
+
+    .event-fechas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 2px;
+    }
+
+    .event-fecha-pill {
+      font-size: 12px;
+      font-weight: 500;
+      background: var(--cream);
+      color: var(--carbon-2);
+      padding: 3px 8px;
+      border-radius: 4px;
+      line-height: 1.4;
     }
 
     .events-list::-webkit-scrollbar       { width: 4px; }
@@ -692,6 +709,29 @@
       });
     }
 
+    /* ── Agrupar por título (para eventos repetidos) ─── */
+    function groupByTitulo(events) {
+      var map = {}, order = [];
+      events.forEach(function (e) {
+        var key = e.titulo.trim();
+        if (!map[key]) {
+          map[key] = { titulo: e.titulo, tipo: e.tipo, descripcion: e.descripcion,
+                       imagen: e.imagen, link: e.link, duracion: e.duracion, fechas: [] };
+          order.push(key);
+        }
+        map[key].fechas.push(e.fecha);
+        if (!map[key].imagen && e.imagen) map[key].imagen = e.imagen;
+        if (!map[key].link   && e.link)   map[key].link   = e.link;
+      });
+      return order.map(function (k) { return map[k]; });
+    }
+
+    function formatFechaCorta(iso) {
+      if (!iso) return '';
+      var p = iso.split('-');
+      return parseInt(p[2], 10) + ' ' + MESES_SHORT[parseInt(p[1], 10) - 1].toLowerCase();
+    }
+
     /* ── Event list ─────────────────────────────────── */
     function renderEvents() {
       var list    = document.getElementById('events-list');
@@ -720,23 +760,37 @@
         return;
       }
 
-      list.innerHTML = filtered.map(function (e) {
-        var img = e.imagen
-          ? '<img src="' + e.imagen + '" alt="' + e.titulo + '" class="event-card-img">'
+      /* Agrupar solo cuando no hay fecha seleccionada */
+      var groups = selectedDate ? filtered.map(function (e) {
+        return { titulo: e.titulo, tipo: e.tipo, descripcion: e.descripcion,
+                 imagen: e.imagen, link: e.link, duracion: e.duracion, fechas: [e.fecha] };
+      }) : groupByTitulo(filtered);
+
+      list.innerHTML = groups.map(function (g) {
+        var img = g.imagen
+          ? '<img src="' + g.imagen + '" alt="' + g.titulo + '" class="event-card-img">'
           : '<div class="event-card-img"></div>';
-        var href     = e.link || 'contacto.html';
+        var href     = g.link || 'contacto.html';
         var external = /^https?:\/\//.test(href);
         var target   = external ? ' target="_blank" rel="noopener"' : '';
+
+        var fechasHtml = '<div class="event-fechas">'
+          + g.fechas.map(function (f) {
+              return '<span class="event-fecha-pill">' + formatFechaCorta(f) + '</span>';
+            }).join('')
+          + '</div>';
+
         var meta = '';
-        if (e.fecha)   meta += '<span>' + formatFecha(e.fecha) + '</span>';
-        if (e.duracion) meta += '<span>&#9203; ' + e.duracion + ' hs</span>';
+        if (g.duracion) meta = '<p class="event-card-meta">&#9203; ' + g.duracion + ' hs</p>';
+
         return '<div class="event-card">'
           + img
           + '<div class="event-card-content">'
-          +   (e.tipo ? '<span class="event-card-tag">' + e.tipo + '</span>' : '')
-          +   '<p class="event-card-title">' + e.titulo + '</p>'
-          +   (meta ? '<p class="event-card-meta">' + meta + '</p>' : '')
-          +   '<p class="event-card-desc">' + e.descripcion + '</p>'
+          +   (g.tipo ? '<span class="event-card-tag">' + g.tipo + '</span>' : '')
+          +   '<p class="event-card-title">' + g.titulo + '</p>'
+          +   fechasHtml
+          +   meta
+          +   '<p class="event-card-desc">' + g.descripcion + '</p>'
           + '</div>'
           + '<a href="' + href + '"' + target + ' class="btn-brand event-card-action">Inscribirse</a>'
           + '</div>';
