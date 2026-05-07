@@ -175,7 +175,7 @@
     .hab-modal-header {
       display: flex;
       gap: 36px;
-      align-items: flex-start;
+      align-items: center;
       margin-bottom: 32px;
     }
 
@@ -199,7 +199,6 @@
 
     .hab-modal-info {
       flex: 1;
-      padding-top: 8px;
       display: flex;
       flex-direction: column;
       gap: 8px;
@@ -228,7 +227,10 @@
       color: var(--carbon-2);
       text-decoration: none;
       transition: opacity .2s;
+      line-height: 1;
     }
+
+    .hab-modal-ig svg { flex-shrink: 0; display: block; }
 
     .hab-modal-ig:hover { opacity: .65; }
 
