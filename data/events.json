@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-07T16:07:39.269Z",
+  "updated": "2026-05-07T16:52:01.789Z",
   "events": [
     {
       "id": "3592d2ee-21be-812a-a8e7-dac1082d2693",
@@ -7,10 +7,21 @@
       "tipo": "Taller",
       "fecha": "2026-05-08",
       "descripcion": "Aprendé técnicas de dibujo desde cero en un ambiente creativo y relajado. Materiales incluidos.",
-      "imagen": "https://prod-files-secure.s3.us-west-2.amazonaws.com/536e841d-f1e5-4574-bfd1-8d809308b16f/ebf9d37a-f029-470e-af3e-07faf5057d0f/SaveClip.App_669761232_1329596572315193_7683682045288502457_n.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB466YBEORLSV%2F20260507%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260507T160739Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEPD%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIF1ijdrNjQqvvZAyVEzVFgg9d2aKZx%2BNqug4UPu%2FnnNvAiEA6Z%2FOwGfUO9z%2Fca6t0xeWHJA80F1bCdvXaU1EBlF3PUIqiAQIuf%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgw2Mzc0MjMxODM4MDUiDPI1vHdkzuslsIIEvircA5mWLckrRpCUNu7YgAlxoqOwBXE1oPwQh%2Bz3iy0pxeNcDjjR6vx3YLbQJTA7kFUcUC7X5AEzP%2FzFd41%2FxfiPWmtj4u0cnWP70omaKM2rVZemR1dejglhKJ5hePe6nk52AYM1G9PjFf54P2U8LknVGOTix7rJWkNlcvIAQvLoohoVQJ90iOLj9q7Sdw0BlBR45lPnwfQhW0Y87yfJw%2BE2QNoWxbsh%2BrVtzpPAWT92u7ZE6Gi1mCF%2BVQntm2L6iIhyscsaVpq3EHcOd2XwTHyh0em68qvNMi3CsLzvERSzX50vQ8qgBn3QgeIeZ3Y%2BS5at52v0S1IGTinH3zP1gL853oo1S33Q2jEwh0%2FI%2Fx9VqzF6r5hnDgiST9vZGhzP28rP8s2%2BSx3z6gY3xPjcj6l%2BF%2FhdHZpPoae4oKvmmcKTDJUDIKWybSJUQZSrDqN%2FfE7LxBelJfnKufRiH4y%2FMvchAgLtQYRsWD6s456EIP2Ecl%2FNk0WXGZwIEozJSQs4bYQD10d07xcE1oUpxjFLSvwDBOjKavzVcfWwzRNWLwFLyjOBQYomt8LhxsU7%2BWB3EvjuCYeWDli1ph2QB0nWX1gd8jbQiqJLUirEYyi4vMnGo16vEcYqg7eEqdkPuO4EMITr8s8GOqUBX1FefauWztSkNbUpdB9URkQIWEu79PVSlgvhQyG1CQY6%2Be6UhEzVNBQ2eKi7%2FwAY2ULPpu%2FdcgK01NgqvAWXlqUHGfoYwEvTyqWWTFy2IDsdDeDElKNJlLbx4J7KHNcg7pTWAxiFM%2FraYM4xHDM%2FpMWKiSFgblPDoK8u%2FE4qOSKHBRLWeT3EmHkzdSbpcXb8rGvFVK9xOkFAanxIYQ408ZHk93v4&X-Amz-Signature=8a5cefba1ad38b777edaa56c9b5eab1b757ae04457dcad382fcbdddd5ce7c16b&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+      "imagen": "",
       "link": "",
       "duracion": null,
       "destacado": true
+    },
+    {
+      "id": "3592d2ee-21be-80c2-a419-f2360e15e44e",
+      "titulo": "La arquitectura como sujeto de la imagen",
+      "tipo": "Taller",
+      "fecha": "2026-05-15",
+      "descripcion": "Un taller para mirar la ciudad y su arquitectura con otros ojos. 8 encuentros los viernes.",
+      "imagen": "",
+      "link": "",
+      "duracion": null,
+      "destacado": false
     },
     {
       "id": "3592d2ee-21be-80e4-b2d5-ebe248b151df",
@@ -18,7 +29,7 @@
       "tipo": "Taller",
       "fecha": "2026-05-15",
       "descripcion": "Aprendé técnicas de dibujo desde cero en un ambiente creativo y relajado. Materiales incluidos.",
-      "imagen": "https://prod-files-secure.s3.us-west-2.amazonaws.com/536e841d-f1e5-4574-bfd1-8d809308b16f/ebf9d37a-f029-470e-af3e-07faf5057d0f/SaveClip.App_669761232_1329596572315193_7683682045288502457_n.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB466YBEORLSV%2F20260507%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260507T160739Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEPD%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIF1ijdrNjQqvvZAyVEzVFgg9d2aKZx%2BNqug4UPu%2FnnNvAiEA6Z%2FOwGfUO9z%2Fca6t0xeWHJA80F1bCdvXaU1EBlF3PUIqiAQIuf%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgw2Mzc0MjMxODM4MDUiDPI1vHdkzuslsIIEvircA5mWLckrRpCUNu7YgAlxoqOwBXE1oPwQh%2Bz3iy0pxeNcDjjR6vx3YLbQJTA7kFUcUC7X5AEzP%2FzFd41%2FxfiPWmtj4u0cnWP70omaKM2rVZemR1dejglhKJ5hePe6nk52AYM1G9PjFf54P2U8LknVGOTix7rJWkNlcvIAQvLoohoVQJ90iOLj9q7Sdw0BlBR45lPnwfQhW0Y87yfJw%2BE2QNoWxbsh%2BrVtzpPAWT92u7ZE6Gi1mCF%2BVQntm2L6iIhyscsaVpq3EHcOd2XwTHyh0em68qvNMi3CsLzvERSzX50vQ8qgBn3QgeIeZ3Y%2BS5at52v0S1IGTinH3zP1gL853oo1S33Q2jEwh0%2FI%2Fx9VqzF6r5hnDgiST9vZGhzP28rP8s2%2BSx3z6gY3xPjcj6l%2BF%2FhdHZpPoae4oKvmmcKTDJUDIKWybSJUQZSrDqN%2FfE7LxBelJfnKufRiH4y%2FMvchAgLtQYRsWD6s456EIP2Ecl%2FNk0WXGZwIEozJSQs4bYQD10d07xcE1oUpxjFLSvwDBOjKavzVcfWwzRNWLwFLyjOBQYomt8LhxsU7%2BWB3EvjuCYeWDli1ph2QB0nWX1gd8jbQiqJLUirEYyi4vMnGo16vEcYqg7eEqdkPuO4EMITr8s8GOqUBX1FefauWztSkNbUpdB9URkQIWEu79PVSlgvhQyG1CQY6%2Be6UhEzVNBQ2eKi7%2FwAY2ULPpu%2FdcgK01NgqvAWXlqUHGfoYwEvTyqWWTFy2IDsdDeDElKNJlLbx4J7KHNcg7pTWAxiFM%2FraYM4xHDM%2FpMWKiSFgblPDoK8u%2FE4qOSKHBRLWeT3EmHkzdSbpcXb8rGvFVK9xOkFAanxIYQ408ZHk93v4&X-Amz-Signature=8a5cefba1ad38b777edaa56c9b5eab1b757ae04457dcad382fcbdddd5ce7c16b&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+      "imagen": "",
       "link": "",
       "duracion": null,
       "destacado": false
@@ -29,7 +40,7 @@
       "tipo": "Taller",
       "fecha": "2026-05-22",
       "descripcion": "Aprendé técnicas de dibujo desde cero en un ambiente creativo y relajado. Materiales incluidos.",
-      "imagen": "https://prod-files-secure.s3.us-west-2.amazonaws.com/536e841d-f1e5-4574-bfd1-8d809308b16f/ebf9d37a-f029-470e-af3e-07faf5057d0f/SaveClip.App_669761232_1329596572315193_7683682045288502457_n.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB466YBEORLSV%2F20260507%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260507T160739Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEPD%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIF1ijdrNjQqvvZAyVEzVFgg9d2aKZx%2BNqug4UPu%2FnnNvAiEA6Z%2FOwGfUO9z%2Fca6t0xeWHJA80F1bCdvXaU1EBlF3PUIqiAQIuf%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgw2Mzc0MjMxODM4MDUiDPI1vHdkzuslsIIEvircA5mWLckrRpCUNu7YgAlxoqOwBXE1oPwQh%2Bz3iy0pxeNcDjjR6vx3YLbQJTA7kFUcUC7X5AEzP%2FzFd41%2FxfiPWmtj4u0cnWP70omaKM2rVZemR1dejglhKJ5hePe6nk52AYM1G9PjFf54P2U8LknVGOTix7rJWkNlcvIAQvLoohoVQJ90iOLj9q7Sdw0BlBR45lPnwfQhW0Y87yfJw%2BE2QNoWxbsh%2BrVtzpPAWT92u7ZE6Gi1mCF%2BVQntm2L6iIhyscsaVpq3EHcOd2XwTHyh0em68qvNMi3CsLzvERSzX50vQ8qgBn3QgeIeZ3Y%2BS5at52v0S1IGTinH3zP1gL853oo1S33Q2jEwh0%2FI%2Fx9VqzF6r5hnDgiST9vZGhzP28rP8s2%2BSx3z6gY3xPjcj6l%2BF%2FhdHZpPoae4oKvmmcKTDJUDIKWybSJUQZSrDqN%2FfE7LxBelJfnKufRiH4y%2FMvchAgLtQYRsWD6s456EIP2Ecl%2FNk0WXGZwIEozJSQs4bYQD10d07xcE1oUpxjFLSvwDBOjKavzVcfWwzRNWLwFLyjOBQYomt8LhxsU7%2BWB3EvjuCYeWDli1ph2QB0nWX1gd8jbQiqJLUirEYyi4vMnGo16vEcYqg7eEqdkPuO4EMITr8s8GOqUBX1FefauWztSkNbUpdB9URkQIWEu79PVSlgvhQyG1CQY6%2Be6UhEzVNBQ2eKi7%2FwAY2ULPpu%2FdcgK01NgqvAWXlqUHGfoYwEvTyqWWTFy2IDsdDeDElKNJlLbx4J7KHNcg7pTWAxiFM%2FraYM4xHDM%2FpMWKiSFgblPDoK8u%2FE4qOSKHBRLWeT3EmHkzdSbpcXb8rGvFVK9xOkFAanxIYQ408ZHk93v4&X-Amz-Signature=8a5cefba1ad38b777edaa56c9b5eab1b757ae04457dcad382fcbdddd5ce7c16b&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+      "imagen": "",
       "link": "",
       "duracion": null,
       "destacado": false
@@ -40,7 +51,7 @@
       "tipo": "Maridaje",
       "fecha": "2026-05-28",
       "descripcion": "Actividad para probar vinos de Norte, Oeste, Centro-Sur y Este, maridándolos con productos locales típicos",
-      "imagen": "https://prod-files-secure.s3.us-west-2.amazonaws.com/536e841d-f1e5-4574-bfd1-8d809308b16f/ca3855d3-1b94-48b3-9543-b7fb25d552c3/Captura_de_pantalla_2026-05-07_a_la%28s%29_18.02.38.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB466YBEORLSV%2F20260507%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260507T160739Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEPD%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIF1ijdrNjQqvvZAyVEzVFgg9d2aKZx%2BNqug4UPu%2FnnNvAiEA6Z%2FOwGfUO9z%2Fca6t0xeWHJA80F1bCdvXaU1EBlF3PUIqiAQIuf%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgw2Mzc0MjMxODM4MDUiDPI1vHdkzuslsIIEvircA5mWLckrRpCUNu7YgAlxoqOwBXE1oPwQh%2Bz3iy0pxeNcDjjR6vx3YLbQJTA7kFUcUC7X5AEzP%2FzFd41%2FxfiPWmtj4u0cnWP70omaKM2rVZemR1dejglhKJ5hePe6nk52AYM1G9PjFf54P2U8LknVGOTix7rJWkNlcvIAQvLoohoVQJ90iOLj9q7Sdw0BlBR45lPnwfQhW0Y87yfJw%2BE2QNoWxbsh%2BrVtzpPAWT92u7ZE6Gi1mCF%2BVQntm2L6iIhyscsaVpq3EHcOd2XwTHyh0em68qvNMi3CsLzvERSzX50vQ8qgBn3QgeIeZ3Y%2BS5at52v0S1IGTinH3zP1gL853oo1S33Q2jEwh0%2FI%2Fx9VqzF6r5hnDgiST9vZGhzP28rP8s2%2BSx3z6gY3xPjcj6l%2BF%2FhdHZpPoae4oKvmmcKTDJUDIKWybSJUQZSrDqN%2FfE7LxBelJfnKufRiH4y%2FMvchAgLtQYRsWD6s456EIP2Ecl%2FNk0WXGZwIEozJSQs4bYQD10d07xcE1oUpxjFLSvwDBOjKavzVcfWwzRNWLwFLyjOBQYomt8LhxsU7%2BWB3EvjuCYeWDli1ph2QB0nWX1gd8jbQiqJLUirEYyi4vMnGo16vEcYqg7eEqdkPuO4EMITr8s8GOqUBX1FefauWztSkNbUpdB9URkQIWEu79PVSlgvhQyG1CQY6%2Be6UhEzVNBQ2eKi7%2FwAY2ULPpu%2FdcgK01NgqvAWXlqUHGfoYwEvTyqWWTFy2IDsdDeDElKNJlLbx4J7KHNcg7pTWAxiFM%2FraYM4xHDM%2FpMWKiSFgblPDoK8u%2FE4qOSKHBRLWeT3EmHkzdSbpcXb8rGvFVK9xOkFAanxIYQ408ZHk93v4&X-Amz-Signature=de2c5a529d43d818140d743315299d1bacd891545e3b715ea461074e3e4d351c&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+      "imagen": "",
       "link": "",
       "duracion": null,
       "destacado": true
@@ -51,7 +62,7 @@
       "tipo": "Taller",
       "fecha": "2026-05-29",
       "descripcion": "Aprendé técnicas de dibujo desde cero en un ambiente creativo y relajado. Materiales incluidos.",
-      "imagen": "https://prod-files-secure.s3.us-west-2.amazonaws.com/536e841d-f1e5-4574-bfd1-8d809308b16f/ebf9d37a-f029-470e-af3e-07faf5057d0f/SaveClip.App_669761232_1329596572315193_7683682045288502457_n.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB466YBEORLSV%2F20260507%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260507T160739Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEPD%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIF1ijdrNjQqvvZAyVEzVFgg9d2aKZx%2BNqug4UPu%2FnnNvAiEA6Z%2FOwGfUO9z%2Fca6t0xeWHJA80F1bCdvXaU1EBlF3PUIqiAQIuf%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgw2Mzc0MjMxODM4MDUiDPI1vHdkzuslsIIEvircA5mWLckrRpCUNu7YgAlxoqOwBXE1oPwQh%2Bz3iy0pxeNcDjjR6vx3YLbQJTA7kFUcUC7X5AEzP%2FzFd41%2FxfiPWmtj4u0cnWP70omaKM2rVZemR1dejglhKJ5hePe6nk52AYM1G9PjFf54P2U8LknVGOTix7rJWkNlcvIAQvLoohoVQJ90iOLj9q7Sdw0BlBR45lPnwfQhW0Y87yfJw%2BE2QNoWxbsh%2BrVtzpPAWT92u7ZE6Gi1mCF%2BVQntm2L6iIhyscsaVpq3EHcOd2XwTHyh0em68qvNMi3CsLzvERSzX50vQ8qgBn3QgeIeZ3Y%2BS5at52v0S1IGTinH3zP1gL853oo1S33Q2jEwh0%2FI%2Fx9VqzF6r5hnDgiST9vZGhzP28rP8s2%2BSx3z6gY3xPjcj6l%2BF%2FhdHZpPoae4oKvmmcKTDJUDIKWybSJUQZSrDqN%2FfE7LxBelJfnKufRiH4y%2FMvchAgLtQYRsWD6s456EIP2Ecl%2FNk0WXGZwIEozJSQs4bYQD10d07xcE1oUpxjFLSvwDBOjKavzVcfWwzRNWLwFLyjOBQYomt8LhxsU7%2BWB3EvjuCYeWDli1ph2QB0nWX1gd8jbQiqJLUirEYyi4vMnGo16vEcYqg7eEqdkPuO4EMITr8s8GOqUBX1FefauWztSkNbUpdB9URkQIWEu79PVSlgvhQyG1CQY6%2Be6UhEzVNBQ2eKi7%2FwAY2ULPpu%2FdcgK01NgqvAWXlqUHGfoYwEvTyqWWTFy2IDsdDeDElKNJlLbx4J7KHNcg7pTWAxiFM%2FraYM4xHDM%2FpMWKiSFgblPDoK8u%2FE4qOSKHBRLWeT3EmHkzdSbpcXb8rGvFVK9xOkFAanxIYQ408ZHk93v4&X-Amz-Signature=8a5cefba1ad38b777edaa56c9b5eab1b757ae04457dcad382fcbdddd5ce7c16b&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+      "imagen": "",
       "link": "",
       "duracion": null,
       "destacado": false
@@ -62,7 +73,7 @@
       "tipo": "Taller",
       "fecha": "2026-06-05",
       "descripcion": "Aprendé técnicas de dibujo desde cero en un ambiente creativo y relajado. Materiales incluidos.",
-      "imagen": "https://prod-files-secure.s3.us-west-2.amazonaws.com/536e841d-f1e5-4574-bfd1-8d809308b16f/ebf9d37a-f029-470e-af3e-07faf5057d0f/SaveClip.App_669761232_1329596572315193_7683682045288502457_n.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB466YBEORLSV%2F20260507%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260507T160739Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEPD%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIF1ijdrNjQqvvZAyVEzVFgg9d2aKZx%2BNqug4UPu%2FnnNvAiEA6Z%2FOwGfUO9z%2Fca6t0xeWHJA80F1bCdvXaU1EBlF3PUIqiAQIuf%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgw2Mzc0MjMxODM4MDUiDPI1vHdkzuslsIIEvircA5mWLckrRpCUNu7YgAlxoqOwBXE1oPwQh%2Bz3iy0pxeNcDjjR6vx3YLbQJTA7kFUcUC7X5AEzP%2FzFd41%2FxfiPWmtj4u0cnWP70omaKM2rVZemR1dejglhKJ5hePe6nk52AYM1G9PjFf54P2U8LknVGOTix7rJWkNlcvIAQvLoohoVQJ90iOLj9q7Sdw0BlBR45lPnwfQhW0Y87yfJw%2BE2QNoWxbsh%2BrVtzpPAWT92u7ZE6Gi1mCF%2BVQntm2L6iIhyscsaVpq3EHcOd2XwTHyh0em68qvNMi3CsLzvERSzX50vQ8qgBn3QgeIeZ3Y%2BS5at52v0S1IGTinH3zP1gL853oo1S33Q2jEwh0%2FI%2Fx9VqzF6r5hnDgiST9vZGhzP28rP8s2%2BSx3z6gY3xPjcj6l%2BF%2FhdHZpPoae4oKvmmcKTDJUDIKWybSJUQZSrDqN%2FfE7LxBelJfnKufRiH4y%2FMvchAgLtQYRsWD6s456EIP2Ecl%2FNk0WXGZwIEozJSQs4bYQD10d07xcE1oUpxjFLSvwDBOjKavzVcfWwzRNWLwFLyjOBQYomt8LhxsU7%2BWB3EvjuCYeWDli1ph2QB0nWX1gd8jbQiqJLUirEYyi4vMnGo16vEcYqg7eEqdkPuO4EMITr8s8GOqUBX1FefauWztSkNbUpdB9URkQIWEu79PVSlgvhQyG1CQY6%2Be6UhEzVNBQ2eKi7%2FwAY2ULPpu%2FdcgK01NgqvAWXlqUHGfoYwEvTyqWWTFy2IDsdDeDElKNJlLbx4J7KHNcg7pTWAxiFM%2FraYM4xHDM%2FpMWKiSFgblPDoK8u%2FE4qOSKHBRLWeT3EmHkzdSbpcXb8rGvFVK9xOkFAanxIYQ408ZHk93v4&X-Amz-Signature=8a5cefba1ad38b777edaa56c9b5eab1b757ae04457dcad382fcbdddd5ce7c16b&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject",
+      "imagen": "",
       "link": "",
       "duracion": null,
       "destacado": false
