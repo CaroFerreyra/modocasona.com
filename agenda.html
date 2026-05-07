@@ -9,12 +9,28 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="design.css">
   <style>
-    /* ── AGENDA PAGE ─────────────────────────────────── */
-    .agenda-main {
-      padding: 48px 80px 80px;
-      background: var(--bg-secondary);
-      min-height: calc(100vh - 100px);
+    /* ── VIEWPORT LOCK — solo scroll en events ──────── */
+    body.agenda-page {
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
     }
+
+    body.agenda-page footer { flex-shrink: 0; }
+
+    /* ── AGENDA MAIN ─────────────────────────────────── */
+    .agenda-main {
+      flex: 1;
+      min-height: 0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      padding: 36px 80px 20px;
+      background: var(--bg-secondary);
+    }
+
+    .agenda-header { flex-shrink: 0; }
 
     .agenda-title {
       font-size: clamp(32px, 4vw, 60px);
@@ -22,14 +38,17 @@
       color: var(--carbon-2);
       letter-spacing: -1.5px;
       line-height: 1.1;
-      margin-top: 16px;
+      margin-top: 14px;
     }
 
     .agenda-layout {
+      flex: 1;
+      min-height: 0;
       display: flex;
       gap: 48px;
       align-items: flex-start;
-      margin-top: 36px;
+      margin-top: 32px;
+      overflow: hidden;
     }
 
     /* ── SIDEBAR (left) ──────────────────────────────── */
@@ -56,7 +75,6 @@
       border: none;
       cursor: pointer;
       padding: 4px 12px 4px 0;
-      text-decoration: none;
       transition: opacity .2s;
       line-height: 1.4;
     }
@@ -85,7 +103,15 @@
       margin-bottom: 14px;
     }
 
-    .cal-select {
+    /* Custom picker (replaces native <select>) */
+    .cal-picker {
+      position: relative;
+    }
+
+    .cal-picker-trigger {
+      display: flex;
+      align-items: center;
+      gap: 5px;
       font-family: 'Outfit', sans-serif;
       font-size: 14px;
       font-weight: 500;
@@ -93,18 +119,81 @@
       background: var(--bg-secondary);
       border: 1.1px solid var(--cream);
       border-radius: 6px;
-      padding: 5px 8px;
+      padding: 5px 9px;
       cursor: pointer;
-      appearance: none;
-      -webkit-appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%232e2319' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 7px center;
-      padding-right: 22px;
+      white-space: nowrap;
+      transition: background .15s;
+      line-height: 1.3;
     }
 
-    #cal-month { min-width: 68px; }
-    #cal-year  { min-width: 60px; }
+    .cal-picker-trigger:hover,
+    .cal-picker-trigger.open { background: var(--cream); }
+
+    .cal-picker-panel {
+      display: none;
+      position: absolute;
+      top: calc(100% + 5px);
+      left: 0;
+      background: #fff;
+      border: 1.1px solid var(--cream);
+      border-radius: 10px;
+      box-shadow: 0 8px 28px rgba(0,0,0,.10);
+      padding: 10px;
+      z-index: 100;
+    }
+
+    .cal-picker-panel.open { display: block; }
+
+    .cal-months-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      min-width: 200px;
+    }
+
+    .cal-month-opt {
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--carbon);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px 6px;
+      border-radius: 6px;
+      text-align: center;
+      transition: background .15s;
+      line-height: 1.2;
+    }
+
+    .cal-month-opt:hover { background: var(--bg-secondary); }
+    .cal-month-opt.selected { font-weight: 700; }
+
+    .cal-years-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 90px;
+    }
+
+    .cal-year-opt {
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--carbon);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px 12px;
+      border-radius: 6px;
+      text-align: left;
+      transition: background .15s;
+      line-height: 1.2;
+      width: 100%;
+    }
+
+    .cal-year-opt:hover { background: var(--bg-secondary); }
+    .cal-year-opt.selected { font-weight: 700; }
 
     .cal-nav-btn {
       background: none;
@@ -127,6 +216,7 @@
     .cal-nav-btn:first-of-type { margin-left: auto; }
     .cal-nav-btn:hover { background: var(--cream); }
 
+    /* ── CALENDAR GRID ───────────────────────────────── */
     .cal-grid {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
@@ -163,36 +253,54 @@
     .cal-day.selected    { background: var(--carbon-2) !important; color: #fff !important; }
     .cal-day.today:not(.selected) { font-weight: 700; }
 
-    /* ── EVENT LIST (right) ───────────────────────────── */
-    .agenda-events { flex: 1; min-width: 0; }
+    /* ── EVENT PANEL (right) ─────────────────────────── */
+    .agenda-events {
+      flex: 1;
+      min-width: 0;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
 
     .agenda-date-heading {
+      flex-shrink: 0;
       font-size: clamp(18px, 2vw, 28px);
       font-weight: 600;
       color: var(--carbon-2);
       letter-spacing: -.5px;
-      margin-bottom: 24px;
+      margin-bottom: 8px;
       line-height: 1.2;
     }
 
+    /* Only this element scrolls */
     .events-list {
-      display: flex;
-      flex-direction: column;
+      flex: 1;
+      min-height: 0;
+      overflow-y: auto;
+      padding-right: 6px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--cream) transparent;
     }
+
+    .events-list::-webkit-scrollbar       { width: 4px; }
+    .events-list::-webkit-scrollbar-track { background: transparent; }
+    .events-list::-webkit-scrollbar-thumb { background: var(--cream); border-radius: 4px; }
+    .events-list::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
 
     .event-card {
       display: flex;
       gap: 20px;
       align-items: flex-start;
-      padding: 20px 0;
+      padding: 18px 0;
       border-bottom: 1px solid var(--cream);
     }
 
     .event-card:first-child { border-top: 1px solid var(--cream); }
 
     .event-card-img {
-      width: 120px;
-      height: 96px;
+      width: 112px;
+      height: 90px;
       object-fit: cover;
       border-radius: 8px;
       flex-shrink: 0;
@@ -204,7 +312,7 @@
       flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 5px;
+      gap: 4px;
       min-width: 0;
     }
 
@@ -212,9 +320,9 @@
       display: inline-flex;
       background: var(--violeta);
       color: #fff;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 600;
-      padding: 4px 10px;
+      padding: 3px 9px;
       border-radius: 4px;
       width: fit-content;
       line-height: 1.4;
@@ -222,21 +330,25 @@
     }
 
     .event-card-title {
-      font-size: clamp(17px, 1.6vw, 22px);
+      font-size: clamp(16px, 1.4vw, 21px);
       font-weight: 600;
       color: var(--carbon-2);
-      letter-spacing: -.35px;
+      letter-spacing: -.3px;
       line-height: 1.2;
     }
 
     .event-card-meta {
-      font-size: 14px;
+      font-size: 13px;
       color: var(--text-muted);
       line-height: 1.4;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
     }
 
     .event-card-desc {
-      font-size: 15px;
+      font-size: 14px;
       color: var(--text-muted);
       line-height: 1.5;
       margin-top: 2px;
@@ -245,42 +357,65 @@
     .event-card-action {
       flex-shrink: 0;
       align-self: center;
-      font-size: 16px;
-      padding: 11px 16px;
+      font-size: 15px;
+      padding: 10px 15px;
     }
 
     .events-empty {
-      font-size: 17px;
+      font-size: 16px;
       color: var(--text-muted);
       padding: 24px 0;
     }
 
     /* ── TABLET ≤1100px ──────────────────────────────── */
     @media (max-width: 1100px) {
-      .agenda-main    { padding: 40px; }
+      .agenda-main    { padding: 32px 40px 16px; }
       .agenda-sidebar { width: 260px; }
       .agenda-layout  { gap: 32px; }
     }
 
     /* ── MOBILE ≤768px ───────────────────────────────── */
     @media (max-width: 768px) {
-      .agenda-main {
-        padding: 32px 20px 60px;
-        min-height: auto;
+      /* unlock viewport on mobile — stack normally */
+      body.agenda-page {
+        height: auto;
+        overflow: auto;
       }
+
+      .agenda-main {
+        overflow: visible;
+        padding: 28px 20px 48px;
+      }
+
       .agenda-layout {
         flex-direction: column;
-        gap: 28px;
+        overflow: visible;
+        gap: 24px;
+        margin-top: 24px;
       }
+
       .agenda-sidebar  { width: 100%; }
       .calendar-widget { max-width: 340px; }
+
+      .agenda-events {
+        overflow: visible;
+        height: auto;
+      }
+
+      .events-list {
+        overflow: visible;
+        height: auto;
+        max-height: none;
+        padding-right: 0;
+      }
+
       .event-card-action { display: none; }
-      .event-card-img    { width: 88px; height: 72px; }
-      .event-card-title  { font-size: 17px; }
+      .event-card-img    { width: 80px; height: 66px; }
+      .event-card-title  { font-size: 16px; }
     }
   </style>
 </head>
-<body>
+<body class="agenda-page">
 
   <nav class="nav">
     <a href="index.html" class="nav-logo">
@@ -299,12 +434,12 @@
     </button>
   </nav>
   <div class="nav-mobile-overlay" id="nav-mobile-overlay" role="dialog" aria-label="Menú" style="display:none;position:fixed;inset:0;background:#f7f3ed;z-index:300;flex-direction:column;align-items:center;justify-content:center;gap:8px;">
-    <a href="index.html"     style="font-size:28px;font-weight:600;color:#1c1a18;text-decoration:none;padding:12px 24px;">Inicio</a>
-    <a href="agenda.html"    style="font-size:28px;font-weight:600;color:#8f3d18;text-decoration:none;padding:12px 24px;">Agenda</a>
+    <a href="index.html"      style="font-size:28px;font-weight:600;color:#1c1a18;text-decoration:none;padding:12px 24px;">Inicio</a>
+    <a href="agenda.html"     style="font-size:28px;font-weight:600;color:#8f3d18;text-decoration:none;padding:12px 24px;">Agenda</a>
     <a href="residentes.html" style="font-size:28px;font-weight:600;color:#1c1a18;text-decoration:none;padding:12px 24px;">Habitantes</a>
-    <a href="locacion.html"  style="font-size:28px;font-weight:600;color:#1c1a18;text-decoration:none;padding:12px 24px;">Locación</a>
-    <a href="historia.html"  style="font-size:28px;font-weight:600;color:#1c1a18;text-decoration:none;padding:12px 24px;">Historia</a>
-    <a href="contacto.html"  style="font-size:28px;font-weight:600;color:#1c1a18;text-decoration:none;padding:12px 24px;">Contacto</a>
+    <a href="locacion.html"   style="font-size:28px;font-weight:600;color:#1c1a18;text-decoration:none;padding:12px 24px;">Locación</a>
+    <a href="historia.html"   style="font-size:28px;font-weight:600;color:#1c1a18;text-decoration:none;padding:12px 24px;">Historia</a>
+    <a href="contacto.html"   style="font-size:28px;font-weight:600;color:#1c1a18;text-decoration:none;padding:12px 24px;">Contacto</a>
   </div>
   <script>
     (function(){
@@ -327,11 +462,13 @@
   </script>
 
   <main class="agenda-main">
-    <div class="section-mark">
-      <span>AGENDA</span>
-      <div class="section-mark-line"></div>
+    <div class="agenda-header">
+      <div class="section-mark">
+        <span>AGENDA</span>
+        <div class="section-mark-line"></div>
+      </div>
+      <h1 class="agenda-title">Próximos eventos</h1>
     </div>
-    <h1 class="agenda-title">Próximos eventos</h1>
 
     <div class="agenda-layout">
 
@@ -341,16 +478,38 @@
 
         <div class="calendar-widget">
           <div class="cal-header">
-            <select id="cal-month" class="cal-select"></select>
-            <select id="cal-year"  class="cal-select"></select>
-            <button id="cal-prev"  class="cal-nav-btn" aria-label="Mes anterior">&#8249;</button>
-            <button id="cal-next"  class="cal-nav-btn" aria-label="Mes siguiente">&#8250;</button>
+            <!-- Custom month picker -->
+            <div class="cal-picker" id="month-picker">
+              <button class="cal-picker-trigger" id="cal-month-trigger" aria-haspopup="listbox">
+                <span id="cal-month-label"></span>
+                <svg width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+                  <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </button>
+              <div class="cal-picker-panel" id="cal-month-panel" role="listbox">
+                <div class="cal-months-grid" id="cal-months-grid"></div>
+              </div>
+            </div>
+            <!-- Custom year picker -->
+            <div class="cal-picker" id="year-picker">
+              <button class="cal-picker-trigger" id="cal-year-trigger" aria-haspopup="listbox">
+                <span id="cal-year-label"></span>
+                <svg width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+                  <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </button>
+              <div class="cal-picker-panel" id="cal-year-panel" role="listbox">
+                <div class="cal-years-list" id="cal-years-list"></div>
+              </div>
+            </div>
+            <button id="cal-prev" class="cal-nav-btn" aria-label="Mes anterior">&#8249;</button>
+            <button id="cal-next" class="cal-nav-btn" aria-label="Mes siguiente">&#8250;</button>
           </div>
           <div class="cal-grid" id="cal-grid"></div>
         </div>
       </aside>
 
-      <!-- ── RIGHT: event list ───────────────────────── -->
+      <!-- ── RIGHT: event list (scrolls) ────────────── -->
       <section class="agenda-events">
         <h2 class="agenda-date-heading" id="agenda-date-heading">Todos los próximos eventos</h2>
         <div class="events-list" id="events-list">
@@ -412,6 +571,102 @@
       return parseInt(p[2], 10) + ' de ' + MESES[parseInt(p[1], 10) - 1] + ', ' + p[0];
     }
 
+    /* ── Custom pickers ─────────────────────────────── */
+    function updatePickerLabels() {
+      var ml = document.getElementById('cal-month-label');
+      var yl = document.getElementById('cal-year-label');
+      if (ml) ml.textContent = MESES_SHORT[calMonth];
+      if (yl) yl.textContent = calYear;
+    }
+
+    function closeAllPickers() {
+      document.querySelectorAll('.cal-picker-trigger').forEach(function (t) { t.classList.remove('open'); });
+      document.querySelectorAll('.cal-picker-panel').forEach(function (p) { p.classList.remove('open'); });
+    }
+
+    function renderMonthPanel() {
+      var grid = document.getElementById('cal-months-grid');
+      if (!grid) return;
+      grid.innerHTML = MESES_SHORT.map(function (m, i) {
+        var sel = i === calMonth ? ' selected' : '';
+        return '<button class="cal-month-opt' + sel + '" data-m="' + i + '">' + m + '</button>';
+      }).join('');
+      grid.querySelectorAll('.cal-month-opt').forEach(function (btn) {
+        btn.onclick = function (e) {
+          e.stopPropagation();
+          calMonth = parseInt(btn.dataset.m, 10);
+          closeAllPickers();
+          updatePickerLabels();
+          renderCalendar();
+        };
+      });
+    }
+
+    function renderYearPanel() {
+      var list = document.getElementById('cal-years-list');
+      if (!list) return;
+      var base = today.getFullYear();
+      var html = '';
+      for (var y = base; y <= base + 2; y++) {
+        html += '<button class="cal-year-opt' + (y === calYear ? ' selected' : '') + '" data-y="' + y + '">' + y + '</button>';
+      }
+      list.innerHTML = html;
+      list.querySelectorAll('.cal-year-opt').forEach(function (btn) {
+        btn.onclick = function (e) {
+          e.stopPropagation();
+          calYear = parseInt(btn.dataset.y, 10);
+          closeAllPickers();
+          updatePickerLabels();
+          renderCalendar();
+        };
+      });
+    }
+
+    function initPickers() {
+      var monthTrigger = document.getElementById('cal-month-trigger');
+      var monthPanel   = document.getElementById('cal-month-panel');
+      var yearTrigger  = document.getElementById('cal-year-trigger');
+      var yearPanel    = document.getElementById('cal-year-panel');
+
+      updatePickerLabels();
+
+      if (monthTrigger && monthPanel) {
+        monthTrigger.onclick = function (e) {
+          e.stopPropagation();
+          var open = monthPanel.classList.contains('open');
+          closeAllPickers();
+          if (!open) { renderMonthPanel(); monthPanel.classList.add('open'); monthTrigger.classList.add('open'); }
+        };
+      }
+      if (yearTrigger && yearPanel) {
+        yearTrigger.onclick = function (e) {
+          e.stopPropagation();
+          var open = yearPanel.classList.contains('open');
+          closeAllPickers();
+          if (!open) { renderYearPanel(); yearPanel.classList.add('open'); yearTrigger.classList.add('open'); }
+        };
+      }
+
+      document.addEventListener('click', closeAllPickers);
+
+      var prevBtn = document.getElementById('cal-prev');
+      var nextBtn = document.getElementById('cal-next');
+      if (prevBtn) {
+        prevBtn.onclick = function () {
+          if (--calMonth < 0) { calMonth = 11; calYear--; }
+          updatePickerLabels();
+          renderCalendar();
+        };
+      }
+      if (nextBtn) {
+        nextBtn.onclick = function () {
+          if (++calMonth > 11) { calMonth = 0; calYear++; }
+          updatePickerLabels();
+          renderCalendar();
+        };
+      }
+    }
+
     /* ── Filter tabs ────────────────────────────────── */
     function renderFilterTabs() {
       var container = document.getElementById('filter-tabs');
@@ -421,8 +676,7 @@
         if (e.tipo && tipos.indexOf(e.tipo) === -1) tipos.push(e.tipo);
       });
       container.innerHTML = tipos.map(function (t) {
-        var active = selectedTipo === t ? ' active' : '';
-        return '<button class="filter-tab' + active + '" data-tipo="' + t + '">' + t + '</button>';
+        return '<button class="filter-tab' + (selectedTipo === t ? ' active' : '') + '" data-tipo="' + t + '">' + t + '</button>';
       }).join('');
       container.querySelectorAll('.filter-tab').forEach(function (btn) {
         btn.onclick = function () {
@@ -435,15 +689,10 @@
       });
     }
 
-    /* ── Calendar ───────────────────────────────────── */
+    /* ── Calendar grid ──────────────────────────────── */
     function renderCalendar() {
-      var monthSel = document.getElementById('cal-month');
-      var yearSel  = document.getElementById('cal-year');
-      var grid     = document.getElementById('cal-grid');
+      var grid = document.getElementById('cal-grid');
       if (!grid) return;
-
-      if (monthSel) monthSel.value = calMonth;
-      if (yearSel)  yearSel.value  = calYear;
 
       var eventDates = {};
       allEvents.forEach(function (e) { if (e.fecha) eventDates[e.fecha] = true; });
@@ -456,30 +705,24 @@
       var totalSlots  = (startDow + daysInMonth > 35) ? 42 : 35;
       var todayStr    = todayISO();
 
-      var html = DIAS.map(function (d) {
-        return '<div class="cal-day-header">' + d + '</div>';
-      }).join('');
+      var html = DIAS.map(function (d) { return '<div class="cal-day-header">' + d + '</div>'; }).join('');
 
       for (var i = 0; i < startDow; i++) {
         html += '<div class="cal-day other-month">' + (prevLast - startDow + 1 + i) + '</div>';
       }
-
       for (var d = 1; d <= daysInMonth; d++) {
         var iso = calYear + '-' + pad(calMonth + 1) + '-' + pad(d);
         var cls = 'cal-day';
-        if (eventDates[iso])    cls += ' has-event';
+        if (eventDates[iso])     cls += ' has-event';
         if (iso === selectedDate) cls += ' selected';
-        if (iso === todayStr)   cls += ' today';
+        if (iso === todayStr)    cls += ' today';
         html += '<div class="' + cls + '" data-date="' + iso + '">' + d + '</div>';
       }
-
-      var remaining = totalSlots - startDow - daysInMonth;
-      for (var j = 1; j <= remaining; j++) {
+      for (var j = 1; j <= totalSlots - startDow - daysInMonth; j++) {
         html += '<div class="cal-day other-month">' + j + '</div>';
       }
 
       grid.innerHTML = html;
-
       grid.querySelectorAll('.cal-day[data-date]').forEach(function (el) {
         el.onclick = function () {
           selectedDate = (selectedDate === el.dataset.date) ? null : el.dataset.date;
@@ -507,10 +750,8 @@
         if (selectedDate) {
           var p = selectedDate.split('-');
           heading.textContent = parseInt(p[2], 10) + ' de ' + MESES[parseInt(p[1], 10) - 1] + ' ' + p[0];
-        } else if (selectedTipo) {
-          heading.textContent = selectedTipo;
         } else {
-          heading.textContent = 'Todos los próximos eventos';
+          heading.textContent = selectedTipo ? selectedTipo : 'Todos los próximos eventos';
         }
       }
 
@@ -523,73 +764,27 @@
         var img = e.imagen
           ? '<img src="' + e.imagen + '" alt="' + e.titulo + '" class="event-card-img">'
           : '<div class="event-card-img"></div>';
-        var href = e.link || 'contacto.html';
+        var href     = e.link || 'contacto.html';
+        var external = /^https?:\/\//.test(href);
+        var target   = external ? ' target="_blank" rel="noopener"' : '';
+        var meta = '';
+        if (e.fecha)   meta += '<span>' + formatFecha(e.fecha) + '</span>';
+        if (e.duracion) meta += '<span>&#9203; ' + e.duracion + ' hs</span>';
         return '<div class="event-card">'
           + img
           + '<div class="event-card-content">'
-          +   '<span class="event-card-tag">' + (e.tipo || '') + '</span>'
+          +   (e.tipo ? '<span class="event-card-tag">' + e.tipo + '</span>' : '')
           +   '<p class="event-card-title">' + e.titulo + '</p>'
-          +   (e.fecha ? '<p class="event-card-meta">' + formatFecha(e.fecha) + '</p>' : '')
+          +   (meta ? '<p class="event-card-meta">' + meta + '</p>' : '')
           +   '<p class="event-card-desc">' + e.descripcion + '</p>'
           + '</div>'
-          + '<a href="' + href + '" class="btn-brand event-card-action">Inscribirse</a>'
+          + '<a href="' + href + '"' + target + ' class="btn-brand event-card-action">Inscribirse</a>'
           + '</div>';
       }).join('');
     }
 
-    /* ── Init selects & nav buttons ─────────────────── */
-    (function initSelects() {
-      var monthSel = document.getElementById('cal-month');
-      var yearSel  = document.getElementById('cal-year');
-
-      if (monthSel) {
-        MESES_SHORT.forEach(function (m, i) {
-          var opt = document.createElement('option');
-          opt.value = i;
-          opt.textContent = m;
-          monthSel.appendChild(opt);
-        });
-        monthSel.value = calMonth;
-        monthSel.onchange = function () {
-          calMonth = parseInt(this.value, 10);
-          renderCalendar();
-        };
-      }
-
-      if (yearSel) {
-        var curY = today.getFullYear();
-        for (var y = curY; y <= curY + 2; y++) {
-          var opt = document.createElement('option');
-          opt.value = y;
-          opt.textContent = y;
-          yearSel.appendChild(opt);
-        }
-        yearSel.value = calYear;
-        yearSel.onchange = function () {
-          calYear = parseInt(this.value, 10);
-          renderCalendar();
-        };
-      }
-
-      var prevBtn = document.getElementById('cal-prev');
-      var nextBtn = document.getElementById('cal-next');
-      if (prevBtn) {
-        prevBtn.onclick = function () {
-          calMonth--;
-          if (calMonth < 0) { calMonth = 11; calYear--; }
-          renderCalendar();
-        };
-      }
-      if (nextBtn) {
-        nextBtn.onclick = function () {
-          calMonth++;
-          if (calMonth > 11) { calMonth = 0; calYear++; }
-          renderCalendar();
-        };
-      }
-    })();
-
     /* ── Boot ───────────────────────────────────────── */
+    initPickers();
     renderCalendar();
 
     fetch('data/events.json')

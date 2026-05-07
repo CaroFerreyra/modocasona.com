@@ -50,15 +50,23 @@ const req = https.request(options, (res) => {
 
     const events = response.results.map(page => {
       const p = page.properties;
+
+      const imgFiles = p['Imagen URL']?.files || [];
+      const imgFile  = imgFiles[0];
+      const imagen   = imgFile
+        ? (imgFile.type === 'external' ? imgFile.external.url : imgFile.file?.url || '')
+        : '';
+
       return {
         id:          page.id,
         titulo:      text(p['Título']?.title),
-        tipo:        p['Tipo']?.select?.name   || '',
-        fecha:       p['Fecha']?.date?.start   || '',
+        tipo:        p['Tag']?.select?.name                 || '',
+        fecha:       p['Fecha']?.date?.start                || '',
         descripcion: text(p['Descripción']?.rich_text),
-        imagen:      p['Imagen URL']?.url      || '',
-        link:        p['Link']?.url            || '',
-        destacado:   p['Destacado en home']?.checkbox || false
+        imagen,
+        link:        p['Link “Inscribirse”']?.url || '',
+        duracion:    p['Duración']?.number                  || null,
+        destacado:   p['Destacado en home']?.checkbox       || false
       };
     });
 
