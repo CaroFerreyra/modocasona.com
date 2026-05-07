@@ -277,6 +277,11 @@
       line-height: 1.4;
     }
 
+    .event-duracion-pill {
+      background: var(--bg-primary);
+      color: var(--text-muted);
+    }
+
     .events-list::-webkit-scrollbar       { width: 4px; }
     .events-list::-webkit-scrollbar-track { background: transparent; }
     .events-list::-webkit-scrollbar-thumb { background: var(--cream); border-radius: 4px; }
@@ -778,10 +783,10 @@
           + g.fechas.map(function (f) {
               return '<span class="event-fecha-pill">' + formatFechaCorta(f) + '</span>';
             }).join('')
+          + (g.duracion ? '<span class="event-fecha-pill event-duracion-pill">&#9203;&nbsp;' + g.duracion + ' hs</span>' : '')
           + '</div>';
 
         var meta = '';
-        if (g.duracion) meta = '<p class="event-card-meta">&#9203; ' + g.duracion + ' hs</p>';
 
         return '<div class="event-card">'
           + img

@@ -51,11 +51,14 @@ const req = https.request(options, (res) => {
     const events = response.results.map(page => {
       const p = page.properties;
 
-      const imgFiles = p['Imagen URL']?.files || [];
-      const imgFile  = imgFiles[0];
-      const imagen   = imgFile
-        ? (imgFile.type === 'external' ? imgFile.external.url : imgFile.file?.url || '')
-        : '';
+      const imgProp = p['Imagen URL'];
+      let imagen = '';
+      if (imgProp?.url) {
+        imagen = imgProp.url;                                  // columna tipo URL
+      } else if (imgProp?.files?.[0]) {
+        const f = imgProp.files[0];
+        imagen = f.type === 'external' ? f.external.url : (f.file?.url || '');
+      }
 
       return {
         id:          page.id,

@@ -3,3 +3,4 @@
 
 # Original .mov files are too large for GitHub (>100MB)
 *.mov
+image/locacion/*.mp4
