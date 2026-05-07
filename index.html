@@ -223,6 +223,13 @@
       flex-shrink: 0;
     }
 
+    .card-fecha {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
     .card-title {
       font-size: 27px;
       font-weight: 600;
@@ -564,35 +571,50 @@
       <div class="section-mark-line"></div>
     </div>
     <p class="section-subtitle">Próximos eventos</p>
-    <div class="cards-row">
-
-      <div class="card-evento">
-        <div class="card-tag">Exposición</div>
-        <div class="card-img-placeholder"></div>
-        <p class="card-title">Título del evento</p>
-        <p class="card-body">Descripción del evento próximamente disponible.</p>
-        <a href="agenda.html" class="btn-brand">Ver más</a>
-      </div>
-
-      <div class="card-evento">
-        <div class="card-tag">Taller</div>
-        <div class="card-img-placeholder"></div>
-        <p class="card-title">Título del evento</p>
-        <p class="card-body">Descripción del evento próximamente disponible.</p>
-        <a href="agenda.html" class="btn-brand">Ver más</a>
-      </div>
-
-      <div class="card-evento">
-        <div class="card-tag">Maridaje</div>
-        <div class="card-img-placeholder"></div>
-        <p class="card-title">Título del evento</p>
-        <p class="card-body">Descripción del evento próximamente disponible.</p>
-        <a href="agenda.html" class="btn-brand">Ver más</a>
-      </div>
-
-    </div>
+    <div class="cards-row" id="agenda-cards"></div>
     <a href="agenda.html" class="agenda-ver-mas">Ver toda la agenda →</a>
   </section>
+
+  <script>
+  (function () {
+    var MESES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+
+    function formatFecha(iso) {
+      if (!iso) return '';
+      var parts = iso.split('-');
+      var d = parseInt(parts[2], 10);
+      var m = parseInt(parts[1], 10) - 1;
+      var y = parts[0];
+      return d + ' de ' + MESES[m] + ', ' + y;
+    }
+
+    function renderCards(events) {
+      var container = document.getElementById('agenda-cards');
+      if (!container) return;
+      var destacados = events.filter(function (e) { return e.destacado; }).slice(0, 3);
+      if (!destacados.length) destacados = events.slice(0, 3);
+      container.innerHTML = destacados.map(function (e) {
+        var img = e.imagen
+          ? '<img src="' + e.imagen + '" alt="' + e.titulo + '" class="card-img">'
+          : '<div class="card-img-placeholder"></div>';
+        var href = e.link || 'agenda.html';
+        return '<div class="card-evento">'
+          + '<div class="card-tag">' + (e.tipo || '') + '</div>'
+          + img
+          + (e.fecha ? '<p class="card-fecha">' + formatFecha(e.fecha) + '</p>' : '')
+          + '<p class="card-title">' + e.titulo + '</p>'
+          + '<p class="card-body">' + e.descripcion + '</p>'
+          + '<a href="' + href + '" class="btn-brand">Ver más</a>'
+          + '</div>';
+      }).join('');
+    }
+
+    fetch('data/events.json')
+      .then(function (r) { return r.json(); })
+      .then(function (data) { renderCards(data.events || []); })
+      .catch(function () {});
+  })();
+  </script>
 
   <!-- ── HABITANTES ─────────────────────────────────────── -->
   <section class="section-habitantes" id="habitantes">

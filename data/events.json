@@ -1,0 +1,35 @@
+{
+  "updated": "2026-05-07T00:00:00.000Z",
+  "events": [
+    {
+      "id": "3592d2ee-21be-81d6-8a1d-c3906237885a",
+      "titulo": "Maridaje de vinos uruguayos",
+      "tipo": "Maridaje",
+      "fecha": "2026-05-20",
+      "descripcion": "Actividad para probar vinos de Norte, Oeste, Centro-Sur y Este, maridándolos con productos locales típicos.",
+      "imagen": "",
+      "link": "",
+      "destacado": true
+    },
+    {
+      "id": "3592d2ee-21be-81b2-b759-dbe261d9b4d2",
+      "titulo": "Taller de dibujo — Nivel inicial",
+      "tipo": "Taller",
+      "fecha": "2026-05-28",
+      "descripcion": "Aprendé técnicas de dibujo desde cero en un ambiente creativo y relajado. Materiales incluidos.",
+      "imagen": "",
+      "link": "",
+      "destacado": true
+    },
+    {
+      "id": "3592d2ee-21be-812a-a8e7-dac1082d2693",
+      "titulo": "Open House — Estudios abiertos",
+      "tipo": "Open House",
+      "fecha": "2026-06-07",
+      "descripcion": "Recorrido por los estudios de los artistas residentes. Exposición, música en vivo y sorpresas.",
+      "imagen": "",
+      "link": "",
+      "destacado": true
+    }
+  ]
+}
