@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-07T18:10:14.396Z",
+  "updated": "2026-05-07T18:18:22.933Z",
   "events": [
     {
       "id": "3592d2ee-21be-812a-a8e7-dac1082d2693",
@@ -9,7 +9,7 @@
       "descripcion": "Aprendé técnicas de dibujo desde cero en un ambiente creativo y relajado. Materiales incluidos.",
       "imagen": "image/taller.png",
       "link": "",
-      "duracion": null,
+      "horario": "17 a 19h",
       "destacado": true
     },
     {
@@ -20,7 +20,7 @@
       "descripcion": "Un taller para mirar la ciudad y su arquitectura con otros ojos. 8 encuentros los viernes.",
       "imagen": "image/workshop.png",
       "link": "",
-      "duracion": null,
+      "horario": "18:30 a 20:30h",
       "destacado": false
     },
     {
@@ -31,7 +31,7 @@
       "descripcion": "Aprendé técnicas de dibujo desde cero en un ambiente creativo y relajado. Materiales incluidos.",
       "imagen": "image/taller.png",
       "link": "",
-      "duracion": null,
+      "horario": "17 a 19h",
       "destacado": false
     },
     {
@@ -42,7 +42,7 @@
       "descripcion": "Aprendé técnicas de dibujo desde cero en un ambiente creativo y relajado. Materiales incluidos.",
       "imagen": "image/taller.png",
       "link": "",
-      "duracion": null,
+      "horario": "17 a 19h",
       "destacado": false
     },
     {
@@ -53,7 +53,7 @@
       "descripcion": "Actividad para probar vinos de Norte, Oeste, Centro-Sur y Este, maridándolos con productos locales típicos",
       "imagen": "image/maridaje.png",
       "link": "",
-      "duracion": null,
+      "horario": "20h",
       "destacado": true
     },
     {
@@ -64,7 +64,7 @@
       "descripcion": "Aprendé técnicas de dibujo desde cero en un ambiente creativo y relajado. Materiales incluidos.",
       "imagen": "image/taller.png",
       "link": "",
-      "duracion": null,
+      "horario": "17 a 19h",
       "destacado": false
     },
     {
@@ -75,7 +75,7 @@
       "descripcion": "Aprendé técnicas de dibujo desde cero en un ambiente creativo y relajado. Materiales incluidos.",
       "imagen": "image/taller.png",
       "link": "",
-      "duracion": null,
+      "horario": "17 a 19h",
       "destacado": false
     },
     {
@@ -86,7 +86,7 @@
       "descripcion": "Recorrido por los estudios de los artistas residentes. Exposición, música en vivo y sorpresas.",
       "imagen": "",
       "link": "",
-      "duracion": null,
+      "horario": "",
       "destacado": true
     }
   ]
