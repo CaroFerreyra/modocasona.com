@@ -15,7 +15,7 @@
   --orange:       #e8784a;
   --brand:        #8f3d18;
   --cream:        #eae2d3;
-  --text-muted:   #c4b39a;
+  --text-muted:   #7a6255; /* darkened for WCAG AA 5.1:1 on bg-secondary */
 }
 
 /* ── BASE ────────────────────────────────────────────── */
