@@ -406,19 +406,20 @@
 </head>
 <body class="agenda-page">
 
-  <nav class="nav">
-    <a href="index.html" class="nav-logo">
-      <img src="image/logo.svg" alt="Modo Casona" width="29" height="29">
+  <a class="skip-link" href="#main-content">Saltar al contenido</a>
+  <nav class="nav" aria-label="Navegación principal">
+    <a href="index.html" class="nav-logo" aria-label="Modo Casona — Inicio">
+      <img src="image/logo.svg" alt="" width="29" height="29" aria-hidden="true">
       <span class="nav-logo-text">MODO CASONA</span>
     </a>
     <ul class="nav-links">
-      <li><a href="agenda.html" class="active">Agenda</a></li>
+      <li><a href="agenda.html" class="active" aria-current="page">Agenda</a></li>
       <li><a href="residentes.html">Habitantes</a></li>
       <li><a href="locacion.html">Locación</a></li>
       <li><a href="historia.html">Historia</a></li>
       <li><a href="contacto.html">Contacto</a></li>
     </ul>
-    <button class="nav-hamburger" id="nav-hamburger" aria-label="Abrir menú" aria-expanded="false">
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-mobile-overlay">
       <span></span><span></span><span></span>
     </button>
   </nav>
@@ -450,7 +451,7 @@
     })();
   </script>
 
-  <main class="agenda-main">
+  <main class="agenda-main" id="main-content">
     <div class="agenda-header">
       <div class="section-mark">
         <span>AGENDA</span>
@@ -524,7 +525,7 @@
         </div>
         <p class="footer-address">Sarandi 544 esq. Ituzaingo, Ciudad Vieja, Montevideo</p>
       </div>
-      <nav class="footer-nav">
+      <nav class="footer-nav" aria-label="Navegación del pie de página">
         <a href="agenda.html">Agenda</a>
         <a href="residentes.html">Habitantes</a>
         <a href="locacion.html">Locación</a>

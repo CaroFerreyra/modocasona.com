@@ -529,12 +529,14 @@
 </head>
 <body>
 
+<a class="skip-link" href="#main-content">Saltar al contenido</a>
+
 <div class="page-wrapper">
 
   <!-- ── NAV ───────────────────────────────────────────── -->
-  <nav class="nav">
-    <a href="index.html" class="nav-logo">
-      <img src="image/logo.svg" alt="Modo Casona" width="29" height="29">
+  <nav class="nav" aria-label="Navegación principal">
+    <a href="index.html" class="nav-logo" aria-label="Modo Casona — Inicio">
+      <img src="image/logo.svg" alt="" width="29" height="29" aria-hidden="true">
       <span class="nav-logo-text">MODO CASONA</span>
     </a>
     <ul class="nav-links">
@@ -544,7 +546,7 @@
       <li><a href="historia.html">Historia</a></li>
       <li><a href="contacto.html">Contacto</a></li>
     </ul>
-    <button class="nav-hamburger" id="nav-hamburger" aria-label="Abrir menú" aria-expanded="false">
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-mobile-overlay">
       <span></span><span></span><span></span>
     </button>
   </nav>
@@ -577,22 +579,22 @@
   </script>
 
   <!-- ── HERO CAROUSEL ─────────────────────────────────── -->
-  <section class="carousel-section" id="carousel">
+  <section class="carousel-section" id="main-content" aria-label="Galería de imágenes" aria-roledescription="carrusel">
 
     <!-- Pagination bars (top-center) -->
-    <div class="carousel-pagination" id="carousel-pagination">
-      <button class="carousel-bar active" aria-label="Slide 1"></button>
-      <button class="carousel-bar" aria-label="Slide 2"></button>
-      <button class="carousel-bar" aria-label="Slide 3"></button>
-      <button class="carousel-bar" aria-label="Slide 4"></button>
+    <div class="carousel-pagination" id="carousel-pagination" role="tablist" aria-label="Diapositivas">
+      <button class="carousel-bar active" role="tab" aria-selected="true"  aria-label="Diapositiva 1"></button>
+      <button class="carousel-bar"        role="tab" aria-selected="false" aria-label="Diapositiva 2"></button>
+      <button class="carousel-bar"        role="tab" aria-selected="false" aria-label="Diapositiva 3"></button>
+      <button class="carousel-bar"        role="tab" aria-selected="false" aria-label="Diapositiva 4"></button>
     </div>
 
     <!-- Slides -->
-    <div class="carousel-track" id="carousel-track">
+    <div class="carousel-track" id="carousel-track" aria-live="polite" aria-atomic="false">
 
-      <div class="carousel-slide">
-        <div class="carousel-bg" style="background-image:url('image/Index/Hero carrusel/1.jpg')"></div>
-        <div class="carousel-overlay"></div>
+      <div class="carousel-slide" role="tabpanel" aria-label="Diapositiva 1: Modo Casona">
+        <div class="carousel-bg" style="background-image:url('image/Index/Hero carrusel/1.jpg')" aria-hidden="true"></div>
+        <div class="carousel-overlay" aria-hidden="true"></div>
         <div class="carousel-text">
           <p class="carousel-location">SARANDÍ 544 · CIUDAD VIEJA · MONTEVIDEO</p>
           <h1 class="carousel-title">MODO CASONA</h1>
@@ -600,9 +602,9 @@
         </div>
       </div>
 
-      <div class="carousel-slide">
-        <div class="carousel-bg" style="background-image:url('image/Index/Hero carrusel/2.jpg'); background-position:center top"></div>
-        <div class="carousel-overlay"></div>
+      <div class="carousel-slide" role="tabpanel" aria-label="Diapositiva 2: Maridajes" aria-hidden="true">
+        <div class="carousel-bg" style="background-image:url('image/Index/Hero carrusel/2.jpg'); background-position:center top" aria-hidden="true"></div>
+        <div class="carousel-overlay" aria-hidden="true"></div>
         <div class="carousel-text">
           <p class="carousel-location">PEATONAL TOURS</p>
           <h2 class="carousel-title">MARIDAJES</h2>
@@ -610,9 +612,9 @@
         </div>
       </div>
 
-      <div class="carousel-slide">
-        <div class="carousel-bg" style="background-image:url('image/Index/Hero carrusel/3.jpg'); background-position:center 40%"></div>
-        <div class="carousel-overlay"></div>
+      <div class="carousel-slide" role="tabpanel" aria-label="Diapositiva 3: Talleres" aria-hidden="true">
+        <div class="carousel-bg" style="background-image:url('image/Index/Hero carrusel/3.jpg'); background-position:center 40%" aria-hidden="true"></div>
+        <div class="carousel-overlay" aria-hidden="true"></div>
         <div class="carousel-text">
           <p class="carousel-location">SARANDÍ 544 · CIUDAD VIEJA · MONTEVIDEO</p>
           <h2 class="carousel-title">TALLERES</h2>
@@ -620,9 +622,9 @@
         </div>
       </div>
 
-      <div class="carousel-slide">
-        <div class="carousel-bg" style="background-image:url('image/Index/Hero carrusel/4.jpg')"></div>
-        <div class="carousel-overlay"></div>
+      <div class="carousel-slide" role="tabpanel" aria-label="Diapositiva 4: Open House" aria-hidden="true">
+        <div class="carousel-bg" style="background-image:url('image/Index/Hero carrusel/4.jpg')" aria-hidden="true"></div>
+        <div class="carousel-overlay" aria-hidden="true"></div>
         <div class="carousel-text">
           <p class="carousel-location">SARANDÍ 544 · CIUDAD VIEJA · MONTEVIDEO</p>
           <h2 class="carousel-title">OPEN HOUSE</h2>
@@ -718,7 +720,7 @@
   </section>
 
   <!-- Modal habitantes (compartido con residentes.html) -->
-  <div class="hab-overlay" id="hab-overlay" role="dialog" aria-modal="true">
+  <div class="hab-overlay" id="hab-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-nombre">
     <div class="hab-modal" id="hab-modal">
       <div class="hab-drag-handle" id="hab-drag-handle"></div>
       <button class="hab-modal-close" id="hab-modal-close" aria-label="Cerrar">&#x2715;</button>
@@ -764,7 +766,7 @@
       </div>
       <p class="footer-address">Sarandi 544 esq. Ituzaingo, Ciudad Vieja, Montevideo</p>
     </div>
-    <nav class="footer-nav">
+    <nav class="footer-nav" aria-label="Navegación del pie de página">
       <a href="agenda.html">Agenda</a>
       <a href="residentes.html">Habitantes</a>
       <a href="locacion.html">Locación</a>
@@ -783,6 +785,8 @@
     var direction = 1;   /* 1 = forward, -1 = reverse */
     var timer;
 
+    var slides = track ? track.querySelectorAll('.carousel-slide') : [];
+
     /* Clamp + update direction at boundaries so index never goes out of range */
     function goTo(index) {
       current = Math.max(0, Math.min(total - 1, index));
@@ -791,6 +795,11 @@
       track.style.transform = 'translateX(-' + (current * 100) + '%)';
       bars.forEach(function (b, i) {
         b.classList.toggle('active', i === current);
+        b.setAttribute('aria-selected', i === current ? 'true' : 'false');
+      });
+      slides.forEach(function (s, i) {
+        if (i === current) s.removeAttribute('aria-hidden');
+        else               s.setAttribute('aria-hidden', 'true');
       });
     }
 
@@ -865,8 +874,22 @@
       }).join('');
     }
 
+    var lastFocused = null;
+    var FOCUSABLE = 'a[href],button:not([disabled]),textarea,input,select,[tabindex]:not([tabindex="-1"])';
+
+    function trapFocus(e) {
+      var focusable = Array.prototype.slice.call(modal.querySelectorAll(FOCUSABLE));
+      if (!focusable.length) return;
+      var first = focusable[0], last = focusable[focusable.length - 1];
+      if (e.key === 'Tab') {
+        if (e.shiftKey) { if (document.activeElement === first) { e.preventDefault(); last.focus(); } }
+        else            { if (document.activeElement === last)  { e.preventDefault(); first.focus(); } }
+      }
+    }
+
     function openModal(i) {
       var h = HABITANTES[i];
+      lastFocused = document.activeElement;
       var photoEl = document.getElementById('modal-photo');
       photoEl.innerHTML = h.foto
         ? '<img src="' + h.foto + '" alt="' + h.nombre + '" style="width:100%;height:100%;object-fit:cover">'
@@ -880,12 +903,18 @@
       modal.scrollTop = 0;
       overlay.classList.add('is-open');
       document.body.style.overflow = 'hidden';
+      /* move focus into modal */
+      var firstFocusable = modal.querySelector(FOCUSABLE);
+      if (firstFocusable) firstFocusable.focus();
+      modal.addEventListener('keydown', trapFocus);
     }
 
     function closeModal() {
       overlay.classList.remove('is-open');
       modal.style.transform = '';
       document.body.style.overflow = '';
+      modal.removeEventListener('keydown', trapFocus);
+      if (lastFocused) lastFocused.focus();
     }
 
     if (grid) {

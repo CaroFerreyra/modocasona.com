@@ -289,19 +289,20 @@
 </head>
 <body>
 
-  <nav class="nav">
-    <a href="index.html" class="nav-logo">
-      <img src="image/logo.svg" alt="Modo Casona" width="29" height="29">
+  <a class="skip-link" href="#main-content">Saltar al contenido</a>
+  <nav class="nav" aria-label="Navegación principal">
+    <a href="index.html" class="nav-logo" aria-label="Modo Casona — Inicio">
+      <img src="image/logo.svg" alt="" width="29" height="29" aria-hidden="true">
       <span class="nav-logo-text">MODO CASONA</span>
     </a>
     <ul class="nav-links">
       <li><a href="agenda.html">Agenda</a></li>
-      <li><a href="residentes.html" class="active">Habitantes</a></li>
+      <li><a href="residentes.html" class="active" aria-current="page">Habitantes</a></li>
       <li><a href="locacion.html">Locación</a></li>
       <li><a href="historia.html">Historia</a></li>
       <li><a href="contacto.html">Contacto</a></li>
     </ul>
-    <button class="nav-hamburger" id="nav-hamburger" aria-label="Abrir menú" aria-expanded="false">
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-mobile-overlay">
       <span></span><span></span><span></span>
     </button>
   </nav>
@@ -333,7 +334,7 @@
     })();
   </script>
 
-  <main class="res-main">
+  <main class="res-main" id="main-content">
     <div class="section-mark">
       <span>HABITANTES</span>
       <div class="section-mark-line"></div>
@@ -343,7 +344,7 @@
   </main>
 
   <!-- ── MODAL ────────────────────────────────────────── -->
-  <div class="hab-overlay" id="hab-overlay" role="dialog" aria-modal="true">
+  <div class="hab-overlay" id="hab-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-nombre">
     <div class="hab-modal" id="hab-modal">
       <div class="hab-drag-handle" id="hab-drag-handle"></div>
       <button class="hab-modal-close" id="hab-modal-close" aria-label="Cerrar">&#x2715;</button>
@@ -387,7 +388,7 @@
         </div>
         <p class="footer-address">Sarandi 544 esq. Ituzaingo, Ciudad Vieja, Montevideo</p>
       </div>
-      <nav class="footer-nav">
+      <nav class="footer-nav" aria-label="Navegación del pie de página">
         <a href="agenda.html">Agenda</a>
         <a href="residentes.html">Habitantes</a>
         <a href="locacion.html">Locación</a>
@@ -402,6 +403,8 @@
   (function () {
     var HABITANTES = [];
     var PLACEHOLDER = '<svg width="80" height="80" viewBox="0 0 80 80" fill="none"><path d="M40 38a12 12 0 1 0 0-24 12 12 0 0 0 0 24zm0 6c-13 0-22 6-22 13v3h44v-3c0-7-9-13-22-13z" fill="#c4b39a"/></svg>';
+    var FOCUSABLE = 'a[href],button:not([disabled]),textarea,input,select,[tabindex]:not([tabindex="-1"])';
+    var lastFocused = null;
     var grid    = document.getElementById('hab-grid');
     var overlay = document.getElementById('hab-overlay');
     var modal   = document.getElementById('hab-modal');
@@ -420,8 +423,19 @@
       }).join('');
     }
 
+    function trapFocus(e) {
+      var focusable = Array.prototype.slice.call(modal.querySelectorAll(FOCUSABLE));
+      if (!focusable.length) return;
+      var first = focusable[0], last = focusable[focusable.length - 1];
+      if (e.key === 'Tab') {
+        if (e.shiftKey) { if (document.activeElement === first) { e.preventDefault(); last.focus(); } }
+        else            { if (document.activeElement === last)  { e.preventDefault(); first.focus(); } }
+      }
+    }
+
     function openModal(i) {
       var h = HABITANTES[i];
+      lastFocused = document.activeElement;
       var photoEl = document.getElementById('modal-photo');
       photoEl.innerHTML = h.foto
         ? '<img src="' + h.foto + '" alt="' + h.nombre + '">'
@@ -438,12 +452,17 @@
       modal.scrollTop = 0;
       overlay.classList.add('is-open');
       document.body.style.overflow = 'hidden';
+      var firstFocusable = modal.querySelector(FOCUSABLE);
+      if (firstFocusable) firstFocusable.focus();
+      modal.addEventListener('keydown', trapFocus);
     }
 
   function closeModal() {
     overlay.classList.remove('is-open');
     modal.style.transform = '';
     document.body.style.overflow = '';
+    modal.removeEventListener('keydown', trapFocus);
+    if (lastFocused) lastFocused.focus();
   }
 
   /* open on card click */

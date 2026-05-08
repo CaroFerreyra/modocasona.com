@@ -26,6 +26,30 @@ body {
   overflow-x: hidden;
 }
 
+/* ── SKIP LINK ───────────────────────────────────────── */
+.skip-link {
+  position: absolute;
+  top: -999px;
+  left: 8px;
+  z-index: 9999;
+  background: var(--brand);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 0 0 8px 8px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.skip-link:focus { top: 0; }
+
+/* ── FOCUS VISIBLE ───────────────────────────────────── */
+:focus-visible {
+  outline: 3px solid var(--brand);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
 /* ── NAV ─────────────────────────────────────────────── */
 .nav {
   background: var(--bg-secondary);

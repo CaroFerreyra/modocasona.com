@@ -240,9 +240,10 @@
 </head>
 <body>
 
-  <nav class="nav">
-    <a href="index.html" class="nav-logo">
-      <img src="image/logo.svg" alt="Modo Casona" width="29" height="29">
+  <a class="skip-link" href="#main-content">Saltar al contenido</a>
+  <nav class="nav" aria-label="Navegación principal">
+    <a href="index.html" class="nav-logo" aria-label="Modo Casona — Inicio">
+      <img src="image/logo.svg" alt="" width="29" height="29" aria-hidden="true">
       <span class="nav-logo-text">MODO CASONA</span>
     </a>
     <ul class="nav-links">
@@ -250,9 +251,9 @@
       <li><a href="residentes.html">Habitantes</a></li>
       <li><a href="locacion.html">Locación</a></li>
       <li><a href="historia.html">Historia</a></li>
-      <li><a href="contacto.html" class="active">Contacto</a></li>
+      <li><a href="contacto.html" class="active" aria-current="page">Contacto</a></li>
     </ul>
-    <button class="nav-hamburger" id="nav-hamburger" aria-label="Abrir menú" aria-expanded="false">
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-mobile-overlay">
       <span></span><span></span><span></span>
     </button>
   </nav>
@@ -284,7 +285,7 @@
     })();
   </script>
 
-  <main class="page-content">
+  <main class="page-content" id="main-content">
 
     <div class="contact-title-block">
       <div class="section-mark">
@@ -304,7 +305,7 @@
 
         <div class="form-field">
           <label class="form-label" for="nombre">Nombre</label>
-          <input class="form-input" type="text" id="nombre" name="nombre" placeholder="Tu nombre" autocomplete="name">
+          <input class="form-input" type="text" id="nombre" name="nombre" placeholder="Tu nombre" autocomplete="name" aria-describedby="helper-nombre">
           <p class="form-helper" id="helper-nombre" role="alert">
             <span class="form-helper-icon">!</span>
             Por favor ingresá tu nombre.
@@ -313,7 +314,7 @@
 
         <div class="form-field">
           <label class="form-label" for="email">Email</label>
-          <input class="form-input" type="email" id="email" name="email" placeholder="tu@email.com" autocomplete="email">
+          <input class="form-input" type="email" id="email" name="email" placeholder="tu@email.com" autocomplete="email" aria-describedby="helper-email">
           <p class="form-helper" id="helper-email" role="alert">
             <span class="form-helper-icon">!</span>
             Ingresá un email válido, por ejemplo tu@email.com
@@ -327,7 +328,7 @@
 
         <div class="form-field">
           <label class="form-label" for="mensaje">Mensaje</label>
-          <textarea class="form-textarea" id="mensaje" name="mensaje" placeholder="Escribe tu consulta"></textarea>
+          <textarea class="form-textarea" id="mensaje" name="mensaje" placeholder="Escribe tu consulta" aria-describedby="helper-mensaje"></textarea>
           <p class="form-helper" id="helper-mensaje" role="alert">
             <span class="form-helper-icon">!</span>
             Contanos en qué podemos ayudarte antes de enviar.
@@ -397,7 +398,7 @@
         </div>
         <p class="footer-address">Sarandi 544 esq. Ituzaingo, Ciudad Vieja, Montevideo</p>
       </div>
-      <nav class="footer-nav">
+      <nav class="footer-nav" aria-label="Navegación del pie de página">
         <a href="agenda.html">Agenda</a>
         <a href="residentes.html">Habitantes</a>
         <a href="locacion.html">Locación</a>

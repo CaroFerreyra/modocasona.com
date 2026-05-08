@@ -196,20 +196,21 @@
 </head>
 <body>
 
+  <a class="skip-link" href="#main-content">Saltar al contenido</a>
   <!-- ── NAV ───────────────────────────────────────────── -->
-  <nav class="nav">
-    <a href="index.html" class="nav-logo">
-      <img src="image/logo.svg" alt="Modo Casona" width="29" height="29">
+  <nav class="nav" aria-label="Navegación principal">
+    <a href="index.html" class="nav-logo" aria-label="Modo Casona — Inicio">
+      <img src="image/logo.svg" alt="" width="29" height="29" aria-hidden="true">
       <span class="nav-logo-text">MODO CASONA</span>
     </a>
     <ul class="nav-links">
       <li><a href="agenda.html">Agenda</a></li>
       <li><a href="residentes.html">Habitantes</a></li>
-      <li><a href="locacion.html" class="active">Locación</a></li>
+      <li><a href="locacion.html" class="active" aria-current="page">Locación</a></li>
       <li><a href="historia.html">Historia</a></li>
       <li><a href="contacto.html">Contacto</a></li>
     </ul>
-    <button class="nav-hamburger" id="nav-hamburger" aria-label="Abrir menú" aria-expanded="false">
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-mobile-overlay">
       <span></span><span></span><span></span>
     </button>
   </nav>
@@ -242,7 +243,7 @@
   </script>
 
   <!-- ── MAIN CONTENT ──────────────────────────────────── -->
-  <main class="page-content">
+  <main class="page-content" id="main-content">
 
     <!-- Título de sección -->
     <div class="loc-title-block">
@@ -371,7 +372,7 @@
         </div>
         <p class="footer-address">Sarandi 544 esq. Ituzaingo, Ciudad Vieja, Montevideo</p>
       </div>
-      <nav class="footer-nav">
+      <nav class="footer-nav" aria-label="Navegación del pie de página">
         <a href="agenda.html">Agenda</a>
         <a href="residentes.html">Habitantes</a>
         <a href="locacion.html">Locación</a>
