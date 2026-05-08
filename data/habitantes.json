@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-08T15:13:14.408Z",
+  "updated": "2026-05-08T15:58:27.072Z",
   "habitantes": [
     {
       "id": "3592d2ee-21be-8099-a65b-d21fb660ec12",
@@ -47,13 +47,22 @@
       "orden": 5
     },
     {
+      "id": "35a2d2ee-21be-80f3-8074-d94f22e82622",
+      "nombre": "Mariano",
+      "rol": "Saxofonista",
+      "bio": "",
+      "instagram": "",
+      "foto": "",
+      "orden": 6
+    },
+    {
       "id": "3592d2ee-21be-808e-bdbc-f8b850d97083",
       "nombre": "Carolina Ferreyra",
       "rol": "Fundadora ",
       "bio": "",
       "instagram": "",
       "foto": "",
-      "orden": 6
+      "orden": 7
     }
   ]
 }
