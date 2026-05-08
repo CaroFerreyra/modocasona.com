@@ -18,10 +18,7 @@
       height: 620px;
       overflow: hidden;
       background: #241934;
-      opacity: 0;
-      transition: opacity 0.4s ease;
     }
-    .carousel-section.is-loaded { opacity: 1; }
 
     .carousel-track {
       display: flex;
@@ -468,13 +465,42 @@
 
     /* ── MOBILE ≤768px ───────────────────────────────── */
     @media (max-width: 768px) {
-      /* Carousel */
-      .carousel-section  { height: 80svh; }
-      .carousel-text     { left: 20px; top: 72px; width: calc(100% - 40px); gap: 10px; }
-      .carousel-title    { font-size: clamp(30px, 8vw, 48px); letter-spacing: 2px; }
-      .carousel-desc     { font-size: clamp(14px, 4vw, 18px); }
-      .carousel-location { font-size: 12px; }
-      .carousel-pagination { width: 55vw; top: 20px; gap: 10px; height: 6px; }
+      /* Carousel — hero mobile rediseñado */
+      .carousel-section  { height: 58svh; min-height: 360px; }
+
+      /* Gradiente de abajo hacia arriba en mobile */
+      .carousel-overlay  {
+        background: linear-gradient(
+          to top,
+          rgba(36,25,52,.92) 0%,
+          rgba(36,25,52,.55) 40%,
+          rgba(36,25,52,0)   75%
+        );
+      }
+
+      /* Texto al fondo del hero */
+      .carousel-text {
+        left: 24px;
+        right: 24px;
+        bottom: 40px;
+        top: auto;
+        width: auto;
+        gap: 6px;
+      }
+
+      .carousel-title    { font-size: clamp(26px, 7.5vw, 40px); letter-spacing: 2.5px; }
+      .carousel-location { font-size: 11px; letter-spacing: 1px; opacity: .85; }
+      .carousel-desc     { display: none; }
+
+      /* Barras de paginación arriba, full width */
+      .carousel-pagination {
+        width: calc(100% - 48px);
+        left: 24px;
+        transform: none;
+        top: 20px;
+        gap: 8px;
+        height: 3px;
+      }
 
       /* Historia */
       .section-historia  { padding: 36px 20px; }
@@ -815,20 +841,6 @@
 </script>
 
   <script src="main.js"></script>
-  <script>
-  /* Hero fade-in: muestra el carousel recién cuando la primera imagen está lista */
-  (function () {
-    var section = document.querySelector('.carousel-section');
-    if (!section) return;
-    var img = new Image();
-    var done = false;
-    function reveal() { if (done) return; done = true; section.classList.add('is-loaded'); }
-    img.onload  = reveal;
-    img.onerror = reveal;
-    img.src = 'image/Index/Hero carrusel/1.jpg';
-    setTimeout(reveal, 1000); /* fallback: muestra igual después de 1s */
-  })();
-  </script>
   <script>
   (function () {
     var HABITANTES = [];
