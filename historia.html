@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Historia — Modo Casona</title>
+  <link rel="icon" type="image/png" href="image/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="design.css">
+  <style>
+
+    /* ── PAGE ────────────────────────────────────────── */
+    .historia-main {
+      padding: 48px 80px 80px;
+      background: var(--bg-primary);
+      display: flex;
+      flex-direction: column;
+      gap: 80px;
+    }
+
+    .historia-title {
+      font-size: clamp(36px, 3.8vw, 52px);
+      font-weight: 700;
+      color: var(--violeta-dark);
+      letter-spacing: -1.5px;
+      line-height: 1.2;
+      margin-top: 20px;
+    }
+
+    /* ── SECTIONS ────────────────────────────────────── */
+    .historia-section {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .historia-text {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      flex: 0 0 43%;
+    }
+
+    .historia-heading {
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--carbon);
+      letter-spacing: -.48px;
+      line-height: 1.2;
+    }
+
+    .historia-body {
+      font-size: 16px;
+      color: var(--carbon);
+      line-height: 1.5;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    /* ── SECTION 1: two portrait images ─────────────── */
+    .historia-imgs-pair {
+      flex: 1;
+      display: flex;
+      gap: 12px;
+      height: 380px;
+      align-items: stretch;
+      min-width: 0;
+    }
+
+    .historia-imgs-pair .img-a { flex: 0 0 60%; overflow: hidden; border-radius: 2px; }
+    .historia-imgs-pair .img-b { flex: 1; overflow: hidden; border-radius: 2px; }
+    .historia-imgs-pair img    { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* ── SECTION 2: large tall image ────────────────── */
+    .historia-img-large {
+      flex: 0 0 54%;
+      overflow: hidden;
+      border-radius: 2px;
+      align-self: stretch;
+      min-height: 480px;
+    }
+
+    .historia-img-large img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* ── SECTION 3: single image ─────────────────────── */
+    .historia-img-single {
+      flex: 1;
+      overflow: hidden;
+      border-radius: 2px;
+      min-width: 0;
+      height: 380px;
+    }
+
+    .historia-img-single img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* ── TABLET ≤1100px ──────────────────────────────── */
+    @media (max-width: 1100px) {
+      .historia-main { padding: 40px; gap: 56px; }
+      .historia-text { flex: 0 0 45%; }
+    }
+
+    /* ── MOBILE ≤768px ───────────────────────────────── */
+    @media (max-width: 768px) {
+      .historia-main { padding: 28px 20px 60px; gap: 48px; }
+
+      .historia-section { flex-direction: column; gap: 20px; }
+
+      .historia-section.reverse-mobile { flex-direction: column-reverse; }
+
+      .historia-text       { flex: none; width: 100%; }
+      .historia-imgs-pair  { height: 240px; width: 100%; }
+      .historia-img-large  { width: 100%; height: 280px; align-self: auto; min-height: 0; }
+      .historia-img-single { height: 240px; width: 100%; }
+
+      .historia-heading { font-size: 20px; }
+      .historia-body    { font-size: 15px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">
+      <img src="image/logo.svg" alt="Modo Casona" width="29" height="29">
+      <span class="nav-logo-text">MODO CASONA</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="agenda.html">Agenda</a></li>
+      <li><a href="residentes.html">Habitantes</a></li>
+      <li><a href="locacion.html">Locación</a></li>
+      <li><a href="historia.html" class="active">Historia</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="nav-mobile-overlay" id="nav-mobile-overlay" role="dialog" aria-label="Menú" style="display:none;position:fixed;inset:0;background:#f7f3ed;z-index:300;flex-direction:column;align-items:center;justify-content:center;gap:8px;">
+    <a href="index.html"      style="font-size:28px;font-weight:600;color:#1c1a18;text-decoration:none;padding:12px 24px;">Inicio</a>
+    <a href="agenda.html"     style="font-size:28px;font-weight:600;color:#1c1a18;text-decoration:none;padding:12px 24px;">Agenda</a>
+    <a href="residentes.html" style="font-size:28px;font-weight:600;color:#1c1a18;text-decoration:none;padding:12px 24px;">Habitantes</a>
+    <a href="locacion.html"   style="font-size:28px;font-weight:600;color:#1c1a18;text-decoration:none;padding:12px 24px;">Locación</a>
+    <a href="historia.html"   style="font-size:28px;font-weight:600;color:#8f3d18;text-decoration:none;padding:12px 24px;">Historia</a>
+    <a href="contacto.html"   style="font-size:28px;font-weight:600;color:#1c1a18;text-decoration:none;padding:12px 24px;">Contacto</a>
+  </div>
+  <script>
+    (function(){
+      var btn=document.getElementById('nav-hamburger');
+      var ov=document.getElementById('nav-mobile-overlay');
+      if(!btn||!ov)return;
+      btn.onclick=function(){
+        var open=btn.classList.toggle('is-open');
+        ov.style.display=open?'flex':'none';
+        document.body.style.overflow=open?'hidden':'';
+      };
+      ov.querySelectorAll('a').forEach(function(a){
+        a.onclick=function(){
+          btn.classList.remove('is-open');
+          ov.style.display='none';
+          document.body.style.overflow='';
+        };
+      });
+    })();
+  </script>
+
+  <main class="historia-main">
+
+    <!-- ── HEADER ──────────────────────────────────── -->
+    <div>
+      <div class="section-mark">
+        <span>HISTORIA</span>
+        <div class="section-mark-line"></div>
+      </div>
+      <h1 class="historia-title">Nuestro patrimonio</h1>
+    </div>
+
+    <!-- ── 1: Un edificio con memoria ──────────────── -->
+    <div class="historia-section">
+      <div class="historia-text">
+        <h2 class="historia-heading">Un edificio con memoria</h2>
+        <div class="historia-body">
+          <p>En 1896, la familia Castro Aresti, de raíces españolas y con fuertes vínculos en el comercio portuario, erigió una imponente casona de dos pisos sobre la calle Sarandí, justo al lado del entonces renombrado Hotel de las Pyramides. Esta residencia, que albergaba ocho habitaciones, contaba con puertas altas y vitrales grabados que reflejaban el orgullo y la posición de la familia, convirtiéndose en un símbolo destacado dentro del vibrante entramado de la Ciudad Vieja.</p>
+          <p>Con el paso del tiempo, el deterioro de la zona fue transformando el destino de la casona. La familia decidió mudarse, y la propiedad fue convertida en un anexo del hotel, luego utilizada como depósito, hasta que finalmente fue ocupada. Los vitrales, la fachada y la rica historia del edificio quedaron sumidos en un silencio que contrasta con su glorioso pasado.</p>
+        </div>
+      </div>
+      <div class="historia-imgs-pair">
+        <div class="img-a">
+          <img src="image/historia/1.jpg" alt="Fachada histórica de la casona" loading="lazy" decoding="async">
+        </div>
+        <div class="img-b">
+          <img src="image/historia/2.jpg" alt="Detalle de la casona" loading="lazy" decoding="async">
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 2: El regreso ────────────────────────────── -->
+    <div class="historia-section reverse-mobile">
+      <div class="historia-img-large">
+        <img src="image/historia/3.jpg" alt="Proceso de restauración" loading="lazy" decoding="async">
+      </div>
+      <div class="historia-text">
+        <h2 class="historia-heading">El regreso</h2>
+        <div class="historia-body">
+          <p>El abuelo de Carolina Ferreyra la adquirió con el sueño de restaurarla. Ese sueño pasó de generación en generación hasta que Carolina, artista visual, decidió hacerlo realidad. Primero montó su atelier en la escalera de entrada, el único rincón habitable, y empezó a vender sus pinturas. Los turistas que pasaban preguntaban qué había más arriba. La respuesta siempre era la misma: una historia que valía la pena recuperar.</p>
+          <p>La restauración fue un proceso largo, artesanal y profundamente colectivo. Amigos, familia y desconocidos que llegaban con un pincel prestado pusieron manos y corazón en cada pared. Carolina documentó cada avance y cada tropiezo en redes sociales, construyendo una comunidad alrededor del proyecto antes de que el espacio abriera sus puertas.</p>
+          <p>El edificio, catalogado con grado 3 de protección patrimonial, exigía intervenciones bajo estándares estrictos: la fachada, el techo, las condiciones lumínicas y el carácter de cada cuarto debían preservarse. Esa restricción se convirtió en una guía: no transformar, sino revelar.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 3: Hoy ────────────────────────────────────── -->
+    <div class="historia-section">
+      <div class="historia-text">
+        <h2 class="historia-heading">Hoy</h2>
+        <div class="historia-body">
+          <p>La restauración terminó. Las paredes que alguna vez guardaron el bullicio de una familia portuaria ahora alojan exposiciones, talleres, músicos, tatuadores, artistas residentes y eventos de todo tipo.</p>
+          <p>Federico Vaucheret se sumó al equipo de gestión para acompañar esa programación y hacer del espacio un lugar vivo, en constante movimiento.</p>
+          <p>Modo Casona es hoy un centro cultural en el corazón de Ciudad Vieja: un lugar donde el patrimonio no se contempla desde afuera, sino que se habita.</p>
+        </div>
+      </div>
+      <div class="historia-img-single">
+        <img src="image/historia/4.jpg" alt="Modo Casona hoy" loading="lazy" decoding="async">
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="image/logo.svg" alt="Modo Casona" width="25" height="25" style="filter:brightness(0) invert(1)">
+          <span class="footer-logo-text">MODO CASONA</span>
+        </div>
+        <div class="footer-instagram">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+          </svg>
+          <a href="https://www.instagram.com/modo.casona" target="_blank" rel="noopener">@modo.casona</a>
+        </div>
+        <p class="footer-address">Sarandi 544 esq. Ituzaingo, Ciudad Vieja, Montevideo</p>
+      </div>
+      <nav class="footer-nav">
+        <a href="agenda.html">Agenda</a>
+        <a href="residentes.html">Habitantes</a>
+        <a href="locacion.html">Locación</a>
+        <a href="historia.html">Historia</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+
+</body>
+</html>
