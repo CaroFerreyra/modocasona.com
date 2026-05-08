@@ -256,13 +256,15 @@
     <!-- Dos videos verticales -->
     <div class="loc-videos">
       <div class="loc-video-item">
-        <video autoplay muted loop playsinline>
-          <source src="image/locacion/video1.mp4" type="video/mp4">
+        <video autoplay muted loop playsinline preload="none"
+               poster="image/locacion/video1-poster.jpg"
+               data-src="image/locacion/video1.mp4">
         </video>
       </div>
       <div class="loc-video-item">
-        <video autoplay muted loop playsinline>
-          <source src="image/locacion/video2.mp4" type="video/mp4">
+        <video autoplay muted loop playsinline preload="none"
+               poster="image/locacion/video2-poster.jpg"
+               data-src="image/locacion/video2.mp4">
         </video>
       </div>
     </div>
@@ -380,5 +382,19 @@
   </footer>
 
   <script src="main.js"></script>
+  <script>
+  /* Carga los videos después de que el resto de la página está lista */
+  window.addEventListener('load', function () {
+    document.querySelectorAll('video[data-src]').forEach(function (v) {
+      var src = v.dataset.src;
+      var source = document.createElement('source');
+      source.src  = src;
+      source.type = 'video/mp4';
+      v.appendChild(source);
+      v.load();
+      v.play().catch(function () {});
+    });
+  });
+  </script>
 </body>
 </html>
