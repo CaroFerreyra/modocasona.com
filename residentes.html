@@ -35,6 +35,11 @@
       gap: 56px 40px;
     }
 
+    /* Center lone card in last row (3-col grid) */
+    .hab-card:last-child:nth-child(3n+1) {
+      grid-column: 2;
+    }
+
     .hab-card {
       display: flex;
       flex-direction: column;
@@ -248,6 +253,13 @@
       .res-title { margin-bottom: 32px; }
       .hab-grid  { grid-template-columns: repeat(2, 1fr); gap: 32px 16px; }
       .hab-photo { width: 100%; height: auto; aspect-ratio: 1; }
+
+      /* Center lone card in last row (2-col mobile grid) */
+      .hab-card:last-child:nth-child(2n+1) {
+        grid-column: 1 / -1;
+        justify-self: center;
+        width: calc(50% - 8px);
+      }
       .hab-bio-short { font-size: 13px; }
 
       /* Overlay full-height on mobile */
