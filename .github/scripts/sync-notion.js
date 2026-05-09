@@ -38,9 +38,10 @@ const options = {
 };
 
 const req = https.request(options, (res) => {
-  let raw = '';
-  res.on('data', chunk => raw += chunk);
+  const chunks = [];
+  res.on('data', chunk => chunks.push(chunk));
   res.on('end', () => {
+    const raw = Buffer.concat(chunks).toString('utf8');
     if (res.statusCode !== 200) {
       console.error('Notion API error:', res.statusCode, raw);
       process.exit(1);
