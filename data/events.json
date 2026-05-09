@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-09T19:52:18.896Z",
+  "updated": "2026-05-09T20:06:00.819Z",
   "events": [
     {
       "id": "3592d2ee-21be-812a-a8e7-dac1082d2693",
@@ -15,9 +15,9 @@
     {
       "id": "35b2d2ee-21be-8056-952f-f36d4e055a04",
       "titulo": "Clases de Saxofón",
-      "tipo": "",
+      "tipo": "Clases",
       "fecha": "2026-05-11",
-      "descripcion": "Clases individuales para todas las edades. Técnica, lectura, improvisación y repertorio. Prof. Mariano Ferreira. ",
+      "descripcion": "Clases individuales para todas las edades. T��cnica, lectura, improvisación y repertorio. Prof. Mariano Ferreira. ",
       "imagen": "image/img-saxofon.png",
       "link": "https://www.instagram.com/mferreira.uy",
       "horario": "",
@@ -26,7 +26,7 @@
     {
       "id": "35b2d2ee-21be-80bd-8d8f-fcdf2c3078f8",
       "titulo": "Clases de Saxofón",
-      "tipo": "",
+      "tipo": "Clases",
       "fecha": "2026-05-13",
       "descripcion": "Clases individuales para todas las edades. Técnica, lectura, improvisación y repertorio. Prof. Mariano Ferreira. ",
       "imagen": "image/img-saxofon.png",
@@ -59,7 +59,7 @@
     {
       "id": "35b2d2ee-21be-8018-802f-ddbbb6c25842",
       "titulo": "Clases de Saxofón",
-      "tipo": "",
+      "tipo": "Clases",
       "fecha": "2026-05-18",
       "descripcion": "Clases individuales para todas las edades. Técnica, lectura, improvisación y repertorio. Prof. Mariano Ferreira. ",
       "imagen": "image/img-saxofon.png",
@@ -70,7 +70,7 @@
     {
       "id": "35b2d2ee-21be-80f0-b9a6-cff7b323af60",
       "titulo": "Clases de Saxofón",
-      "tipo": "",
+      "tipo": "Clases",
       "fecha": "2026-05-20",
       "descripcion": "Clases individuales para todas las edades. Técnica, lectura, improvisación y repertorio. Prof. Mariano Ferreira. ",
       "imagen": "image/img-saxofon.png",
@@ -92,7 +92,7 @@
     {
       "id": "35b2d2ee-21be-8099-9336-f6672ee21753",
       "titulo": "Clases de Saxofón",
-      "tipo": "",
+      "tipo": "Clases",
       "fecha": "2026-05-25",
       "descripcion": "Clases individuales para todas las edades. Técnica, lectura, improvisación y repertorio. Prof. Mariano Ferreira. ",
       "imagen": "image/img-saxofon.png",
@@ -103,7 +103,7 @@
     {
       "id": "35b2d2ee-21be-808d-a612-d29992d016f2",
       "titulo": "Clases de Saxofón",
-      "tipo": "",
+      "tipo": "Clases",
       "fecha": "2026-05-27",
       "descripcion": "Clases individuales para todas las edades. Técnica, lectura, improvisación y repertorio. Prof. Mariano Ferreira. ",
       "imagen": "image/img-saxofon.png",
@@ -136,7 +136,7 @@
     {
       "id": "35b2d2ee-21be-800a-b146-fceb2caebed7",
       "titulo": "Clases de Saxofón",
-      "tipo": "",
+      "tipo": "Clases",
       "fecha": "2026-06-01",
       "descripcion": "Clases individuales para todas las edades. Técnica, lectura, improvisación y repertorio. Prof. Mariano Ferreira. ",
       "imagen": "image/img-saxofon.png",
