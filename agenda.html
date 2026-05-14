@@ -710,9 +710,9 @@
       var totalSlots  = (startDow + daysInMonth > 35) ? 42 : 35;
       var todayStr    = todayISO();
 
-      var html = '<div role="row">' + DIAS.map(function (d) {
+      var html = DIAS.map(function (d) {
         return '<div class="cal-day-header" role="columnheader" aria-label="' + d + '">' + d + '</div>';
-      }).join('') + '</div>';
+      }).join('');
 
       for (var i = 0; i < startDow; i++) {
         html += '<div class="cal-day other-month" role="gridcell" aria-hidden="true">' + (prevLast - startDow + 1 + i) + '</div>';
