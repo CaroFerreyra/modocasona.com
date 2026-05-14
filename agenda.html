@@ -233,13 +233,12 @@
     }
 
     .cal-day:not(.other-month):not(.past):hover { background: var(--cream); }
-    .cal-day.other-month { color: var(--text-muted); cursor: default; }
+    .cal-day.other-month,
+    .cal-day.past        { color: var(--text-muted); opacity: .4; cursor: default; pointer-events: none; }
     .cal-day.has-event   { background: rgba(232, 120, 74, .22); font-weight: 600; }
     .cal-day.has-event:not(.past):hover { background: rgba(232, 120, 74, .38); }
     .cal-day.selected    { background: var(--carbon-2) !important; color: #fff !important; }
     .cal-day.today:not(.selected) { font-weight: 700; color: var(--orange); }
-    .cal-day.past        { color: var(--text-muted); opacity: .45; cursor: default; }
-    .cal-day.past.has-event { background: rgba(232, 120, 74, .08); }
     .cal-day:focus-visible {
       outline: 2px solid var(--brand);
       outline-offset: -2px;
