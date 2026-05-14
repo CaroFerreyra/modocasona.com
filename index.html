@@ -824,7 +824,12 @@
     fetch('data/hero.json?v=' + Date.now())
       .then(function (r) { return r.json(); })
       .then(function (data) {
-        var slides = (data.slides || []).filter(function (s) { return s.url; });
+        var slides = (data.slides || [])
+          .map(function (s) {
+            /* normalise: support both 'url' and legacy 'imagen' field */
+            return Object.assign({}, s, { url: s.url || s.imagen || '' });
+          })
+          .filter(function (s) { return s.url; });
         if (slides.length) renderSlides(slides);
       })
       .catch(function () {});
