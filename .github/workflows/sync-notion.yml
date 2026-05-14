@@ -27,11 +27,17 @@ jobs:
           NOTION_HABITANTES_DB_ID:   ${{ secrets.NOTION_HABITANTES_DB_ID }}
         run: node .github/scripts/sync-habitantes.js
 
+      - name: Fetch hero slides from Notion
+        env:
+          NOTION_TOKEN:         ${{ secrets.NOTION_TOKEN }}
+          NOTION_HERO_DB_ID:    ${{ secrets.NOTION_HERO_DB_ID }}
+        run: node .github/scripts/sync-hero.js
+
       - name: Commit updated data files (if changed)
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/events.json data/habitantes.json
+          git add data/events.json data/habitantes.json data/hero.json
           git diff --staged --quiet \
             && echo "No changes." \
             || (git commit -m "chore: sync data from Notion [skip ci]" && git push)

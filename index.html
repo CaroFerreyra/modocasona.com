@@ -580,59 +580,8 @@
 
   <!-- ── HERO CAROUSEL ─────────────────────────────────── -->
   <section class="carousel-section" id="main-content" aria-label="Galería de imágenes" aria-roledescription="carrusel">
-
-    <!-- Pagination bars (top-center) -->
-    <div class="carousel-pagination" id="carousel-pagination" role="tablist" aria-label="Diapositivas">
-      <button class="carousel-bar active" role="tab" aria-selected="true"  aria-label="Diapositiva 1"></button>
-      <button class="carousel-bar"        role="tab" aria-selected="false" aria-label="Diapositiva 2"></button>
-      <button class="carousel-bar"        role="tab" aria-selected="false" aria-label="Diapositiva 3"></button>
-      <button class="carousel-bar"        role="tab" aria-selected="false" aria-label="Diapositiva 4"></button>
-    </div>
-
-    <!-- Slides -->
-    <div class="carousel-track" id="carousel-track" aria-live="polite" aria-atomic="false">
-
-      <div class="carousel-slide" role="tabpanel" aria-label="Diapositiva 1: Modo Casona">
-        <div class="carousel-bg" style="background-image:url('image/Index/Hero carrusel/1.jpg')" aria-hidden="true"></div>
-        <div class="carousel-overlay" aria-hidden="true"></div>
-        <div class="carousel-text">
-          <p class="carousel-location">SARANDÍ 544 · CIUDAD VIEJA · MONTEVIDEO</p>
-          <h1 class="carousel-title">MODO CASONA</h1>
-          <p class="carousel-desc">Disfruta de talleres, maridajes, arte y encuentros en un espacio histórico que vibra con una energía contemporánea única, creando experiencias inolvidables para todos los sentidos.</p>
-        </div>
-      </div>
-
-      <div class="carousel-slide" role="tabpanel" aria-label="Diapositiva 2: Maridajes" aria-hidden="true">
-        <div class="carousel-bg" style="background-image:url('image/Index/Hero carrusel/2.jpg'); background-position:center top" aria-hidden="true"></div>
-        <div class="carousel-overlay" aria-hidden="true"></div>
-        <div class="carousel-text">
-          <p class="carousel-location">PEATONAL TOURS</p>
-          <h2 class="carousel-title">MARIDAJES</h2>
-          <p class="carousel-desc">Actividad para probar vinos de Norte, Oeste, Centro-Sur y Este, conociendo sus características y maridándolos con productos locales típicos.</p>
-        </div>
-      </div>
-
-      <div class="carousel-slide" role="tabpanel" aria-label="Diapositiva 3: Talleres" aria-hidden="true">
-        <div class="carousel-bg" style="background-image:url('image/Index/Hero carrusel/3.jpg'); background-position:center 40%" aria-hidden="true"></div>
-        <div class="carousel-overlay" aria-hidden="true"></div>
-        <div class="carousel-text">
-          <p class="carousel-location">SARANDÍ 544 · CIUDAD VIEJA · MONTEVIDEO</p>
-          <h2 class="carousel-title">TALLERES</h2>
-          <p class="carousel-desc">Ofrecemos talleres de dibujo, saxofón, entre otros. Siempre estamos abiertos a nuevas propuestas. Nuestros talleres son divertidos, atractivos y educativos.</p>
-        </div>
-      </div>
-
-      <div class="carousel-slide" role="tabpanel" aria-label="Diapositiva 4: Open House" aria-hidden="true">
-        <div class="carousel-bg" style="background-image:url('image/Index/Hero carrusel/4.jpg')" aria-hidden="true"></div>
-        <div class="carousel-overlay" aria-hidden="true"></div>
-        <div class="carousel-text">
-          <p class="carousel-location">SARANDÍ 544 · CIUDAD VIEJA · MONTEVIDEO</p>
-          <h2 class="carousel-title">OPEN HOUSE</h2>
-          <p class="carousel-desc">Organizamos eventos en días especiales para mostrar los estudios de los habitantes y exposiciones en el espacio. Ven a explorar, conocer artistas y descubrir la creatividad.</p>
-        </div>
-      </div>
-
-    </div>
+    <div class="carousel-pagination" id="carousel-pagination" role="tablist" aria-label="Diapositivas"></div>
+    <div class="carousel-track" id="carousel-track" aria-live="polite" aria-atomic="false"></div>
   </section>
 
   <!-- ── VIDEO FLOTANTE ─────────────────────────────────── -->
@@ -780,20 +729,18 @@
 
 <script>
   (function () {
-    var track    = document.getElementById('carousel-track');
-    var bars     = document.querySelectorAll('.carousel-bar');
-    var total    = bars.length;
-    var current  = 0;
-    var direction = 1;   /* 1 = forward, -1 = reverse */
+    var track     = document.getElementById('carousel-track');
+    var pagination = document.getElementById('carousel-pagination');
+    var current   = 0;
+    var direction = 1;
     var timer;
+    var bars   = [];
+    var slides = [];
 
-    var slides = track ? track.querySelectorAll('.carousel-slide') : [];
-
-    /* Clamp + update direction at boundaries so index never goes out of range */
     function goTo(index) {
-      current = Math.max(0, Math.min(total - 1, index));
-      if (current === 0)         direction = 1;
-      if (current === total - 1) direction = -1;
+      current = Math.max(0, Math.min(bars.length - 1, index));
+      if (current === 0)            direction = 1;
+      if (current === bars.length - 1) direction = -1;
       track.style.transform = 'translateX(-' + (current * 100) + '%)';
       bars.forEach(function (b, i) {
         b.classList.toggle('active', i === current);
@@ -805,39 +752,68 @@
       });
     }
 
-    function next() { goTo(current + direction); }
-
     function resetTimer() {
       clearInterval(timer);
-      timer = setInterval(next, 5000);
+      timer = setInterval(function () { goTo(current + direction); }, 5000);
     }
 
-    bars.forEach(function (bar, i) {
-      bar.addEventListener('click', function () {
-        goTo(i);
-        resetTimer();
+    function initCarousel() {
+      bars   = Array.from(pagination.querySelectorAll('.carousel-bar'));
+      slides = Array.from(track.querySelectorAll('.carousel-slide'));
+      if (!bars.length) return;
+      bars.forEach(function (bar, i) {
+        bar.addEventListener('click', function () { goTo(i); resetTimer(); });
       });
-    });
+      goTo(0);
+      resetTimer();
+    }
 
-    resetTimer();
+    function renderSlides(slideData) {
+      pagination.innerHTML = slideData.map(function (s, i) {
+        return '<button class="carousel-bar" role="tab" aria-selected="false"'
+          + ' aria-label="Diapositiva ' + (i + 1) + ': ' + s.titulo + '"></button>';
+      }).join('');
+
+      track.innerHTML = slideData.map(function (s, i) {
+        var tag = i === 0 ? 'h1' : 'h2';
+        return '<div class="carousel-slide" role="tabpanel"'
+          + ' aria-label="Diapositiva ' + (i + 1) + ': ' + s.titulo + '"'
+          + (i > 0 ? ' aria-hidden="true"' : '') + '>'
+          + '<div class="carousel-bg" style="background-image:url(\'' + s.imagen + '\')" aria-hidden="true"></div>'
+          + '<div class="carousel-overlay" aria-hidden="true"></div>'
+          + '<div class="carousel-text">'
+          + (s.location    ? '<p class="carousel-location">' + s.location + '</p>' : '')
+          + '<' + tag + ' class="carousel-title">' + s.titulo + '</' + tag + '>'
+          + (s.descripcion ? '<p class="carousel-desc">' + s.descripcion + '</p>' : '')
+          + '</div></div>';
+      }).join('');
+
+      initCarousel();
+    }
+
+    /* ── Load hero data ── */
+    fetch('data/hero.json?v=' + Date.now())
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        var active = (data.slides || []).filter(function (s) { return s.titulo; });
+        if (active.length) renderSlides(active);
+      })
+      .catch(function () {});
 
     /* ── VIDEO: center vertically with the historia section ── */
     function alignVideo() {
       var section = document.getElementById('historia');
       var video   = document.querySelector('.video-float');
       if (!section || !video) return;
-
       var scrollY = window.pageYOffset || 0;
       var r       = section.getBoundingClientRect();
-      var secTop  = r.top  + scrollY;
+      var secTop  = r.top + scrollY;
       var secH    = r.height;
       var vidH    = video.offsetHeight;
-
       var styles  = window.getComputedStyle(section);
       var pt      = parseFloat(styles.paddingTop)    || 0;
       var pb      = parseFloat(styles.paddingBottom) || 0;
       var contentCenter = secTop + pt + (secH - pt - pb) / 2;
-
       video.style.top = Math.round(contentCenter - vidH / 2) + 'px';
     }
 
@@ -847,7 +823,6 @@
       alignVideo();
     }
     window.addEventListener('resize', alignVideo);
-
   })();
 </script>
 
