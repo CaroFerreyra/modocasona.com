@@ -14,7 +14,7 @@
       "titulo": "",
       "location": "",
       "descripcion": "",
-      "imagen": "image/OPEN sTUDIOS TATTOO GRABADO música _ poesía exposiciones de obras de artistas residentes.mp4",
+      "url": "image/OPEN sTUDIOS TATTOO GRABADO música _ poesía exposiciones de obras de artistas residentes.mp4",
       "orden": 1
     },
     {
@@ -30,7 +30,7 @@
       "titulo": "MODO CASONA",
       "location": "SARANDÍ 544 · CIUDAD VIEJA · MONTEVIDEO",
       "descripcion": "Disfruta de talleres, maridajes, arte y encuentros en un espacio histórico que vibra con una energía contemporánea única, creando experiencias inolvidables para todos los sentidos.",
-      "imagen": "image/1.png",
+      "url": "image/1.png",
       "orden": 2
     },
     {
@@ -46,7 +46,7 @@
       "titulo": "TALLERES",
       "location": "SARANDÍ 544 · CIUDAD VIEJA · MONTEVIDEO",
       "descripcion": "Ofrecemos talleres de dibujo, saxofón, entre otros. Siempre estamos abiertos a nuevas propuestas. Nuestros talleres son divertidos, atractivos y educativos.",
-      "imagen": "image/2.png",
+      "url": "image/2.png",
       "orden": 3
     },
     {
@@ -62,7 +62,7 @@
       "titulo": "mARIDAJES",
       "location": "PEATONAL TOURS",
       "descripcion": "Actividad para probar vinos de Norte, Oeste, Centro-Sur y Este, conociendo sus características y maridándolos con productos locales típicos.",
-      "imagen": "image/4.png",
+      "url": "image/4.png",
       "orden": 4
     }
   ]

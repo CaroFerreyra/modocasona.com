@@ -53,10 +53,10 @@ const req = https.request(options, (res) => {
         titulo:      text(p['Título']?.title),
         location:    text(p['Location']?.rich_text),
         descripcion: text(p['Descripción']?.rich_text),
-        imagen:      p['Imagen URL']?.url || '',
+        url:         p['Imagen URL']?.url || '',
         orden:       p['Orden']?.number   ?? 99
       };
-    });
+    }).filter(s => s.url);
 
     const out = { updated: new Date().toISOString(), slides };
     const dest = path.join(__dirname, '..', '..', 'data', 'hero.json');
