@@ -1,13 +1,37 @@
 {
-  "updated": "2026-05-14T11:42:26.580Z",
+  "updated": "2026-05-14T12:39:49.390Z",
   "slides": [
+    {
+      "id": "3602d2ee-21be-808f-b414-d5cb7de7faaa",
+      "titulo": "",
+      "location": "",
+      "descripcion": "",
+      "imagen": "image/OPEN sTUDIOS TATTOO GRABADO música _ poesía exposiciones de obras de artistas residentes.mp4",
+      "orden": 1
+    },
+    {
+      "id": "3602d2ee-21be-8091-ad04-c3cd038142a1",
+      "titulo": "Modo casona",
+      "location": "SARANDÍ 544 · CIUDAD VIEJA · MONTEVIDEO",
+      "descripcion": "Disfruta de talleres, maridajes, arte y encuentros en un espacio histórico que vibra con una energía contemporánea única, creando experiencias inolvidables para todos los sentidos.",
+      "imagen": "image/1.png",
+      "orden": 2
+    },
     {
       "id": "3602d2ee-21be-8075-9d70-db87901eb6b8",
       "titulo": "Talleres",
-      "location": "",
+      "location": "SARANDÍ 544 · CIUDAD VIEJA · MONTEVIDEO",
       "descripcion": "Ofrecemos talleres de dibujo, saxofón, entre otros. Siempre estamos abiertos a nuevas propuestas. Nuestros talleres son divertidos, atractivos y educativos.",
-      "imagen": "",
-      "orden": 99
+      "imagen": "image/2.png",
+      "orden": 3
+    },
+    {
+      "id": "3602d2ee-21be-80ba-9f50-e6fae50ec250",
+      "titulo": "Maridajes",
+      "location": "PEATONAL TOURS",
+      "descripcion": "Actividad para probar vinos de Norte, Oeste, Centro-Sur y Este, conociendo sus características y maridándolos con productos locales típicos.",
+      "imagen": "image/4.png",
+      "orden": 4
     }
   ]
 }
