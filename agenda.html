@@ -232,12 +232,19 @@
       user-select: none;
     }
 
-    .cal-day:not(.other-month):hover { background: var(--cream); }
+    .cal-day:not(.other-month):not(.past):hover { background: var(--cream); }
     .cal-day.other-month { color: var(--text-muted); cursor: default; }
     .cal-day.has-event   { background: rgba(232, 120, 74, .22); font-weight: 600; }
-    .cal-day.has-event:hover { background: rgba(232, 120, 74, .38); }
+    .cal-day.has-event:not(.past):hover { background: rgba(232, 120, 74, .38); }
     .cal-day.selected    { background: var(--carbon-2) !important; color: #fff !important; }
-    .cal-day.today:not(.selected) { font-weight: 700; }
+    .cal-day.today:not(.selected) { font-weight: 700; color: var(--orange); }
+    .cal-day.past        { color: var(--text-muted); opacity: .45; cursor: default; }
+    .cal-day.past.has-event { background: rgba(232, 120, 74, .08); }
+    .cal-day:focus-visible {
+      outline: 2px solid var(--brand);
+      outline-offset: -2px;
+      border-radius: 50%;
+    }
 
     /* ── EVENT PANEL (right) ─────────────────────────── */
     .agenda-events {
@@ -495,7 +502,7 @@
             <button id="cal-prev" class="cal-nav-btn" aria-label="Mes anterior">&#8249;</button>
             <button id="cal-next" class="cal-nav-btn" aria-label="Mes siguiente">&#8250;</button>
           </div>
-          <div class="cal-grid" id="cal-grid"></div>
+          <div class="cal-grid" id="cal-grid" role="grid" aria-label="Calendario de eventos"></div>
         </div>
       </aside>
 
@@ -703,30 +710,107 @@
       var totalSlots  = (startDow + daysInMonth > 35) ? 42 : 35;
       var todayStr    = todayISO();
 
-      var html = DIAS.map(function (d) { return '<div class="cal-day-header">' + d + '</div>'; }).join('');
+      var html = '<div role="row">' + DIAS.map(function (d) {
+        return '<div class="cal-day-header" role="columnheader" aria-label="' + d + '">' + d + '</div>';
+      }).join('') + '</div>';
 
       for (var i = 0; i < startDow; i++) {
-        html += '<div class="cal-day other-month">' + (prevLast - startDow + 1 + i) + '</div>';
+        html += '<div class="cal-day other-month" role="gridcell" aria-hidden="true">' + (prevLast - startDow + 1 + i) + '</div>';
       }
       for (var d = 1; d <= daysInMonth; d++) {
-        var iso = calYear + '-' + pad(calMonth + 1) + '-' + pad(d);
+        var iso      = calYear + '-' + pad(calMonth + 1) + '-' + pad(d);
+        var isPast   = iso < todayStr;
+        var hasEv    = !!eventDates[iso];
+        var isToday  = iso === todayStr;
+        var isSel    = iso === selectedDate;
+        var focusable = hasEv && !isPast;
+
         var cls = 'cal-day';
-        if (eventDates[iso])     cls += ' has-event';
-        if (iso === selectedDate) cls += ' selected';
-        if (iso === todayStr)    cls += ' today';
-        html += '<div class="' + cls + '" data-date="' + iso + '">' + d + '</div>';
+        if (hasEv)   cls += ' has-event';
+        if (isSel)   cls += ' selected';
+        if (isToday) cls += ' today';
+        if (isPast)  cls += ' past';
+
+        var labelParts = [d + ' de ' + MESES[calMonth]];
+        if (isToday) labelParts.push('hoy');
+        if (isPast)  labelParts.push('pasado');
+        if (hasEv)   labelParts.push('tiene eventos');
+
+        html += '<div class="' + cls + '" data-date="' + iso + '"'
+          + ' role="gridcell"'
+          + ' aria-label="' + labelParts.join(', ') + '"'
+          + (isSel  ? ' aria-selected="true"' : '')
+          + (isPast ? ' aria-disabled="true"' : '')
+          + (focusable ? ' tabindex="-1"' : '')
+          + '>' + d + '</div>';
       }
       for (var j = 1; j <= totalSlots - startDow - daysInMonth; j++) {
-        html += '<div class="cal-day other-month">' + j + '</div>';
+        html += '<div class="cal-day other-month" role="gridcell" aria-hidden="true">' + j + '</div>';
       }
 
       grid.innerHTML = html;
-      grid.querySelectorAll('.cal-day[data-date]').forEach(function (el) {
-        el.onclick = function () {
+
+      /* ── Roving tabindex: one cell has tabindex=0 at a time ── */
+      var focusableDays = Array.from(grid.querySelectorAll('.cal-day.has-event:not(.past)'));
+      var activeDay = grid.querySelector('.cal-day.selected')
+        || grid.querySelector('.cal-day.today.has-event')
+        || focusableDays[0];
+      if (activeDay && focusableDays.indexOf(activeDay) !== -1) {
+        activeDay.setAttribute('tabindex', '0');
+      } else if (focusableDays[0]) {
+        focusableDays[0].setAttribute('tabindex', '0');
+      }
+
+      /* ── Click ── */
+      focusableDays.forEach(function (el) {
+        el.addEventListener('click', function () {
           selectedDate = (selectedDate === el.dataset.date) ? null : el.dataset.date;
           renderCalendar();
           renderEvents();
-        };
+        });
+      });
+
+      /* ── Keyboard: arrows navigate focusable days, Enter/Space select ── */
+      grid.addEventListener('keydown', function (e) {
+        var focused = document.activeElement;
+        if (!focused || !focused.dataset.date) return;
+
+        var days = focusableDays;
+        var idx  = days.indexOf(focused);
+        if (idx === -1) return;
+
+        var next = null;
+        if (e.key === 'ArrowRight') next = days[idx + 1];
+        if (e.key === 'ArrowLeft')  next = days[idx - 1];
+        if (e.key === 'ArrowDown') {
+          /* find next day 7 calendar cells ahead */
+          var curDate = focused.dataset.date;
+          for (var k = idx + 1; k < days.length; k++) {
+            if (days[k].dataset.date > curDate) { next = days[k]; break; }
+          }
+          if (!next) next = days[days.length - 1];
+        }
+        if (e.key === 'ArrowUp') {
+          for (var k = idx - 1; k >= 0; k--) {
+            if (days[k].dataset.date < focused.dataset.date) { next = days[k]; break; }
+          }
+          if (!next) next = days[0];
+        }
+        if (e.key === 'Home') next = days[0];
+        if (e.key === 'End')  next = days[days.length - 1];
+
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          focused.click();
+          return;
+        }
+
+        if (next && next !== focused) {
+          e.preventDefault();
+          focused.setAttribute('tabindex', '-1');
+          next.setAttribute('tabindex', '0');
+          next.focus();
+        }
       });
     }
 
@@ -828,7 +912,7 @@
           +   meta
           +   '<p class="event-card-desc">' + g.descripcion + '</p>'
           + '</div>'
-          + '<a href="' + href + '"' + target + ' class="btn-brand event-card-action">Inscribirse</a>'
+          + (g.link ? '<a href="' + href + '"' + target + ' class="btn-brand event-card-action">Inscribirse</a>' : '')
           + '</div>';
       }).join('');
     }
