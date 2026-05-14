@@ -1,29 +1,13 @@
 {
-  "updated": "2026-05-14T12:50:35.590Z",
+  "updated": "2026-05-14T12:57:35.948Z",
   "slides": [
-    {
-      "id": "3602d2ee-21be-8169-9d30-c72f78895e41",
-      "titulo": "MODO CASONA",
-      "location": "SARANDÍ 544 · CIUDAD VIEJA · MONTEVIDEO",
-      "descripcion": "Disfruta de talleres, maridajes, arte y encuentros en un espacio histórico que vibra con una energía contemporánea única, creando experiencias inolvidables para todos los sentidos.",
-      "imagen": "image/Index/Hero carrusel/1.jpg",
-      "orden": 1
-    },
     {
       "id": "3602d2ee-21be-808f-b414-d5cb7de7faaa",
       "titulo": "",
       "location": "",
       "descripcion": "",
-      "url": "image/OPEN sTUDIOS TATTOO GRABADO música _ poesía exposiciones de obras de artistas residentes.mp4",
+      "url": "image/hero-video.mp4",
       "orden": 1
-    },
-    {
-      "id": "3602d2ee-21be-8113-bfe7-f109e8d1133d",
-      "titulo": "MARIDAJES",
-      "location": "PEATONAL TOURS",
-      "descripcion": "Actividad para probar vinos de Norte, Oeste, Centro-Sur y Este, conociendo sus características y maridándolos con productos locales típicos.",
-      "imagen": "image/Index/Hero carrusel/2.jpg",
-      "orden": 2
     },
     {
       "id": "3602d2ee-21be-8091-ad04-c3cd038142a1",
@@ -34,14 +18,6 @@
       "orden": 2
     },
     {
-      "id": "3602d2ee-21be-8100-afd2-fb7443a56f74",
-      "titulo": "TALLERES",
-      "location": "SARANDÍ 544 · CIUDAD VIEJA · MONTEVIDEO",
-      "descripcion": "Ofrecemos talleres de dibujo, saxofón, entre otros. Siempre estamos abiertos a nuevas propuestas. Nuestros talleres son divertidos, atractivos y educativos.",
-      "imagen": "image/Index/Hero carrusel/3.jpg",
-      "orden": 3
-    },
-    {
       "id": "3602d2ee-21be-8075-9d70-db87901eb6b8",
       "titulo": "TALLERES",
       "location": "SARANDÍ 544 · CIUDAD VIEJA · MONTEVIDEO",
@@ -50,16 +26,8 @@
       "orden": 3
     },
     {
-      "id": "3602d2ee-21be-8110-b0a2-e42e983a7a15",
-      "titulo": "OPEN HOUSE",
-      "location": "SARANDÍ 544 · CIUDAD VIEJA · MONTEVIDEO",
-      "descripcion": "Organizamos eventos en días especiales para mostrar los estudios de los habitantes y exposiciones en el espacio. Ven a explorar, conocer artistas y descubrir la creatividad.",
-      "imagen": "image/Index/Hero carrusel/4.jpg",
-      "orden": 4
-    },
-    {
       "id": "3602d2ee-21be-80ba-9f50-e6fae50ec250",
-      "titulo": "mARIDAJES",
+      "titulo": "MARIDAJES",
       "location": "PEATONAL TOURS",
       "descripcion": "Actividad para probar vinos de Norte, Oeste, Centro-Sur y Este, conociendo sus características y maridándolos con productos locales típicos.",
       "url": "image/4.png",
