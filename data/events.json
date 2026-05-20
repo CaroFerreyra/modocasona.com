@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-20T07:37:35.897Z",
+  "updated": "2026-05-20T08:49:30.171Z",
   "events": [
     {
       "id": "3592d2ee-21be-812a-a8e7-dac1082d2693",
@@ -21,7 +21,7 @@
       "imagen": "image/img-saxofon.png",
       "link": "https://www.instagram.com/mferreira.uy",
       "horario": "",
-      "destacado": true
+      "destacado": false
     },
     {
       "id": "35b2d2ee-21be-80bd-8d8f-fcdf2c3078f8",
@@ -109,7 +109,7 @@
       "imagen": "image/img-saxofon.png",
       "link": "https://www.instagram.com/mferreira.uy",
       "horario": "",
-      "destacado": false
+      "destacado": true
     },
     {
       "id": "35b2d2ee-21be-808d-a612-d29992d016f2",
