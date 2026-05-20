@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-20T07:34:14.133Z",
+  "updated": "2026-05-20T07:37:35.897Z",
   "events": [
     {
       "id": "3592d2ee-21be-812a-a8e7-dac1082d2693",
@@ -65,7 +65,7 @@
       "imagen": "image/open.png",
       "link": "",
       "horario": "11 a 17h",
-      "destacado": true
+      "destacado": false
     },
     {
       "id": "35b2d2ee-21be-8018-802f-ddbbb6c25842",
@@ -98,7 +98,7 @@
       "imagen": "image/taller.png",
       "link": "https://www.instagram.com/habitacion.7/",
       "horario": "17 a 19h",
-      "destacado": false
+      "destacado": true
     },
     {
       "id": "35b2d2ee-21be-8099-9336-f6672ee21753",
