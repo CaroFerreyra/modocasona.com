@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-20T13:28:04.998Z",
+  "updated": "2026-05-20T14:22:52.693Z",
   "events": [
     {
       "id": "3592d2ee-21be-812a-a8e7-dac1082d2693",
@@ -43,7 +43,7 @@
       "imagen": "image/workshop.png",
       "link": "https://www.instagram.com/yiselespinosa.ph/",
       "horario": "18:30 a 20:30h",
-      "destacado": true
+      "destacado": false
     },
     {
       "id": "3592d2ee-21be-80e4-b2d5-ebe248b151df",
@@ -54,17 +54,6 @@
       "imagen": "image/taller.png",
       "link": "https://www.instagram.com/habitacion.7/",
       "horario": "17 a 19h",
-      "destacado": false
-    },
-    {
-      "id": "3592d2ee-21be-81d6-8a1d-c3906237885a",
-      "titulo": "Open House",
-      "tipo": "Open House",
-      "fecha": "2026-05-16",
-      "descripcion": "Open estudios, Tattoo, grabado, música, poesía y mucho más.",
-      "imagen": "image/open.png",
-      "link": "",
-      "horario": "11 a 17h",
       "destacado": false
     },
     {
@@ -164,6 +153,17 @@
       "imagen": "image/taller.png",
       "link": "https://www.instagram.com/habitacion.7/",
       "horario": "17 a 19h",
+      "destacado": false
+    },
+    {
+      "id": "3592d2ee-21be-81d6-8a1d-c3906237885a",
+      "titulo": "Open House",
+      "tipo": "Open House",
+      "fecha": "2026-06-20",
+      "descripcion": "Open estudios, Tattoo, grabado, música, poesía y mucho más.",
+      "imagen": "image/open-agenda.svg",
+      "link": "",
+      "horario": "",
       "destacado": false
     }
   ]
