@@ -276,7 +276,7 @@
     .habitants-grid {
       display: flex;
       flex-wrap: wrap;
-      gap: 80px 24px;
+      gap: 32px 24px;
       justify-content: center;
       margin-top: 8px;
     }
@@ -636,16 +636,19 @@
         var img = e.imagen
           ? '<img src="' + e.imagen + '" alt="' + e.titulo + '" class="card-img">'
           : '<div class="card-img-placeholder"></div>';
-        var href     = e.link || 'agenda.html';
+        var href     = e.link || '';
         var external = /^https?:\/\//i.test(href);
         var target   = external ? ' target="_blank" rel="noopener noreferrer"' : '';
+        var btnHtml  = href
+          ? '<a href="' + href + '"' + target + ' class="btn-brand">Inscribirse</a>'
+          : '';
         return '<div class="card-evento">'
           + '<div class="card-tag">' + (e.tipo || '') + '</div>'
           + img
           + (e.fecha ? '<p class="card-fecha">' + formatFecha(e.fecha) + '</p>' : '')
           + '<p class="card-title">' + e.titulo + '</p>'
           + '<p class="card-body">' + e.descripcion + '</p>'
-          + '<a href="' + href + '"' + target + ' class="btn-brand">Inscribirse</a>'
+          + btnHtml
           + '</div>';
       }).join('');
     }
