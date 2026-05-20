@@ -1,10 +1,10 @@
 {
-  "updated": "2026-05-20T08:49:30.592Z",
+  "updated": "2026-05-20T08:50:23.673Z",
   "habitantes": [
     {
       "id": "3592d2ee-21be-8099-a65b-d21fb660ec12",
       "nombre": "Federico Vaucheret",
-      "rol": "Co Gestor en Modo Casona / Artista plástico ",
+      "rol": "Co Gestor en Modo Casona/Artista plástico ",
       "bio": "",
       "instagram": "federico.vaucheret_art",
       "foto": "image/fede.png",
@@ -13,7 +13,7 @@
     {
       "id": "3592d2ee-21be-80f1-9bdd-d6a42bab62ee",
       "nombre": "Mantis",
-      "rol": "Ilustradora/grabadora",
+      "rol": "Ilustradora/Grabadora",
       "bio": "Mantis es ilustradora y grabadora, formada entre la exploración autodidacta y espacios que ampliaron su mirada artística. Su práctica nace de la curiosidad, la búsqueda constante y el deseo de construir un lenguaje propio.\n\nSe formó en la EMAD y en distintos talleres de grabado, donde incorporó herramientas técnicas y nuevas formas de pensar la imagen, consolidando un proceso creativo en permanente evolución.\n\nFormó parte de Colectiva Réplicas, con la que obtuvo fondos orientados a promover y fortalecer una mirada feminista en la producción artística algo en lo que continúa explorando y que distingue su desarrollo artístico.",
       "instagram": "mantis_pics",
       "foto": "image/mantis.png",
