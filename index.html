@@ -265,6 +265,22 @@
 
     .agenda-ver-mas:hover { opacity: .65; }
 
+    .tag-libre {
+      display: inline-flex;
+      align-items: center;
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: #3a7a56;
+      background: rgba(100, 175, 130, .13);
+      padding: 10px 18px;
+      border-radius: 20px;
+      line-height: 1;
+      align-self: flex-start;
+      pointer-events: none;
+      user-select: none;
+    }
+
     /* ── HABITANTES ──────────────────────────────────── */
     .section-habitantes {
       padding: 48px 80px 80px;
@@ -641,7 +657,7 @@
         var target   = external ? ' target="_blank" rel="noopener noreferrer"' : '';
         var btnHtml  = href
           ? '<a href="' + href + '"' + target + ' class="btn-brand">Inscribirse</a>'
-          : '';
+          : '<span class="tag-libre">Entrada libre</span>';
         return '<div class="card-evento">'
           + '<div class="card-tag">' + (e.tipo || '') + '</div>'
           + img

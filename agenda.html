@@ -370,6 +370,24 @@
       padding: 10px 15px;
     }
 
+    .tag-libre {
+      flex-shrink: 0;
+      align-self: center;
+      display: inline-flex;
+      align-items: center;
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: #3a7a56;
+      background: rgba(100, 175, 130, .13);
+      padding: 10px 16px;
+      border-radius: 20px;
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+      white-space: nowrap;
+    }
+
     .events-empty {
       font-size: 16px;
       color: var(--text-muted);
@@ -911,7 +929,7 @@
           +   meta
           +   '<p class="event-card-desc">' + g.descripcion + '</p>'
           + '</div>'
-          + (g.link ? '<a href="' + href + '"' + target + ' class="btn-brand event-card-action">Inscribirse</a>' : '')
+          + (g.link ? '<a href="' + href + '"' + target + ' class="btn-brand event-card-action">Inscribirse</a>' : '<span class="tag-libre">Entrada libre</span>')
           + '</div>';
       }).join('');
     }
