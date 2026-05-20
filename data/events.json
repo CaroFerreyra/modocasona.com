@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-20T14:22:52.693Z",
+  "updated": "2026-05-20T14:25:58.420Z",
   "events": [
     {
       "id": "3592d2ee-21be-812a-a8e7-dac1082d2693",
@@ -164,7 +164,7 @@
       "imagen": "image/open-agenda.svg",
       "link": "",
       "horario": "",
-      "destacado": false
+      "destacado": true
     }
   ]
 }
