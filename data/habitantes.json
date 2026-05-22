@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-22T07:35:00.035Z",
+  "updated": "2026-05-22T09:43:27.267Z",
   "habitantes": [
     {
       "id": "3592d2ee-21be-8099-a65b-d21fb660ec12",
@@ -31,7 +31,7 @@
     {
       "id": "3592d2ee-21be-8045-9b2a-c3c92af780f8",
       "nombre": "Sabina Gerstein",
-      "rol": "Artista plástica",
+      "rol": "Artista visual",
       "bio": "Sabina Gerstein, artista plástica y poeta argentina nacida en 1990. Su obra explora la autoficción, la identidad y las formas de construirse y narrarse.\n\nUna búsqueda por habitar todas sus versiones posibles.",
       "instagram": "sabinajoaquina",
       "foto": "image/sabina2.png",
@@ -39,10 +39,10 @@
     },
     {
       "id": "3592d2ee-21be-8064-9343-d288db4de779",
-      "nombre": "Maite",
-      "rol": "Artista plástica",
-      "bio": "",
-      "instagram": "",
+      "nombre": "Maité Bulgarelli ",
+      "rol": "Artista visual",
+      "bio": "Maité Bulgarelli (1994) es artista visual formada en dibujo y pintura en la UTU Figari. Desde entonces pintó en el taller de Christian Kiš y en el de Verónica Cestau, al que continúa yendo. Se ha formado también en análisis de la imagen y en fotografía. Realizó ilustraciones para relatos gráficos con la editorial independiente La Modernidad así como la fotografía de un álbum musical de Lali Gaspari. También escribe, y una versión germinal de su obra Mansalva obtuvo una mención de la Casa de los Escritores. Más adelante fue\npublicada por la editorial independiente Dos Pájaros. Es tallerista en INAU con\nadolescentes y niños. También ha dado talleres a adultos en Casa de las Ciudadanas y en\nla papelería artística Tangram. Trabaja en Modo Casona de forma independiente\ninvestigando distintas técnicas (óleo, acuarela, acrílicos, entre otros). La búsqueda de un\nlenguaje personal es constante, trabajando en este último tiempo en retratos y aves.",
+      "instagram": "mabular_",
       "foto": "image/maite.png",
       "orden": 5
     },
