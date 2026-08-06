@@ -1,116 +1,6 @@
 {
-  "updated": "2026-08-06T13:29:52.784Z",
+  "updated": "2026-08-06T23:47:31.139Z",
   "events": [
-    {
-      "id": "3592d2ee-21be-812a-a8e7-dac1082d2693",
-      "titulo": "Taller de dibujo Habitación 7",
-      "tipo": "Taller",
-      "fecha": "2026-05-08",
-      "descripcion": "Aprendé técnicas de dibujo desde cero en un ambiente creativo y relajado. Materiales incluidos.",
-      "imagen": "image/taller.png",
-      "link": "https://www.instagram.com/habitacion.7/",
-      "horario": "17 a 19h",
-      "destacado": false
-    },
-    {
-      "id": "35b2d2ee-21be-8056-952f-f36d4e055a04",
-      "titulo": "Clases de Saxofón",
-      "tipo": "Clases",
-      "fecha": "2026-05-11",
-      "descripcion": "Clases individuales para todas las edades. Técnica, lectura, improvisación y repertorio. Prof. Mariano Ferreira. ",
-      "imagen": "image/img-saxofon.png",
-      "link": "https://www.instagram.com/mferreira.uy",
-      "horario": "",
-      "destacado": false
-    },
-    {
-      "id": "35b2d2ee-21be-80bd-8d8f-fcdf2c3078f8",
-      "titulo": "Clases de Saxofón",
-      "tipo": "Clases",
-      "fecha": "2026-05-13",
-      "descripcion": "Clases individuales para todas las edades. Técnica, lectura, improvisación y repertorio. Prof. Mariano Ferreira. ",
-      "imagen": "image/img-saxofon.png",
-      "link": "https://www.instagram.com/mferreira.uy",
-      "horario": "",
-      "destacado": false
-    },
-    {
-      "id": "3592d2ee-21be-80c2-a419-f2360e15e44e",
-      "titulo": "La arquitectura como sujeto de la imagen",
-      "tipo": "Taller",
-      "fecha": "2026-05-15",
-      "descripcion": "Un taller para mirar la ciudad y su arquitectura con otros ojos. 8 encuentros los viernes.",
-      "imagen": "image/workshop.png",
-      "link": "https://www.instagram.com/yiselespinosa.ph/",
-      "horario": "18:30 a 20:30h",
-      "destacado": false
-    },
-    {
-      "id": "3592d2ee-21be-80e4-b2d5-ebe248b151df",
-      "titulo": "Taller de dibujo Habitación 7",
-      "tipo": "Taller",
-      "fecha": "2026-05-15",
-      "descripcion": "Aprendé técnicas de dibujo desde cero en un ambiente creativo y relajado. Materiales incluidos.",
-      "imagen": "image/taller.png",
-      "link": "https://www.instagram.com/habitacion.7/",
-      "horario": "17 a 19h",
-      "destacado": false
-    },
-    {
-      "id": "35b2d2ee-21be-8018-802f-ddbbb6c25842",
-      "titulo": "Clases de Saxofón",
-      "tipo": "Clases",
-      "fecha": "2026-05-18",
-      "descripcion": "Clases individuales para todas las edades. Técnica, lectura, improvisación y repertorio. Prof. Mariano Ferreira. ",
-      "imagen": "image/img-saxofon.png",
-      "link": "https://www.instagram.com/mferreira.uy",
-      "horario": "",
-      "destacado": false
-    },
-    {
-      "id": "35b2d2ee-21be-80f0-b9a6-cff7b323af60",
-      "titulo": "Clases de Saxofón",
-      "tipo": "Clases",
-      "fecha": "2026-05-20",
-      "descripcion": "Clases individuales para todas las edades. Técnica, lectura, improvisación y repertorio. Prof. Mariano Ferreira. ",
-      "imagen": "image/img-saxofon.png",
-      "link": "https://www.instagram.com/mferreira.uy",
-      "horario": "",
-      "destacado": false
-    },
-    {
-      "id": "3592d2ee-21be-80f9-a22b-e5edce4a28ba",
-      "titulo": "Taller de dibujo Habitación 7",
-      "tipo": "Taller",
-      "fecha": "2026-05-22",
-      "descripcion": "Aprendé técnicas de dibujo desde cero en un ambiente creativo y relajado. Materiales incluidos.",
-      "imagen": "image/taller.png",
-      "link": "https://www.instagram.com/habitacion.7/",
-      "horario": "17 a 19h",
-      "destacado": true
-    },
-    {
-      "id": "35b2d2ee-21be-8099-9336-f6672ee21753",
-      "titulo": "Clases de Saxofón",
-      "tipo": "Clases",
-      "fecha": "2026-05-25",
-      "descripcion": "Clases individuales para todas las edades. Técnica, lectura, improvisación y repertorio. Prof. Mariano Ferreira. ",
-      "imagen": "image/img-saxofon.png",
-      "link": "https://www.instagram.com/mferreira.uy",
-      "horario": "",
-      "destacado": true
-    },
-    {
-      "id": "35b2d2ee-21be-808d-a612-d29992d016f2",
-      "titulo": "Clases de Saxofón",
-      "tipo": "Clases",
-      "fecha": "2026-05-27",
-      "descripcion": "Clases individuales para todas las edades. Técnica, lectura, improvisación y repertorio. Prof. Mariano Ferreira. ",
-      "imagen": "image/img-saxofon.png",
-      "link": "https://www.instagram.com/mferreira.uy",
-      "horario": "",
-      "destacado": false
-    },
     {
       "id": "3592d2ee-21be-81b2-b759-dbe261d9b4d2",
       "titulo": "Maridaje: Vinos y platitos",
@@ -123,10 +13,10 @@
       "destacado": false
     },
     {
-      "id": "3592d2ee-21be-80d6-88c8-dc62ec90740a",
-      "titulo": "Taller de dibujo Habitación 7 ",
+      "id": "3592d2ee-21be-812a-a8e7-dac1082d2693",
+      "titulo": "Taller de dibujo Habitación 7",
       "tipo": "Taller",
-      "fecha": "2026-05-29",
+      "fecha": "2026-08-06",
       "descripcion": "Aprendé técnicas de dibujo desde cero en un ambiente creativo y relajado. Materiales incluidos.",
       "imagen": "image/taller.png",
       "link": "https://www.instagram.com/habitacion.7/",
@@ -134,10 +24,10 @@
       "destacado": false
     },
     {
-      "id": "35b2d2ee-21be-800a-b146-fceb2caebed7",
+      "id": "35b2d2ee-21be-8056-952f-f36d4e055a04",
       "titulo": "Clases de Saxofón",
       "tipo": "Clases",
-      "fecha": "2026-06-01",
+      "fecha": "2026-08-10",
       "descripcion": "Clases individuales para todas las edades. Técnica, lectura, improvisación y repertorio. Prof. Mariano Ferreira. ",
       "imagen": "image/img-saxofon.png",
       "link": "https://www.instagram.com/mferreira.uy",
@@ -145,10 +35,21 @@
       "destacado": false
     },
     {
-      "id": "3592d2ee-21be-8030-ac23-dde1bbfa0f38",
+      "id": "35b2d2ee-21be-80bd-8d8f-fcdf2c3078f8",
+      "titulo": "Clases de Saxofón",
+      "tipo": "Clases",
+      "fecha": "2026-08-12",
+      "descripcion": "Clases individuales para todas las edades. Técnica, lectura, improvisación y repertorio. Prof. Mariano Ferreira. ",
+      "imagen": "image/img-saxofon.png",
+      "link": "https://www.instagram.com/mferreira.uy",
+      "horario": "",
+      "destacado": false
+    },
+    {
+      "id": "3592d2ee-21be-80e4-b2d5-ebe248b151df",
       "titulo": "Taller de dibujo Habitación 7",
       "tipo": "Taller",
-      "fecha": "2026-06-05",
+      "fecha": "2026-08-13",
       "descripcion": "Aprendé técnicas de dibujo desde cero en un ambiente creativo y relajado. Materiales incluidos.",
       "imagen": "image/taller.png",
       "link": "https://www.instagram.com/habitacion.7/",
@@ -159,12 +60,89 @@
       "id": "3592d2ee-21be-81d6-8a1d-c3906237885a",
       "titulo": "Open House",
       "tipo": "Open House",
-      "fecha": "2026-06-20",
+      "fecha": "2026-08-15",
       "descripcion": "Open estudios, Tattoo, grabado, música, poesía y mucho más.",
       "imagen": "image/open-agenda.svg",
       "link": "",
       "horario": "",
       "destacado": true
+    },
+    {
+      "id": "35b2d2ee-21be-8018-802f-ddbbb6c25842",
+      "titulo": "Clases de Saxofón",
+      "tipo": "Clases",
+      "fecha": "2026-08-17",
+      "descripcion": "Clases individuales para todas las edades. Técnica, lectura, improvisación y repertorio. Prof. Mariano Ferreira. ",
+      "imagen": "image/img-saxofon.png",
+      "link": "https://www.instagram.com/mferreira.uy",
+      "horario": "",
+      "destacado": false
+    },
+    {
+      "id": "35b2d2ee-21be-80f0-b9a6-cff7b323af60",
+      "titulo": "Clases de Saxofón",
+      "tipo": "Clases",
+      "fecha": "2026-08-19",
+      "descripcion": "Clases individuales para todas las edades. Técnica, lectura, improvisación y repertorio. Prof. Mariano Ferreira. ",
+      "imagen": "image/img-saxofon.png",
+      "link": "https://www.instagram.com/mferreira.uy",
+      "horario": "",
+      "destacado": false
+    },
+    {
+      "id": "3592d2ee-21be-80f9-a22b-e5edce4a28ba",
+      "titulo": "Taller de dibujo Habitación 7",
+      "tipo": "Taller",
+      "fecha": "2026-08-20",
+      "descripcion": "Aprendé técnicas de dibujo desde cero en un ambiente creativo y relajado. Materiales incluidos.",
+      "imagen": "image/taller.png",
+      "link": "https://www.instagram.com/habitacion.7/",
+      "horario": "17 a 19h",
+      "destacado": true
+    },
+    {
+      "id": "35b2d2ee-21be-8099-9336-f6672ee21753",
+      "titulo": "Clases de Saxofón",
+      "tipo": "Clases",
+      "fecha": "2026-08-24",
+      "descripcion": "Clases individuales para todas las edades. Técnica, lectura, improvisación y repertorio. Prof. Mariano Ferreira. ",
+      "imagen": "image/img-saxofon.png",
+      "link": "https://www.instagram.com/mferreira.uy",
+      "horario": "",
+      "destacado": true
+    },
+    {
+      "id": "35b2d2ee-21be-808d-a612-d29992d016f2",
+      "titulo": "Clases de Saxofón",
+      "tipo": "Clases",
+      "fecha": "2026-08-26",
+      "descripcion": "Clases individuales para todas las edades. Técnica, lectura, improvisación y repertorio. Prof. Mariano Ferreira. ",
+      "imagen": "image/img-saxofon.png",
+      "link": "https://www.instagram.com/mferreira.uy",
+      "horario": "",
+      "destacado": false
+    },
+    {
+      "id": "3592d2ee-21be-80d6-88c8-dc62ec90740a",
+      "titulo": "Taller de dibujo Habitación 7 ",
+      "tipo": "Taller",
+      "fecha": "2026-08-27",
+      "descripcion": "Aprendé técnicas de dibujo desde cero en un ambiente creativo y relajado. Materiales incluidos.",
+      "imagen": "image/taller.png",
+      "link": "https://www.instagram.com/habitacion.7/",
+      "horario": "17 a 19h",
+      "destacado": false
+    },
+    {
+      "id": "35b2d2ee-21be-800a-b146-fceb2caebed7",
+      "titulo": "Clases de Saxofón",
+      "tipo": "Clases",
+      "fecha": "2026-08-31",
+      "descripcion": "Clases individuales para todas las edades. Técnica, lectura, improvisación y repertorio. Prof. Mariano Ferreira. ",
+      "imagen": "image/img-saxofon.png",
+      "link": "https://www.instagram.com/mferreira.uy",
+      "horario": "",
+      "destacado": false
     }
   ]
 }
